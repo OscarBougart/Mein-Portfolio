@@ -348,25 +348,294 @@ body {
   }
 }
 
-/* ================================
-   HOME SECTION
-================================ */
-.home {
-  height: 100vh;
-  background: var(--ink-black);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 10%;
+
+
+/* Home Section */ 
+.home { 
+    height: 100vh; 
+    background: var(--ink-black); 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    padding: 0 10%; } 
+    
+.home-img { 
+            max-width: 350px; 
+            margin-bottom: 20px; 
+            z-index: 5;
+         }
+
+    @media (max-width: 900px) {
+        .home { 
+            flex-direction: column; 
+            justify-content: center; 
+            text-align: center; 
+            padding: 50px 5%; 
+            height: auto; 
+            /* let content dictate height */ 
+        } 
+        .home-content { 
+            max-width: 100%; 
+            margin-bottom: 40px;
+         } 
+
+         .home-img { 
+            max-width: 200px; 
+            margin-bottom: 20px; 
+            z-index: 5;
+         }
+          
+         .btn-box {
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            width: 100%;
+             } 
+             
+             .btn-box { 
+                justify-content: center; 
+                flex-wrap: wrap; 
+                gap: 10px; 
+                width: 100%;
+             } 
+             
+             } 
+            
+            .home-content {
+                 max-width: 600px; 
+                 z-index: 101; 
+                } 
+                
+/* ===================== Home Content ===================== */
+.home-content {
+    max-width: 600px;
 }
 
-/* Home Section */ .home { height: 100vh; background: var(--ink-black); display: flex; align-items: center; justify-content: space-between; padding: 0 10%; } @media (max-width: 900px) { .home { flex-direction: column; justify-content: center; text-align: center; padding: 50px 5%; height: auto; /* let content dictate height */ } .home-content { max-width: 100%; margin-bottom: 40px; } .home-img { max-width: 200px; margin-bottom: 20px; z-index: 5; } .btn-box { justify-content: center; flex-wrap: wrap; gap: 10px; width: 100%; } .btn-box { justify-content: center; flex-wrap: wrap; gap: 10px; width: 100%; } .home-sci { position: relative; /* stop absolute positioning */ bottom: 0; /* reset bottom */ width: 100%; justify-content: center; gap: 15px; margin-top: 20px; /* space below image */ z-index: 10; /* ensure above background */ } .home-sci { position: relative; bottom: 0; width: 100%; justify-content: center; gap: 15px; margin-top: 20px; } } .home-content { max-width: 600px; z-index: 101; } @media (max-width: 600px) { .home-content h1 { font-size: clamp(28px, 6vw, 40px); } .home-content h3 { font-size: clamp(20px, 5vw, 28px); } .home-content p { font-size: clamp(14px, 3vw, 16px); } } .home-content h1 { position: relative; font-size: 56px; font-weight: 700; line-height: 1.2; color: var(--platinum-light-1); } .home-content h1::before { content: ''; position: absolute; top: 0; right: 0; width: 100%; height: 100%; background: var(--ink-black); animation: showRight 1s ease forwards; animation-delay: 1s; } .home-content h3 { position: relative; font-size: 32px; font-weight: 700; color: var(--fresh-sky); } .home-content h3::before { content: ''; position: absolute; top: 0; right: 0; width: 100%; height: 100%; background: var(--ink-black); animation: showRight 1s ease forwards; animation-delay: 1.3s; } .home-content p { position: relative; font-size: 16px; margin: 20px 0 40px; color: var(--platinum); } .home-content p::before { content: ''; position: absolute; top: 0; right: 0; width: 100%; height: 100%; background: var(--ink-black); animation: showRight 1s ease forwards; animation-delay: 1.6s; } .home-content .btn-box { position: relative; display: flex; justify-content: space-between; width: 345px; height: 50px; } .home-content .btn-box::before { content: ''; position: absolute; top: 0; right: 0; width: 100%; height: 100%; background: var(--ink-black); animation: showRight 1s ease forwards; animation-delay: 1.9s; z-index: 2; } .btn-box a { position: relative; display: inline-flex; justify-content: center; align-items: center; width: 150px; height: 100%; background: var(--fresh-sky); border: 2px solid var(--fresh-sky); border-radius: 8px; font-size: 19px; color: var(--ink-black); text-decoration: none; font-weight: 600; letter-spacing: 1px; z-index: 1; overflow: hidden; transition: .5s; } .btn-box a:hover { color: var(--fresh-sky); } .btn-box a:nth-child(2) { background: transparent; color: var(--fresh-sky); } .btn-box a:nth-child(2):hover { color: var(--ink-black); } .btn-box a:nth-child(2)::before { background: var(--fresh-sky); } .btn-box a::before { content: ''; position: absolute; top: 0; left: 0; width: 0; height: 100%; background: var(--ink-black); z-index: -1; transition: .5s; } .btn-box a:hover::before { width: 100%; } .home-sci { position: absolute; bottom: 40px; width: 250px; display: flex; justify-content: space-between; } .home-sci::before { content: ''; position: absolute; top: 0; right: 0; width: 100%; height: 100%; background: var(--ink-black); animation: showRight 1s ease forwards; animation-delay: 2.5s; z-index: 2; } .home-sci a { position: relative; display: inline-flex; justify-content: center; align-items: center; width: 40px; height: 40px; background: transparent; border: 2px solid var(--fresh-sky); border-radius: 50%; font-size: 20px; color: var(--fresh-sky); text-decoration: none; z-index: 1; overflow: hidden; transition: .5s; } .home-sci a:hover { color: var(--ink-black); } .home-sci a::before { content: ''; position: absolute; top: 0; left: 0; width: 0; height: 100%; background: var(--fresh-sky); z-index: -1; transition: .5s; } .home-sci a:hover::before { width: 100%; } .home-imgHover::after { content: ''; position: absolute; top: 0; right: 0; width: 135%; height: 100%; background: var(--ink-black); animation: showRight 1s ease forwards; animation-delay: 3s; z-index: 100; } .home-img { max-width: 250px; } @media (max-width: 900px) { .home-img { max-width: 200px; } } @media (max-width: 500px) { .home-img { max-width: 150px; } } .home-img img { width: 100%; height: auto; border-radius: 50%; object-fit: cover; background: var(--platinum); border: 4px solid var(--ink-black-light-1); }
+.home-content h1 {
+    position: relative;
+    font-size: clamp(28px, 6vw, 70px);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--platinum-light-1);
+}
+
+.home-content h1::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--ink-black);
+    animation: showRight 1s ease forwards;
+    animation-delay: 1s;
+}
+
+.home-content h3 {
+    position: relative;
+    font-size: clamp(20px, 10vw, 30px);
+    font-weight: 700;
+    color: var(--fresh-sky);
+}
+
+.home-content h3::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--ink-black);
+    animation: showRight 1s ease forwards;
+    animation-delay: 1.3s;
+}
+
+.home-content p {
+    position: relative;
+    font-size: clamp(14px, 3vw, 20px);
+    margin: 20px 0 40px;
+    color: var(--platinum);
+}
+
+.home-content p::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--ink-black);
+    animation: showRight 1s ease forwards;
+    animation-delay: 1.6s;
+}
+
+/* ===================== Buttons ===================== */
+.home-content .btn-box {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    width: 345px;
+    height: 50px;
+}
+
+.home-content .btn-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--ink-black);
+    animation: showRight 1s ease forwards;
+    animation-delay: 1.9s;
+    z-index: 2;
+}
+
+.btn-box a {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 100%;
+    background: var(--fresh-sky);
+    border: 2px solid var(--fresh-sky);
+    border-radius: 8px;
+    font-size: 19px;
+    color: var(--ink-black);
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 1px;
+    z-index: 1;
+    overflow: hidden;
+    transition: 0.5s;
+}
+
+.btn-box a:hover {
+    color: var(--fresh-sky);
+}
+
+.btn-box a:nth-child(2) {
+    background: transparent;
+    color: var(--fresh-sky);
+}
+
+.btn-box a:nth-child(2):hover {
+    color: var(--ink-black);
+}
+
+.btn-box a:nth-child(2)::before {
+    background: var(--fresh-sky);
+}
+
+.btn-box a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: var(--ink-black);
+    z-index: -1;
+    transition: 0.5s;
+}
+
+.btn-box a:hover::before {
+    width: 100%;
+}
+
+/* ===================== Home Social ===================== */
+.home-sci {
+    position: relative;
+    margin-top: 30px;
+    display: flex;           
+    justify-content: left;  
+    gap: 20px;               
+    width: auto;             
+}
+
+.home-sci::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--ink-black);
+    animation: showRight 1s ease forwards;
+    animation-delay: 2.5s;
+    z-index: 2;
+}
+
+.home-sci a {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    border: 2px solid var(--fresh-sky);
+    border-radius: 50%;
+    font-size: 30px;
+    color: var(--fresh-sky);
+    text-decoration: none;
+    z-index: 1;
+    overflow: hidden;
+    transition: 0.5s;
+}
+
+.home-sci a:hover {
+    color: var(--ink-black);
+}
+
+.home-sci a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;        /* full width from the start */
+    height: 100%;
+    background: var(--fresh-sky);
+    z-index: -1;
+    opacity: 0;         /* start invisible */
+    transition: opacity 0.5s ease; /* smooth fade */
+}
+
+.home-sci a:hover::before {
+    opacity: 1;         /* fade in fully */
+}
+
+
+/* ===================== Home Image ===================== */
+.home-imgHover::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 135%;
+    height: 100%;
+    background: var(--ink-black);
+    animation: showRight 1s ease forwards;
+    animation-delay: 3s;
+    z-index: 100;
+}
+
+.home-img img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+    object-fit: cover;
+    background: var(--platinum);
+    border: 4px solid var(--ink-black-light-1);
+}
+
 /* ================================
    ABOUT SECTION
 ================================ */
 .about {
-  min-height: 70vh;
-  background: var(--platinum);
+  min-height: 100vh;
+  background: var(--platinum-dark-1);
   padding: 100px 10%;
   color: var(--ink-black-dark-1);
   display: flex;
@@ -615,12 +884,12 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 50px;
+  gap: 40px;
 }
 
 /* Card */
 .project-card {
-  width: 280px;
+  width: 350px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -680,6 +949,7 @@ body {
   position: relative;
   width: 100%;
   height: 100%;
+
   overflow: hidden;
   border-radius: 10px;
   background: var(--ink-black-dark-2);
@@ -688,7 +958,7 @@ body {
 .project-carousel img {
   width: 100%;
   height: 200px;
-  object-fit: cover;
+
 }
 
 .carousel-track {
@@ -726,7 +996,7 @@ body {
    CONTACT SECTION
 ================================ */
 .contact {
-  min-height: 80vh;
+  height: 100vh;
   background: var(--ink-black-dark-1);
   padding: 100px 10%;
   color: var(--platinum-dark-2);
@@ -759,7 +1029,7 @@ body {
   display: flex;
   gap: 50px;
   flex-wrap: wrap;
-  height: auto;
+  height
 }
 
 .contact-left,
@@ -782,7 +1052,7 @@ body {
 .contact-form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 35px;
   max-width: 400px;
   width: 100%;
 }
@@ -841,6 +1111,7 @@ body {
 /* Extra images */
 .second-img img {
   margin-top: 20px;
+  width: 250px;
 }
 
 /* Social Links */

@@ -996,7 +996,7 @@ body {
    CONTACT SECTION
 ================================ */
 .contact {
-  height: 100vh;
+  height: 110vh;
   background: var(--ink-black-dark-1);
   padding: 100px 10%;
   color: var(--platinum-dark-2);

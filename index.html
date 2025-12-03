@@ -1,13 +1,297 @@
-<!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Portfolio</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oscar Bougart - Mein Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="Images/icons8-o-67 (1).png" type="image/x-icon">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    
 </head>
+
 <body>
-  <h1>Hello, GitHub Pages!</h1>
-  <script src="script.js"></script>
+
+   <header class="header">
+  <a href="#home" class="logo">Oscar.</a>
+
+  <div class="hamburger" id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <nav class="navbar" id="navbar">
+    <a href="#home" class="active">Startseite</a>
+    <a href="#about">Über mich</a>
+    <a href="#projects">Projekte</a>   
+    <a href="#contact">Kontakt</a>
+  </nav>
+</header>
+
+
+    <section class="home" id="home">
+        <div class="home-content">
+            <h1>Hallo, Ich bin <br><span id="name-color">Oscar Bougart</span></h1>
+            <h3>Webentwickler</h3>
+            <p>Leidenschaft für Webentwicklung, Design und kreative Technik.</p>
+            <div class="btn-box">
+                <a href="#contact">Kontakt</a>
+                <a href="assets/Oscar-CV-german.pdf" target="_blank" >Lebenslauf</a>
+            </div>
+        </div>
+
+        <div class="home-img">
+            <img src="Images/yoartlinebgerased.png" alt="Oscar">
+        </div>
+
+        <div class="home-sci">
+            <a href="https://github.com/OscarBougart" target="_blank"><i class='bx bxl-github'></i></a>
+            <a href="https://twitter.com/BougartDev" target="_blank"><i class='bx bxl-twitter'></i></a>
+            <a href="http://linkedin.com/in/oscar-bougart-850057295" target="_blank"><i class='bx bxl-linkedin'></i></a>
+            <a href="https://www.instagram.com/carbonell_os/" target="_blank"><i class='bx bxl-instagram'></i></a>
+            <a href="https://discordapp.com/users/1420433441891156008/" target="_blank"><i class="bx bxl-discord"></i></a>
+        </div>
+
+        <span class="home-imgHover"></span>
+    </section>
+
+    <section class="about" id="about">
+    <div class="about-container">
+        <!-- Left side: Text -->
+        <div class="about-text">
+            <h2>Über mich</h2>
+            <p>
+                Ich bin Oscar Bougart, ein Full-Stack-Webentwickler, der sich leidenschaftlich für die
+                Entwicklung intuitiver digitaler Erlebnisse einsetzt. Ich bin auf Web- und App-Entwicklung spezialisiert
+                und lerne ständig neue Tools kennen und verfeinere meine Fähigkeiten.
+            </p>
+            <h2>Mehr als nur Code</h2>
+            <p>
+                Mit zehn Jahren Erfahrung im Gastgewerbe bringe ich einen starken Fokus auf Teamarbeit, Anpassungsfähigkeit und kundenorientiertes Denken in jedes Projekt ein. Ich blühe in kollaborativen Umgebungen auf und bin immer daran interessiert, neue Technologien zu erforschen, um meine Kreativität weiter voranzutreiben.
+            </p>
+        </div>
+
+        <div class="about-tech">
+            <h3>Technologien</h3>
+            <ul class="tech-list">
+                <li><i class='bx bxl-html5'></i> HTML5 / CSS3 / JavaScript</li>
+                <li><i class='bx bxl-react'></i> React.js / Tailwind / Bootstrap</li>
+                <li><i class='bx bxl-python'></i> Python / Django / Wagtail</li>
+                <li><i class='bx bxl-java'></i> Java / Spring Boot</li>
+                <li><i class='bx bxl-github'></i> Git & GitHub / APIs / SQL</li>
+                <li><i class='bx bxl-docker'></i> Docker / Deployment</li>
+            </ul>
+            <h3>Sprache</h3>
+            <ul class="tech-list">
+              <li>Deutsch  | Fortgeschritten (B2)  </li>
+              <li>Spanisch | Muttersprache (C2)</li>
+              <li>Englisch | Muttersprache (C2)</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+
+
+    
+<section class="projects" id="projects">
+  <h2>PROJEKTE</h2>
+
+  <div class="project-container">
+    <div class="project-card">
+      <div class="project-carousel">
+        <div class="carousel-track">
+          <img src="assets/starlit1.png" alt="">
+          <img src="assets/starlit2.png" alt="">
+          <img src="assets/starlit3.png" alt="">
+          <img src="assets/starlit4.png" alt="">
+          <img src="assets/starlit5.png" alt="">
+          <img src="assets/starlit6.png" alt="">
+          <img src="assets/starlit7.png" alt="">
+        </div>
+        <button class="carousel-btn prev">❮</button>
+        <button class="carousel-btn next">❯</button>
+      </div>
+
+      <div class="project-content">
+        <h3 class="project-title">Starlit</h3>
+        <p class="project-description">
+          Ein modernes, schlichtes Website-Konzept für eine AI-Produktidee, mit klarer Struktur und einem leicht futuristischen Look, inspiriert vom modernen Design.
+        </p>
+        <p class="project-tech"><strong>React · CSS · HTML · Javascript</strong></p>
+      </div>
+    </div>
+
+    <!-- CARD 2 -->
+    <div class="project-card">
+      <div class="project-carousel">
+        <div class="carousel-track">
+          <img src="assets/spiritstack1.png" alt="">
+          <img src="assets/spiritstack2.png" alt="">
+          <img src="assets/spiritstack3.png" alt="">
+          <img src="assets/spiritstack4.png" alt="">
+          <img src="assets/spiritstack5.png" alt="">
+          <img src="assets/spiritstack6.png" alt="">
+          <img src="assets/spiritstack7.png" alt="">
+        </div>
+        <button class="carousel-btn prev">❮</button>
+        <button class="carousel-btn next">❯</button>
+      </div>
+
+      <div class="project-content">
+        <h3 class="project-title">The SpiritStack</h3>
+        <p class="project-description"> 
+         Eine farbenfrohe Website im Vintage-Stil, auf der Barkeeper und Cocktailliebhaber spielerisch neue Techniken zum Mixen von Cocktails entdecken können – ergänzt durch leichte Animationen, um das Erlebnis lebendiger zu gestalten
+        </p>
+        <p class="project-tech"><strong>React · Tailwind · Javascript · Notion</strong></p>
+      </div>
+    </div>
+
+    <!-- CARD 3 -->
+     <div class="project-card">
+      <div class="project-carousel">
+        <div class="carousel-track">
+          <img src="assets/feast3.jpg" alt="">
+          <img src="assets/feast2.jpg" alt="">
+          <img src="assets/feast.jpg" alt="">
+          <img src="assets/feast4.jpg" alt="">
+        </div>
+        <button class="carousel-btn prev">❮</button>
+        <button class="carousel-btn next">❯</button>
+      </div>
+
+      <div class="project-content">
+        <h3 class="project-title">Feast & Fizz</h3>
+        <p class="project-description">
+           Eine App für Cocktail- und Speiserezepte, in der Nutzer nach Namen oder Zutaten suchen können. Erstellt mit einem Full-Stack-Ansatz, einschließlich eines Django-Backends und einer externen Rezept-API.
+        </p>
+        <p class="project-tech"><strong>React · Django · Tailwind · Vite · API</strong></p>
+      </div>
+    </div>
+
+  </div> 
+</section>
+
+
+
+
+
+<section class="contact" id="contact">
+  <div class="contact-card">
+    <div class="contact-container">
+      <!-- Left column: title + form -->
+      <div class="contact-left">
+        <h2>KONTAKT</h2>
+        <form id="contact-form" class="contact-form">
+          <input type="text" name="user_name" placeholder="Dein Name" required>
+          <input type="email" name="user_email" placeholder="Deine E-Mail" required>
+          <textarea name="message" placeholder="Deine Nachricht" rows="5" required></textarea>
+          <button type="submit">Senden</button>
+          <p id="status-message"></p>
+        </form>
+      </div>
+
+      <div class="contact-right">
+        <div class="home-img second-img">
+          <img src="Images/yoartlinebgerased.png" alt="Oscar">
+        </div>
+        <p class="contact-quote">"Digitale Erlebnisse entstehen Zeile für Zeile."</p>
+        <div class="home-sci2">
+          <a href="https://github.com/OscarBougart" target="_blank"><i class='bx bxl-github'></i></a>
+          <a href="https://twitter.com/BougartDev" target="_blank"><i class='bx bxl-twitter'></i></a>
+          <a href="http://linkedin.com/in/oscar-bougart-850057295" target="_blank"><i class='bx bxl-linkedin'></i></a>
+          <a href="https://www.instagram.com/carbonell_os/" target="_blank"><i class='bx bxl-instagram'></i></a>
+          <a href="https://discordapp.com/users/1420433441891156008/" target="_blank"><i class="bx bxl-discord"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+    <script>
+    const nameText = document.getElementById("name-color");
+    const navLinks = document.querySelectorAll('.navbar a');
+    const sections = document.querySelectorAll('section[id]');
+
+    // Update active navbar link based on scroll position
+    window.addEventListener('scroll', () => {
+        let currentSection = '';
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (window.scrollY >= sectionTop - 100) {
+                currentSection = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${currentSection}`) {
+                link.classList.add('active');
+            }
+        });
+    });
+
+    window.addEventListener("mousemove", (e) => {
+        // Get mouse X position from 0 to 1
+        const ratio = e.clientX / window.innerWidth;
+
+        // Convert ratio to HSL hue (0–360)
+        const hue = ratio * 360;
+
+        nameText.style.color = `hsl(${hue}, 80%, 60%)`;
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<script>
+  (function(){
+    emailjs.init("I88_6AQRCIVhf1jDb"); // replace with your EmailJS public key
+  })();
+
+  document.getElementById('contact-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    emailjs.sendForm('service_bougart', 'template_0kl9s4r', this)
+      .then(function() {
+        document.getElementById('status-message').innerText = "Nachricht erfolgreich gesendet!";
+      }, function(error) {
+        document.getElementById('status-message').innerText = "Fehler beim Senden. Versuch es später nochmal.";
+      });
+
+    this.reset(); // optional: clear form after sending
+  });
+</script>
+
+
+<script>
+document.querySelectorAll(".project-carousel").forEach(carousel => {
+  const track = carousel.querySelector(".carousel-track");
+  const images = track.querySelectorAll("img");
+  let index = 0;
+
+  const update = () => {
+    track.style.transform = `translateX(-${index * 100}%)`;
+  };
+
+  carousel.querySelector(".next").addEventListener("click", () => {
+    index = (index + 1) % images.length;
+    update();
+  });
+
+  carousel.querySelector(".prev").addEventListener("click", () => {
+    index = (index - 1 + images.length) % images.length;
+    update();
+  });
+});
+</script>
+
+<script src="script.js"></script>
 </body>
+
 </html>

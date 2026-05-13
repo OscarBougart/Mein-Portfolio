@@ -1,297 +1,273 @@
-<html lang="en">
+<!DOCTYPE html>
+<html lang="de">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oscar Bougart - Mein Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="Images/icons8-o-67 (1).png" type="image/x-icon">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oscar Bougart — Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="Images/Inspiration/Carbonelk.logosvg.svg" type="image/svg+xml">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-   <header class="header">
-  <a href="#home" class="logo">Oscar.</a>
+  <!-- ===== SIDEBAR NAV ===== -->
+  <aside class="sidebar">
+    <a href="#startseite" class="sidebar-logo">
+      <img src="Images/Inspiration/Carbonelk.logosvg.svg" alt="Carbonelk Logo" class="logo-svg">
+    </a>
+    <nav class="sidebar-nav">
+      <a href="#startseite" class="nav-link active" data-section="startseite">Intro</a>
+      <a href="#ueber" class="nav-link" data-section="ueber">Über mich</a>
+      <a href="#projekte" class="nav-link" data-section="projekte">Arbeit</a>
+      <a href="#kontakt" class="nav-link" data-section="kontakt">Kontakt</a>
+    </nav>
+    <!-- Mobile hamburger -->
+    <button class="hamburger" id="hamburger" aria-label="Menü öffnen">
+      <span></span><span></span><span></span>
+    </button>
+  </aside>
 
-  <div class="hamburger" id="hamburger">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="main-content">
 
-  <nav class="navbar" id="navbar">
-    <a href="#home" class="active">Startseite</a>
-    <a href="#about">Über mich</a>
-    <a href="#projects">Projekte</a>   
-    <a href="#contact">Kontakt</a>
-  </nav>
-</header>
+    <!-- ===== HERO / INTRO ===== -->
+    <section class="section hero" id="startseite">
 
+      <!-- Audience tabs -->
+      <div class="audience-tabs">
+        <button class="tab-btn active" data-audience="all">Für alle</button>
+        <button class="tab-btn" data-audience="recruiter">Recruiter</button>
+        <button class="tab-btn" data-audience="dev">Entwickler</button>
+        <button class="tab-btn" data-audience="design">Designer</button>
+      </div>
 
-    <section class="home" id="home">
-        <div class="home-content">
-            <h1>Hallo, Ich bin <br><span id="name-color">Oscar Bougart</span></h1>
-            <h3>Webentwickler</h3>
-            <p>Leidenschaft für Webentwicklung, Design und kreative Technik.</p>
-            <div class="btn-box">
-                <a href="#contact">Kontakt</a>
-                <a href="assets/Oscar-CV-german.pdf" target="_blank" >Lebenslauf</a>
-            </div>
-            <div class="home-sci">
-                <a href="https://github.com/OscarBougart" target="_blank"><i class='bx bxl-github'></i></a>
-                <a href="https://twitter.com/BougartDev" target="_blank"><i class='bx bxl-twitter'></i></a>
-                <a href="http://linkedin.com/in/oscar-bougart-850057295" target="_blank"><i class='bx bxl-linkedin'></i></a>
-                <a href="https://www.instagram.com/carbonell_os/" target="_blank"><i class='bx bxl-instagram'></i></a>
-                <a href="https://discordapp.com/users/1420433441891156008/" target="_blank"><i class="bx bxl-discord"></i></a>
-            </div>
-        </div>
+      <!-- Tab content panels -->
+      <div class="hero-statement" data-audience-panel="all">
+        <h1>Ich bin ein Entwickler, der leidenschaftlich bedeutungsvolle digitale&nbsp;Erlebnisse&nbsp;schafft.</h1>
+      </div>
 
-        <div class="home-img">
-            <img src="Images/yoartlinebgerased.png" alt="Oscar">
-        </div>
-        <span class="home-imgHover"></span>
+      <div class="hero-statement hidden" data-audience-panel="recruiter">
+        <h1>Full-Stack-Entwickler mit Erfahrung in Web- &amp; App-Entwicklung — bereit für die nächste&nbsp;Herausforderung.</h1>
+        <p class="hero-sub">React · Django · TypeScript · Python · Docker</p>
+        <a href="assets/Oscar-CV-german.pdf" target="_blank" class="hero-cta">Lebenslauf herunterladen</a>
+      </div>
+
+      <div class="hero-statement hidden" data-audience-panel="dev">
+        <h1>Sauber geschriebener Code, gut durchdachte Architekturen und ein Auge fürs&nbsp;Detail.</h1>
+        <p class="hero-sub">React · Django · Spring Boot · REST APIs · Docker · SQL</p>
+        <a href="https://github.com/OscarBougart" target="_blank" class="hero-cta">GitHub ansehen</a>
+      </div>
+
+      <div class="hero-statement hidden" data-audience-panel="design">
+        <h1>Ich glaube, dass gutes Design und solider Code keine Gegensätze&nbsp;sind.</h1>
+        <p class="hero-sub">UI/UX · Tailwind · Figma · Responsive Design</p>
+        <a href="#projekte" class="hero-cta">Projekte ansehen</a>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="scroll-indicator">▾</div>
     </section>
 
-    <section class="about" id="about">
-    <div class="about-container">
-        <!-- Left side: Text -->
-        <div class="about-text">
-            <h2>Über mich</h2>
-            <p>
-                Ich bin Oscar Bougart, ein Full-Stack-Webentwickler, der sich leidenschaftlich für die
-                Entwicklung intuitiver digitaler Erlebnisse einsetzt. Ich bin auf Web- und App-Entwicklung spezialisiert
-                und lerne ständig neue Tools kennen und verfeinere meine Fähigkeiten.
+    <!-- ===== ABOUT ===== -->
+    <section class="section about-section" id="ueber">
+      <h2 class="section-title">über mich.</h2>
+
+      <div class="about-grid">
+        <p class="about-block about-block--left about-block--highlight">
+          Ich bin Oscar Bougart, Full-Stack-Webentwickler mit Leidenschaft für intuitive digitale Erlebnisse — spezialisiert auf Web- und App-Entwicklung.
+        </p>
+
+        <p class="about-block about-block--right">
+          Mein Ansatz verbindet technische Expertise mit kreativem Problemlösen. Ich strebe immer danach, Lösungen zu bauen, die sowohl elegant als auch praktisch sind.
+        </p>
+
+        <p class="about-block about-block--left">
+          Mit zehn Jahren Erfahrung im Gastgewerbe bringe ich starken Teamgeist, Anpassungsfähigkeit und kundenorientiertes Denken in jedes Projekt ein.
+        </p>
+
+        <p class="about-block about-block--right about-block--highlight">
+          Etwas von Grund auf aufzubauen und wachsen zu sehen ist unglaublich erfüllend. Dieser Prozess mit Leidenschaft — das treibt mich an.
+        </p>
+      </div>
+
+      <div class="about-stack">
+        <div class="stack-group">
+          <h4>Technologien</h4>
+          <ul>
+            <li>HTML5 · CSS3 · JavaScript</li>
+            <li>React.js · Tailwind · Bootstrap</li>
+            <li>Python · Django · Wagtail</li>
+            <li>Java · Spring Boot</li>
+            <li>Git · APIs · SQL</li>
+            <li>Docker · Deployment</li>
+          </ul>
+        </div>
+        <div class="stack-group">
+          <h4>Sprachen</h4>
+          <ul>
+            <li>Deutsch — Fortgeschritten (B2)</li>
+            <li>Spanisch — Muttersprache (C2)</li>
+            <li>Englisch — Muttersprache (C2)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PROJECTS ===== -->
+    <section class="section projects-section" id="projekte">
+      <h2 class="section-title">arbeit.</h2>
+
+      <div class="project-list">
+
+        <!-- Project 1: Starlit -->
+        <article class="project-item">
+          <div class="project-info">
+            <p class="project-label">Webdesign · 2024</p>
+            <h3 class="project-name">Starlit</h3>
+            <p class="project-overview-label">Project Overview</p>
+            <p class="project-desc">
+              Ein modernes, minimalistisches Website-Konzept für eine AI-Produktidee. Die Seite überzeugt durch klare Struktur, intuitive Navigation und einen dezent futuristischen Look — inspiriert von modernem SaaS-Design und nutzerzentrierter Ästhetik.
             </p>
-            <h2>Mehr als nur Code</h2>
-            <p>
-                Mit zehn Jahren Erfahrung im Gastgewerbe bringe ich einen starken Fokus auf Teamarbeit, Anpassungsfähigkeit und kundenorientiertes Denken in jedes Projekt ein. Ich blühe in kollaborativen Umgebungen auf und bin immer daran interessiert, neue Technologien zu erforschen, um meine Kreativität weiter voranzutreiben.
+            <p class="project-desc">
+              Ziel war es, komplexe technische Funktionen so zu präsentieren, dass sie sofort verständlich und ansprechend wirken — ohne die Eleganz des Designs zu opfern.
             </p>
-        </div>
-
-        <div class="about-tech">
-            <h3>Technologien</h3>
-            <ul class="tech-list">
-                <li><i class='bx bxl-html5'></i> HTML5 / CSS3 / JavaScript</li>
-                <li><i class='bx bxl-react'></i> React.js / Tailwind / Bootstrap</li>
-                <li><i class='bx bxl-python'></i> Python / Django / Wagtail</li>
-                <li><i class='bx bxl-java'></i> Java / Spring Boot</li>
-                <li><i class='bx bxl-github'></i> Git & GitHub / APIs / SQL</li>
-                <li><i class='bx bxl-docker'></i> Docker / Deployment</li>
+            <ul class="project-highlights">
+              <li>Responsive Single-Page Layout</li>
+              <li>Animierte Hero-Sektion</li>
+              <li>Komponentenbasierte Architektur</li>
             </ul>
-            <h3>Sprache</h3>
-            <ul class="tech-list">
-              <li>Deutsch  | Fortgeschritten (B2)  </li>
-              <li>Spanisch | Muttersprache (C2)</li>
-              <li>Englisch | Muttersprache (C2)</li>
+            <span class="project-stack">React · CSS · HTML · JavaScript</span>
+          </div>
+          <div class="bento-grid">
+            <div class="bento-cell bento-wide"><img src="assets/starlit1.png" alt="Starlit Übersicht"></div>
+            <div class="bento-cell"><img src="assets/starlit2.png" alt="Starlit Detail"></div>
+            <div class="bento-cell"><img src="assets/starlit3.png" alt="Starlit Feature"></div>
+            <div class="bento-cell bento-tall"><img src="assets/starlit4.png" alt="Starlit Sektion"></div>
+            <div class="bento-cell"><img src="assets/starlit5.png" alt="Starlit UI"></div>
+            <div class="bento-cell"><img src="assets/starlit6.png" alt="Starlit Mobile"></div>
+          </div>
+        </article>
+
+        <!-- Project 2: SpiritStack -->
+        <article class="project-item">
+          <div class="project-info">
+            <p class="project-label">Web App · 2024</p>
+            <h3 class="project-name">The SpiritStack</h3>
+            <p class="project-overview-label">Project Overview</p>
+            <p class="project-desc">
+              Eine farbenfrohe Website im Vintage-Stil, auf der Barkeeper und Cocktailliebhaber spielerisch neue Mischtechniken entdecken können. Das Design greift auf warme Erdtöne und Retro-Typografie zurück, um das Thema authentisch zu unterstreichen.
+            </p>
+            <p class="project-desc">
+              Inhalte werden über die Notion-API dynamisch geladen, was eine einfache Pflege ohne technisches Know-how ermöglicht. Leichte Animationen sorgen für ein lebendiges, einladendes Erlebnis.
+            </p>
+            <ul class="project-highlights">
+              <li>Notion als Headless CMS</li>
+              <li>Dynamische Rezeptfilterung</li>
+              <li>Animationen mit CSS Transitions</li>
             </ul>
+            <span class="project-stack">React · Tailwind · JavaScript · Notion</span>
+          </div>
+          <div class="bento-grid">
+            <div class="bento-cell bento-wide"><img src="assets/spiritstack1.png" alt="SpiritStack Übersicht"></div>
+            <div class="bento-cell"><img src="assets/spiritstack2.png" alt="SpiritStack Detail"></div>
+            <div class="bento-cell"><img src="assets/spiritstack3.png" alt="SpiritStack Rezept"></div>
+            <div class="bento-cell bento-tall"><img src="assets/spiritstack4.png" alt="SpiritStack Feature"></div>
+            <div class="bento-cell"><img src="assets/spiritstack5.png" alt="SpiritStack UI"></div>
+            <div class="bento-cell"><img src="assets/spiritstack6.png" alt="SpiritStack Mobile"></div>
+          </div>
+        </article>
+
+        <!-- Project 3: Feast & Fizz -->
+        <article class="project-item">
+          <div class="project-info">
+            <p class="project-label">Full Stack · 2024</p>
+            <h3 class="project-name">Feast &amp; Fizz</h3>
+            <p class="project-overview-label">Project Overview</p>
+            <p class="project-desc">
+              Eine vollständige Full-Stack-App für Cocktail- und Speiserezepte. Nutzer können nach Namen oder Zutaten suchen und erhalten sofort passende Ergebnisse — gespeist aus einer externen Rezept-API und einem eigenen Django-Backend.
+            </p>
+            <p class="project-desc">
+              Besonderes Augenmerk lag auf der Performance: Suchresultate werden gecacht, Anfragen debounced und die UI reagiert in Echtzeit — ohne merkliche Ladezeiten.
+            </p>
+            <ul class="project-highlights">
+              <li>Django REST Framework Backend</li>
+              <li>Externe API-Integration</li>
+              <li>Debounced Echtzeit-Suche</li>
+            </ul>
+            <span class="project-stack">React · Django · Tailwind · Vite · API</span>
+          </div>
+          <div class="bento-grid">
+            <div class="bento-cell bento-wide"><img src="assets/feast3.jpg" alt="Feast & Fizz Übersicht"></div>
+            <div class="bento-cell"><img src="assets/feast2.jpg" alt="Feast & Fizz Detail"></div>
+            <div class="bento-cell"><img src="assets/feast.jpg" alt="Feast & Fizz Rezept"></div>
+            <div class="bento-cell bento-tall"><img src="assets/feast4.jpg" alt="Feast & Fizz Feature"></div>
+            <div class="bento-cell"><img src="assets/feast5.jpg" alt="Feast & Fizz UI"></div>
+            <div class="bento-cell"><img src="assets/feast6.jpg" alt="Feast & Fizz Mobile"></div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section class="section contact-section" id="kontakt">
+      <h2 class="section-title">kontakt.</h2>
+
+      <div class="contact-layout">
+        <!-- Photo -->
+        <div class="contact-photo">
+          <img src="Images/yoartlinebgerased.png" alt="Oscar Bougart">
+          <p class="contact-status"><span class="status-dot"></span> status : aktiv</p>
         </div>
-    </div>
-</section>
 
+        <!-- Right: email + socials + form -->
+        <div class="contact-right">
+          <a href="mailto:oscar.bougart.dev@gmail.com" class="contact-email">oscar.bougart.dev@gmail.com</a>
 
+          <div class="contact-socials">
+            <a href="https://github.com/OscarBougart" target="_blank">GitHub</a>
+            <a href="http://linkedin.com/in/oscar-bougart-850057295" target="_blank">LinkedIn</a>
+            <a href="https://twitter.com/BougartDev" target="_blank">X (Twitter)</a>
+            <a href="https://www.instagram.com/carbonell_os/" target="_blank">Instagram</a>
+            <a href="https://discordapp.com/users/1420433441891156008/" target="_blank">Discord</a>
+            <a href="assets/Oscar-CV-german.pdf" target="_blank">Lebenslauf</a>
+          </div>
 
-    
-<section class="projects" id="projects">
-  <h2>PROJEKTE</h2>
-
-  <div class="project-container">
-    <div class="project-card">
-      <div class="project-carousel">
-        <div class="carousel-track">
-          <img src="assets/starlit1.png" alt="">
-          <img src="assets/starlit2.png" alt="">
-          <img src="assets/starlit3.png" alt="">
-          <img src="assets/starlit4.png" alt="">
-          <img src="assets/starlit5.png" alt="">
-          <img src="assets/starlit6.png" alt="">
-          <img src="assets/starlit7.png" alt="">
-        </div>
-        <button class="carousel-btn prev">❮</button>
-        <button class="carousel-btn next">❯</button>
-      </div>
-
-      <div class="project-content">
-        <h3 class="project-title">Starlit</h3>
-        <p class="project-description">
-          Ein modernes und schlichtes Website-Konzept für eine AI-Produktidee, das mit klarer Struktur, einfacher Navigation und einem dezent futuristischen Look überzeugt – inspiriert vom modernen Design und nutzerfreundlicher Ästhetik.  
-        </p>
-        <p class="project-tech"><strong>React · CSS · HTML · Javascript</strong></p>
-      </div>
-    </div>
-
-    <!-- CARD 2 -->
-    <div class="project-card">
-      <div class="project-carousel">
-        <div class="carousel-track">
-          <img src="assets/spiritstack1.png" alt="">
-          <img src="assets/spiritstack2.png" alt="">
-          <img src="assets/spiritstack3.png" alt="">
-          <img src="assets/spiritstack4.png" alt="">
-          <img src="assets/spiritstack5.png" alt="">
-          <img src="assets/spiritstack6.png" alt="">
-          <img src="assets/spiritstack7.png" alt="">
-        </div>
-        <button class="carousel-btn prev">❮</button>
-        <button class="carousel-btn next">❯</button>
-      </div>
-
-      <div class="project-content">
-        <h3 class="project-title">The SpiritStack</h3>
-        <p class="project-description"> 
-         Eine farbenfrohe Website im Vintage-Stil, auf der Barkeeper und Cocktailliebhaber spielerisch neue Techniken zum Mixen von Cocktails entdecken können – ergänzt durch leichte Animationen, um das Erlebnis lebendiger zu gestalten
-        </p>
-        <p class="project-tech"><strong>React · Tailwind · Javascript · Notion</strong></p>
-      </div>
-    </div>
-
-    <!-- CARD 3 -->
-     <div class="project-card">
-      <div class="project-carousel">
-        <div class="carousel-track">
-          <img src="assets/feast3.jpg" alt="">
-          <img src="assets/feast2.jpg" alt="">
-          <img src="assets/feast.jpg" alt="">
-          <img src="assets/feast4.jpg" alt="">
-          <img src="assets/feast5.jpg" alt="">
-          <img src="assets/feast6.jpg" alt="">
-        </div>
-        <button class="carousel-btn prev">❮</button>
-        <button class="carousel-btn next">❯</button>
-      </div>
-
-      <div class="project-content">
-        <h3 class="project-title">Feast & Fizz</h3>
-        <p class="project-description">
-           Eine App für Cocktail- und Speiserezepte, in der Nutzer nach Namen oder Zutaten suchen können. Erstellt mit einem Full-Stack-Ansatz, einschließlich eines Django-Backends und einer externen Rezept-API.
-        </p>
-        <p class="project-tech"><strong>React · Django · Tailwind · Vite · API</strong></p>
-      </div>
-    </div>
-
-  </div> 
-</section>
-
-
-
-
-
-<section class="contact" id="contact">
-  <div class="contact-card">
-    <div class="contact-container">
-      <!-- Left column: title + form -->
-      <div class="contact-left">
-        <h2>KONTAKT</h2>
-        <form id="contact-form" class="contact-form">
-          <input type="text" name="user_name" placeholder="Dein Name" required>
-          <input type="email" name="user_email" placeholder="Deine E-Mail" required>
-          <textarea name="message" placeholder="Deine Nachricht" rows="5" required></textarea>
-          <button type="submit">Senden</button>
-          <p id="status-message"></p>
-        </form>
-      </div>
-
-      <div class="contact-right">
-        <div class="home-img second-img">
-          <img src="Images/yoartlinebgerased.png" alt="Oscar">
-        </div>
-        <p class="contact-quote">"Digitale Erlebnisse entstehen Zeile für Zeile."</p>
-        <div class="home-sci">
-          <a href="https://github.com/OscarBougart" target="_blank"><i class='bx bxl-github'></i></a>
-          <a href="https://twitter.com/BougartDev" target="_blank"><i class='bx bxl-twitter'></i></a>
-          <a href="http://linkedin.com/in/oscar-bougart-850057295" target="_blank"><i class='bx bxl-linkedin'></i></a>
-          <a href="https://www.instagram.com/carbonell_os/" target="_blank"><i class='bx bxl-instagram'></i></a>
-          <a href="https://discordapp.com/users/1420433441891156008/" target="_blank"><i class="bx bxl-discord"></i></a>
+          <form id="contact-form" class="contact-form">
+            <input type="text" name="user_name" placeholder="Dein Name" required>
+            <input type="email" name="user_email" placeholder="Deine E-Mail" required>
+            <textarea name="message" placeholder="Deine Nachricht" rows="4" required></textarea>
+            <button type="submit">Senden</button>
+            <p id="status-message"></p>
+          </form>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
+  </main>
 
+  <!-- ===== SCRIPTS ===== -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    (function () { emailjs.init("I88_6AQRCIVhf1jDb"); })();
 
-    <script>
-    const nameText = document.getElementById("name-color");
-    const navLinks = document.querySelectorAll('.navbar a');
-    const sections = document.querySelectorAll('section[id]');
-
-    // Update active navbar link based on scroll position
-    window.addEventListener('scroll', () => {
-        let currentSection = '';
-
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            if (window.scrollY >= sectionTop - 100) {
-                currentSection = section.getAttribute('id');
-            }
+    document.getElementById('contact-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      emailjs.sendForm('service_bougart', 'template_0kl9s4r', this)
+        .then(() => {
+          document.getElementById('status-message').textContent = "Nachricht erfolgreich gesendet!";
+        }, () => {
+          document.getElementById('status-message').textContent = "Fehler beim Senden. Versuch es später nochmal.";
         });
-
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${currentSection}`) {
-                link.classList.add('active');
-            }
-        });
+      this.reset();
     });
+  </script>
 
-    window.addEventListener("mousemove", (e) => {
-        // Get mouse X position from 0 to 1
-        const ratio = e.clientX / window.innerWidth;
-
-        // Convert ratio to HSL hue (0–360)
-        const hue = ratio * 360;
-
-        nameText.style.color = `hsl(${hue}, 80%, 60%)`;
-    });
-</script>
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-
-<script>
-  (function(){
-    emailjs.init("I88_6AQRCIVhf1jDb"); // replace with your EmailJS public key
-  })();
-
-  document.getElementById('contact-form').addEventListener('submit', function(event) {
-    event.preventDefault();
-
-    emailjs.sendForm('service_bougart', 'template_0kl9s4r', this)
-      .then(function() {
-        document.getElementById('status-message').innerText = "Nachricht erfolgreich gesendet!";
-      }, function(error) {
-        document.getElementById('status-message').innerText = "Fehler beim Senden. Versuch es später nochmal.";
-      });
-
-    this.reset(); // optional: clear form after sending
-  });
-</script>
-
-
-<script>
-document.querySelectorAll(".project-carousel").forEach(carousel => {
-  const track = carousel.querySelector(".carousel-track");
-  const images = track.querySelectorAll("img");
-  let index = 0;
-
-  const update = () => {
-    track.style.transform = `translateX(-${index * 100}%)`;
-  };
-
-  carousel.querySelector(".next").addEventListener("click", () => {
-    index = (index + 1) % images.length;
-    update();
-  });
-
-  carousel.querySelector(".prev").addEventListener("click", () => {
-    index = (index - 1 + images.length) % images.length;
-    update();
-  });
-});
-</script>
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 
 </html>

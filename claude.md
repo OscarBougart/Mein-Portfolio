@@ -7,7 +7,7 @@ Stack: HTML, CSS, Vanilla JS. No frameworks.
 ## Brand
 - Name: CarbonElk
 - Palette: Deep charcoal #070b0f, Electric blue #00aaff, Off-white #ddeeff
-- Font: Rajdhani (headings), Space Mono (labels, captions)
+
 - Tone: Clean, minimal, personal. Not corporate.
 
 ## Responsiveness — TOP PRIORITY

@@ -79,26 +79,61 @@
         </p>
       </div>
 
-      <div class="about-stack">
-        <div class="stack-group">
-          <h4>Technologien</h4>
-          <ul>
-            <li>HTML5 · CSS3 · JavaScript</li>
-            <li>React.js · Tailwind · Bootstrap</li>
-            <li>Python · Django · Wagtail</li>
-            <li>Java · Spring Boot</li>
-            <li>Git · APIs · SQL</li>
-            <li>Docker · Deployment</li>
+      <div class="skills-grid">
+
+        <div class="skill-group">
+          <h4 class="skill-group-title">Frontend</h4>
+          <ul class="skill-list">
+            <li><span class="skill-name">HTML5</span><span class="skill-level">Fortgeschritten</span></li>
+            <li><span class="skill-name">CSS3</span><span class="skill-level">Fortgeschritten</span></li>
+            <li><span class="skill-name">JavaScript</span><span class="skill-level">Mittelstufe</span></li>
+            <li><span class="skill-name">React.js</span><span class="skill-level">Mittelstufe</span></li>
+            <li><span class="skill-name">Tailwind</span><span class="skill-level">Fortgeschritten</span></li>
+            <li><span class="skill-name">Bootstrap</span><span class="skill-level">Grundkenntnisse</span></li>
           </ul>
         </div>
-        <div class="stack-group">
-          <h4>Sprachen</h4>
-          <ul>
-            <li>Deutsch — Fortgeschritten (B2)</li>
-            <li>Spanisch — Muttersprache (C2)</li>
-            <li>Englisch — Muttersprache (C2)</li>
+
+        <div class="skill-group">
+          <h4 class="skill-group-title">Backend</h4>
+          <ul class="skill-list">
+            <li><span class="skill-name">Python</span><span class="skill-level">Mittelstufe</span></li>
+            <li><span class="skill-name">Java</span><span class="skill-level">Mittelstufe</span></li>
+            <li><span class="skill-name">Django</span><span class="skill-level">Grundkenntnisse</span></li>
+            <li><span class="skill-name">Wagtail</span><span class="skill-level">Grundkenntnisse</span></li>
+            <li><span class="skill-name">Spring Boot</span><span class="skill-level">Grundkenntnisse</span></li>
+            <li><span class="skill-name">REST APIs · SQL</span><span class="skill-level"></span></li>
           </ul>
         </div>
+
+        <div class="skill-group">
+          <h4 class="skill-group-title">Tools</h4>
+          <ul class="skill-list">
+            <li><span class="skill-name">Git · GitHub</span><span class="skill-level"></span></li>
+            <li><span class="skill-name">Docker</span><span class="skill-level"></span></li>
+            <li><span class="skill-name">Deployment</span><span class="skill-level"></span></li>
+          </ul>
+        </div>
+
+        <div class="skill-group">
+          <h4 class="skill-group-title">Soft Skills</h4>
+          <ul class="skill-list">
+            <li><span class="skill-name">Teamarbeit</span><span class="skill-level"></span></li>
+            <li><span class="skill-name">Führungserfahrung</span><span class="skill-level"></span></li>
+            <li><span class="skill-name">Kundenorientierung</span><span class="skill-level"></span></li>
+            <li><span class="skill-name">Kommunikation</span><span class="skill-level"></span></li>
+            <li><span class="skill-name">Arbeiten unter Druck</span><span class="skill-level"></span></li>
+          </ul>
+        </div>
+
+        <div class="skill-group">
+          <h4 class="skill-group-title">Sprachen</h4>
+          <ul class="skill-list">
+            <li><span class="skill-name">Deutsch</span><span class="skill-level">B2</span></li>
+            <li><span class="skill-name">Spanisch</span><span class="skill-level">Muttersprache</span></li>
+            <li><span class="skill-name">Englisch</span><span class="skill-level">Muttersprache</span></li>
+          </ul>
+        </div>
+
       </div>
     </section>
 
@@ -108,7 +143,103 @@
 
       <div class="project-list">
 
-        <!-- Project 1: Starlit -->
+        <!-- Project: Menu Maker -->
+        <article class="project-item">
+          <div class="project-info">
+            <p class="project-label">Web App · 2025</p>
+            <h3 class="project-name">Menu Maker</h3>
+            <p class="project-overview-label">Project Overview</p>
+            <p class="project-desc">
+              Ein lokales Design-Studio für Barkeeper und Gastronomen — gebaut um das Problem zu lösen, dass eine Cocktailkarte, die wirklich nach der eigenen Bar aussieht, normalerweise einen Designer, mehrere Runden und viel Zeit kostet. The Menu Maker macht den Weg von „Karte, die ich bewundere" zu „druckfertige eigene Karte" so kurz wie möglich.
+            </p>
+            <p class="project-desc">
+              Man lädt ein Foto einer Menükarte hoch, die einem gefällt — Claude liest die Design-Regeln daraus aus: Farbpalette, Typografie, Layout-Prinzipien und sogar den Tonfall der Texte. Mehrere Referenzen verschmelzen zu einem „House Brain", einer Master-Stilbibliothek, die den eigenen Hausstil über alle Karten hinweg konsistent hält. Daraus komponiert die App fertige Menüs, die sich frei auf der Leinwand bearbeiten, verschieben und als PDF exportieren lassen.
+            </p>
+            <ul class="project-highlights">
+              <li>Design-DNA aus einem Foto extrahiert (Palette, Typografie, Layout, Voice) via Claude Vision</li>
+              <li>„House Brain" — mehrere Referenzen werden zu einer konsistenten Master-Stilbibliothek zusammengeführt</li>
+              <li>Direkte Canvas-Bearbeitung: Ziehen, Skalieren, Ausrichten, Undo/Redo, Copy/Paste</li>
+              <li>Druckfertiger Export nach A5/A6 & Booklet als PDF (html2canvas + jsPDF)</li>
+              <li>Lokale Persistenz mit localStorage — keine Konten, keine Cloud</li>
+            </ul>
+            <span class="project-stack">React · Vite · Anthropic Claude API · html2canvas · jsPDF</span>
+          </div>
+          <div class="bento-grid">
+            <div class="bento-cell bento-wide"><img src="assets/Menumakerex1.png" alt="Menu Maker Übersicht"></div>
+            <div class="bento-cell"><img src="assets/menumakerex2.png" alt="Menu Maker Design-DNA"></div>
+            <div class="bento-cell"><img src="assets/menumakerex3.png" alt="Menu Maker House Brain"></div>
+            <div class="bento-cell"><img src="assets/menumakerex4.png" alt="Menu Maker Canvas-Editor"></div>
+            <div class="bento-cell"><img src="assets/menumakerex5.png" alt="Menu Maker PDF-Export"></div>
+          </div>
+        </article>
+
+        <!-- Project 1: Dram -->
+        <article class="project-item">
+          <div class="project-info">
+            <p class="project-label">Mobile App · 2025</p>
+            <h3 class="project-name">Dram</h3>
+            <p class="project-overview-label">Project Overview</p>
+            <p class="project-desc">
+              Eine schnelle, fokussierte Notiz-App für Barkeeper — gebaut um das Problem zu lösen, dass Cocktailideen hinter der Bar so schnell verschwinden, wie sie kommen. Dram macht das Festhalten von Rezepten so reibungslos wie möglich.
+            </p>
+            <p class="project-desc">
+              Rezepte lassen sich in Sekunden speichern: Zutaten, Mengen und Techniken — strukturiert, durchsuchbar und immer griffbereit. Kein Overhead, keine Ablenkung.
+            </p>
+            <ul class="project-highlights">
+              <li>Schnellerfassung mit minimalem UI</li>
+              <li>Lokale Persistenz mit IndexedDB</li>
+              <li>Custom Hooks für Rezeptverwaltung</li>
+              <li>Typsichere Datenmodelle mit TypeScript</li>
+            </ul>
+            <span class="project-stack">React · TypeScript · Vite · IndexedDB</span>
+          </div>
+          <div class="bento-grid">
+            <div class="bento-cell bento-wide"><img src="assets/Dram.jpeg" alt="Dram Übersicht"></div>
+            <div class="bento-cell"><img src="assets/Dram2.jpeg" alt="Dram Detail"></div>
+            <div class="bento-cell"><img src="assets/Dram3.jpeg" alt="Dram Feature"></div>
+            <div class="bento-cell bento-tall"><img src="assets/Dram4.jpeg" alt="Dram Rezept"></div>
+            <div class="bento-cell"><img src="assets/Dram5.jpeg" alt="Dram UI"></div>
+            <div class="bento-cell"><img src="assets/Dram6.jpeg" alt="Dram Mobile"></div>
+            <div class="bento-cell"><img src="assets/Dram7.jpeg" alt="Dram Screen 7"></div>
+            <div class="bento-cell"><img src="assets/Dram8.jpeg" alt="Dram Screen 8"></div>
+          </div>
+        </article>
+
+        <!-- Project 2: PräFix -->
+        <article class="project-item">
+          <div class="project-info">
+            <p class="project-label">Mobile App · 2025</p>
+            <h3 class="project-name">PräFix</h3>
+            <p class="project-overview-label">Project Overview</p>
+            <p class="project-desc">
+              Eine mobile Lern-App für Deutsch als Fremdsprache — gebaut um eines der kniffligsten Themen der deutschen Grammatik zu meistern: trennbare Verben. Präfix macht das Üben von Vorsilben so intuitiv und motivierend wie möglich.
+            </p>
+            <p class="project-desc">
+              Spieler ergänzen die fehlende Vorsilbe in echten Sätzen und arbeiten sich durch vier Schwierigkeitsstufen — von einfachen A1-Verben bis hin zu komplexen B2-Strukturen mit Nebensätzen. Jedes Verb gilt als gemeistert, sobald es dreimal korrekt beantwortet wurde.
+            </p>
+            <ul class="project-highlights">
+              <li>Vier CEFR-Stufen (A1–B2) mit sequentiellem Freischalten</li>
+              <li>Drei-Sterne-Bewertung und Fortschrittsanzeige pro Level</li>
+              <li>Favoriten-Modus und Fehler-üben-Modus</li>
+              <li>Täglicher Streak-Tracker und Profilscreen</li>
+              <li>Lernen-Bereich mit Regelerklärungen und Vorsilben-Guide</li>
+              <li>Integriertes Wörterbuch zum Nachschlagen von Verben</li>
+            </ul>
+            <span class="project-stack">Expo · React Native · TypeScript · Tailwind</span>
+          </div>
+          <div class="bento-grid">
+            <div class="bento-cell bento-wide"><img src="assets/Prafix.jpeg" alt="PräFix Übersicht"></div>
+            <div class="bento-cell"><img src="assets/Prafix1.jpeg" alt="PräFix Detail"></div>
+            <div class="bento-cell"><img src="assets/Prafix2.jpeg" alt="PräFix Feature"></div>
+            <div class="bento-cell bento-tall"><img src="assets/Prafix3.jpeg" alt="PräFix Stufen"></div>
+            <div class="bento-cell"><img src="assets/Prafix4.jpeg" alt="PräFix Streak"></div>
+            <div class="bento-cell"><img src="assets/Prafix5.jpeg" alt="PräFix Profil"></div>
+            <div class="bento-cell"><img src="assets/Prafix6.jpeg" alt="PräFix Wörterbuch"></div>
+            <div class="bento-cell"><img src="assets/Prafix7.jpeg" alt="PräFix Lernen"></div>
+          </div>
+        </article>
+
+        <!-- Project 3: Starlit -->
         <article class="project-item">
           <div class="project-info">
             <p class="project-label">Webdesign · 2024</p>
@@ -192,36 +323,6 @@
             <div class="bento-cell bento-tall"><img src="assets/feast4.jpg" alt="Feast & Fizz Feature"></div>
             <div class="bento-cell"><img src="assets/feast5.jpg" alt="Feast & Fizz UI"></div>
             <div class="bento-cell"><img src="assets/feast6.jpg" alt="Feast & Fizz Mobile"></div>
-          </div>
-        </article>
-
-        <!-- Project 4: Dram -->
-        <article class="project-item">
-          <div class="project-info">
-            <p class="project-label">Mobile App · 2025</p>
-            <h3 class="project-name">Dram</h3>
-            <p class="project-overview-label">Project Overview</p>
-            <p class="project-desc">
-              Eine schnelle, fokussierte Notiz-App für Barkeeper — gebaut um das Problem zu lösen, dass Cocktailideen hinter der Bar so schnell verschwinden, wie sie kommen. Dram macht das Festhalten von Rezepten so reibungslos wie möglich.
-            </p>
-            <p class="project-desc">
-              Rezepte lassen sich in Sekunden speichern: Zutaten, Mengen und Techniken — strukturiert, durchsuchbar und immer griffbereit. Kein Overhead, keine Ablenkung.
-            </p>
-            <ul class="project-highlights">
-              <li>Schnellerfassung mit minimalem UI</li>
-              <li>Lokale Persistenz mit IndexedDB</li>
-              <li>Custom Hooks für Rezeptverwaltung</li>
-              <li>Typsichere Datenmodelle mit TypeScript</li>
-            </ul>
-            <span class="project-stack">React · TypeScript · Vite · IndexedDB</span>
-          </div>
-          <div class="bento-grid">
-            <div class="bento-cell bento-wide"><div class="bento-placeholder dram-1"></div></div>
-            <div class="bento-cell"><div class="bento-placeholder dram-2"></div></div>
-            <div class="bento-cell"><div class="bento-placeholder dram-3"></div></div>
-            <div class="bento-cell bento-tall"><div class="bento-placeholder dram-4"></div></div>
-            <div class="bento-cell"><div class="bento-placeholder dram-5"></div></div>
-            <div class="bento-cell"><div class="bento-placeholder dram-6"></div></div>
           </div>
         </article>
 

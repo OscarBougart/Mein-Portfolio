@@ -147,5 +147,65 @@ document.addEventListener('DOMContentLoaded', () => {
     revealItems.forEach(item => item.classList.add('is-visible'));
   }
 
+  // =============================================
+  // HERO ENLARGER LIGHT (cursor-tracked light pool)
+  // =============================================
+  const hero = document.getElementById('startseite');
+
+  // Movement only for users who haven't asked to reduce motion. Without
+  // this block the CSS pool rests centered as a calm static glow.
+  if (hero && window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+    let rect = hero.getBoundingClientRect();
+    let targetX = rect.width * 0.5;
+    let targetY = rect.height * 0.4;
+    let currentX = targetX;
+    let currentY = targetY;
+    let pointerActive = false;
+    let lastMove = 0;
+    let raf = null;
+    let inView = true;
+
+    const apply = () => {
+      hero.style.setProperty('--lx', currentX.toFixed(1) + 'px');
+      hero.style.setProperty('--ly', currentY.toFixed(1) + 'px');
+    };
+
+    const frame = (now) => {
+      // Drift on a slow path when the cursor is idle or absent (e.g. touch).
+      if (!pointerActive || now - lastMove > 2500) {
+        const s = now / 5000;
+        targetX = rect.width * 0.5 + Math.cos(s) * rect.width * 0.22;
+        targetY = rect.height * 0.4 + Math.sin(s * 0.8) * rect.height * 0.16;
+      }
+      // Ease toward the target for a weighted "heavy light" feel.
+      currentX += (targetX - currentX) * 0.07;
+      currentY += (targetY - currentY) * 0.07;
+      apply();
+      raf = inView ? requestAnimationFrame(frame) : null;
+    };
+
+    hero.addEventListener('pointermove', (e) => {
+      rect = hero.getBoundingClientRect();
+      targetX = e.clientX - rect.left;
+      targetY = e.clientY - rect.top;
+      pointerActive = true;
+      lastMove = performance.now();
+    }, { passive: true });
+
+    window.addEventListener('resize', () => {
+      rect = hero.getBoundingClientRect();
+    }, { passive: true });
+
+    // Pause the loop while the hero is off-screen.
+    const heroObserver = new IntersectionObserver((entries) => {
+      inView = entries[0].isIntersecting;
+      if (inView && !raf) raf = requestAnimationFrame(frame);
+    }, { threshold: 0 });
+    heroObserver.observe(hero);
+
+    apply();
+    raf = requestAnimationFrame(frame);
+  }
+
 
 });

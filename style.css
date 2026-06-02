@@ -20,6 +20,9 @@
   --surface-raised: #111111; /* Surface Raised — second tonal step up */
   --blue: #00aaff;       /* Signal Blue — accent text & marks on the dark field (AA on #000) */
   --blue-deep: #0077b6;  /* Signal Blue Deep — blue fills that carry white text */
+  /* Motion easing: confident deceleration, no bounce */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
   --sidebar-width: 10rem;
   /* ── FONT SWAP: edit these two lines to change fonts site-wide ── */
   --font-heading: 'Playfair Display', serif; /* big text: titles, h1, project names  */
@@ -784,7 +787,7 @@ body[data-audience="dev"] .aud--dev {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: background 0.2s, transform 0.12s var(--ease-out-quart);
 }
 
 .form-done-btn:hover {
@@ -1004,6 +1007,67 @@ body[data-audience="dev"] .aud--dev {
   .hero-statement h1 {
     font-size: clamp(1.75rem, 8vw, 2.5rem);
   }
+}
+
+/* =============================================
+   MOTION — entrance choreography + scroll reveals
+   Guarded by no-preference so reduced-motion users (and the global
+   reduce block below) get static, fully-visible content. The hidden
+   initial state for scroll reveals also requires html.js-reveal, so
+   no-JS and headless renders always show everything.
+============================================= */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes reveal-rise {
+    from { opacity: 0; transform: translateY(1rem); }
+    to   { opacity: 1; transform: none; }
+  }
+  @keyframes reveal-fade {
+    from { opacity: 0; transform: translateY(0.5rem); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  /* Hero load: tabs and statement settle in, scroll hint follows.
+     The statement animation also plays on tab switch, smoothing it. */
+  .audience-tabs {
+    animation: reveal-rise 0.7s var(--ease-out-expo) both;
+  }
+  .hero-statement:not(.hidden) {
+    animation: reveal-fade 0.5s var(--ease-out-quart) both;
+  }
+  .scroll-indicator-wrap {
+    animation: reveal-rise 0.7s var(--ease-out-expo) 0.35s both;
+  }
+
+  /* Projects develop into view: the info fades, the bento tiles stagger. */
+  html.js-reveal .project-item .project-info,
+  html.js-reveal .project-item .bento-cell {
+    opacity: 0;
+    transform: translateY(1.25rem);
+  }
+  html.js-reveal .project-item.is-visible .project-info {
+    opacity: 1;
+    transform: none;
+    transition: opacity 0.6s var(--ease-out-quart), transform 0.6s var(--ease-out-quart);
+  }
+  html.js-reveal .project-item.is-visible .bento-cell {
+    opacity: 1;
+    transform: none;
+    transition: opacity 0.55s var(--ease-out-quart), transform 0.55s var(--ease-out-quart);
+    transition-delay: calc(var(--i, 0) * 60ms);
+  }
+}
+
+/* Bento image lifts slightly on hover: an invitation to look closer */
+.bento-cell img {
+  transition: transform 0.5s var(--ease-out-quart);
+}
+.bento-cell:hover img {
+  transform: scale(1.04);
+}
+
+/* Submit button: tactile press feedback */
+.form-done-btn:active {
+  transform: scale(0.98);
 }
 
 /* =============================================

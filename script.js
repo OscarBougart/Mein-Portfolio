@@ -1,5 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+  // Enable reveal-on-scroll only when JS runs, so content is never gated
+  // behind it (no-JS and headless renders show everything by default).
+  document.documentElement.classList.add('js-reveal');
+
   // =============================================
   // SIDEBAR ACTIVE LINK ON SCROLL
   // =============================================
@@ -90,7 +94,12 @@ document.addEventListener('DOMContentLoaded', () => {
       projectItems.forEach(item => {
         const match = filter === 'alle' || item.dataset.category === filter;
         item.hidden = !match;
-        if (match) visible++;
+        // Filtering is an explicit browse action: reveal matching items
+        // at once so the scroll-reveal can never leave one hidden.
+        if (match) {
+          item.classList.add('is-visible');
+          visible++;
+        }
       });
       if (filterCount) {
         filterCount.textContent = visible === 1 ? '1 Projekt' : visible + ' Projekte';
@@ -108,6 +117,34 @@ document.addEventListener('DOMContentLoaded', () => {
         applyFilter(chip.dataset.filter);
       });
     });
+  }
+
+  // =============================================
+  // REVEAL PROJECTS ON SCROLL (staggered bento tiles)
+  // =============================================
+  const revealItems = document.querySelectorAll('.project-item');
+
+  // Pre-set a stagger index on each bento cell for the CSS transition-delay.
+  revealItems.forEach(item => {
+    item.querySelectorAll('.bento-cell').forEach((cell, i) => {
+      cell.style.setProperty('--i', i);
+    });
+  });
+
+  if ('IntersectionObserver' in window && revealItems.length) {
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.12 });
+
+    revealItems.forEach(item => revealObserver.observe(item));
+  } else {
+    // No observer support: reveal everything immediately.
+    revealItems.forEach(item => item.classList.add('is-visible'));
   }
 
 

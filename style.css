@@ -68,16 +68,29 @@ body {
   position: absolute;
   top: 2rem;
   left: 1.75rem;
-  display: block;
-  width: 2.25rem;
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  color: var(--white);
   text-decoration: none;
+  transition: opacity 0.2s ease;
 }
 
-.logo-svg {
-  width: 2.25rem;
-  height: auto;
-  display: block;
-  filter: invert(27%) sepia(80%) saturate(900%) hue-rotate(180deg) brightness(90%) contrast(95%);
+.sidebar-logo:hover {
+  opacity: 0.7;
+}
+
+.sidebar-logo:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+/* The period echoes the section titles (über mich. / arbeit. / kontakt.) */
+.logo-dot {
+  color: var(--blue);
 }
 
 /* Nav links */
@@ -208,7 +221,6 @@ body {
     transparent 70%);
   mix-blend-mode: screen;
   transform: translate(-50%, -50%) translate(var(--lx, 50vw), var(--ly, 40vh));
-  will-change: transform;
 }
 
 /* Audience tabs */
@@ -1049,6 +1061,18 @@ body[data-audience="dev"] .aud--dev {
   .hero-statement h1 {
     font-size: clamp(1.75rem, 8vw, 2.5rem);
   }
+
+  /* Show the work full-width: cramped 2-col thumbnails make project
+     screenshots illegible on a phone. One column, one screenshot at a time. */
+  .bento-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bento-wide,
+  .bento-tall {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
 }
 
 /* =============================================
@@ -1099,12 +1123,20 @@ body[data-audience="dev"] .aud--dev {
   }
 }
 
-/* Bento image lifts slightly on hover: an invitation to look closer */
+/* Bento image lifts slightly on hover: an invitation to look closer.
+   Hover effects (and the light's GPU hint) are pointer-only, so touch
+   devices avoid sticky-hover and an idle compositor layer. */
 .bento-cell img {
   transition: transform 0.5s var(--ease-out-quart);
 }
-.bento-cell:hover img {
-  transform: scale(1.04);
+
+@media (hover: hover) {
+  .hero::after {
+    will-change: transform;
+  }
+  .bento-cell:hover img {
+    transform: scale(1.04);
+  }
 }
 
 /* Submit button: tactile press feedback */

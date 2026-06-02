@@ -152,9 +152,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // =============================================
   const hero = document.getElementById('startseite');
 
-  // Movement only for users who haven't asked to reduce motion. Without
-  // this block the CSS pool rests centered as a calm static glow.
-  if (hero && window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+  // The cursor-tracked light is a pointer enhancement: only run it on devices
+  // that hover with a fine pointer and haven't asked to reduce motion. Touch
+  // devices keep the calm static glow (no cursor to track, and it saves battery).
+  const lightPointerOk = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const lightMotionOk = window.matchMedia('(prefers-reduced-motion: no-preference)').matches;
+  if (hero && lightPointerOk && lightMotionOk) {
     let rect = hero.getBoundingClientRect();
     let targetX = rect.width * 0.5;
     let targetY = rect.height * 0.4;

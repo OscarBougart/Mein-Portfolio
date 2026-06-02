@@ -93,6 +93,10 @@ body {
   color: var(--blue);
 }
 
+.logo-char {
+  display: inline-block;
+}
+
 /* Nav links */
 .sidebar-nav {
   display: flex;
@@ -1090,6 +1094,16 @@ body[data-audience="dev"] .aud--dev {
   @keyframes reveal-fade {
     from { opacity: 0; transform: translateY(0.5rem); }
     to   { opacity: 1; transform: none; }
+  }
+  @keyframes logo-char-in {
+    from { opacity: 0; transform: translateY(0.45em); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  /* Wordmark: each glyph of "Oscar." rises in ~50ms apart, once on load */
+  .sidebar-logo .logo-char {
+    animation: logo-char-in 0.5s var(--ease-out-quart) both;
+    animation-delay: calc(var(--i, 0) * 50ms);
   }
 
   /* Hero load: tabs and statement settle in, scroll hint follows.

@@ -64,7 +64,7 @@
       "headline": { "displayName": "Headline", "purpose": "The hero statement — the first sentence a visitor reads." },
       "title": { "displayName": "Title", "purpose": "Project names." },
       "body": { "displayName": "Body", "purpose": "About paragraphs and project descriptions. Measure 65–75ch." },
-      "label": { "displayName": "Label", "purpose": "Tracked-uppercase eyebrow metadata: project labels, skill-group titles, form labels, stack line." }
+      "label": { "displayName": "Label", "purpose": "Geist Mono tracked-uppercase metadata: project labels, skill-group titles, form labels, filter chips, stack line, footer credit." }
     },
     "shadows": [],
     "motion": [
@@ -83,7 +83,7 @@
       "refersTo": "nav-link",
       "description": "Vertical rail link; Dim at rest, Ink + heavier weight when active or hovered.",
       "html": "<a class=\"ds-nav-link\" href=\"#\" aria-current=\"true\">Arbeit</a>",
-      "css": ".ds-nav-link { font-family: 'Nunito Sans', sans-serif; font-size: 1rem; font-weight: 400; color: #888888; text-decoration: none; letter-spacing: 0.02em; transition: color 0.2s ease; } .ds-nav-link:hover, .ds-nav-link[aria-current='true'] { color: #ffffff; font-weight: 600; } .ds-nav-link:focus-visible { outline: 2px solid #00aaff; outline-offset: 4px; border-radius: 2px; }"
+      "css": ".ds-nav-link { font-family: 'Geist', system-ui, sans-serif; font-size: 1rem; font-weight: 400; color: #888888; text-decoration: none; letter-spacing: -0.01em; transition: color 0.2s ease; } .ds-nav-link:hover, .ds-nav-link[aria-current='true'] { color: #ffffff; font-weight: 600; } .ds-nav-link:focus-visible { outline: 2px solid #00aaff; outline-offset: 4px; border-radius: 2px; }"
     },
     {
       "name": "Hero CTA",
@@ -91,7 +91,7 @@
       "refersTo": "hero-cta",
       "description": "Text-only call to action with a 1px underline; commits to Signal Blue on hover.",
       "html": "<a class=\"ds-hero-cta\" href=\"#\">Lebenslauf herunterladen</a>",
-      "css": ".ds-hero-cta { display: inline-block; font-family: 'Nunito Sans', sans-serif; font-size: 0.875rem; font-weight: 600; color: #ffffff; text-decoration: none; border-bottom: 1px solid #ffffff; padding-bottom: 2px; transition: color 0.2s, border-color 0.2s; } .ds-hero-cta:hover { color: #00aaff; border-color: #00aaff; } .ds-hero-cta:focus-visible { outline: 2px solid #00aaff; outline-offset: 4px; }"
+      "css": ".ds-hero-cta { display: inline-block; font-family: 'Geist', system-ui, sans-serif; font-size: 0.875rem; font-weight: 600; color: #ffffff; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.3em; padding: 0.6875rem 0.5rem; transition: color 0.2s; } .ds-hero-cta:hover { color: #00aaff; } .ds-hero-cta:focus-visible { outline: 2px solid #00aaff; outline-offset: 4px; }"
     },
     {
       "name": "Submit Button",
@@ -99,7 +99,7 @@
       "refersTo": "button-submit",
       "description": "The page's primary action; Surface Raised at rest, fills with Signal Blue Deep on hover so the white label stays legible (~4.9:1). The one place a solid blue fill is allowed.",
       "html": "<button class=\"ds-btn-submit\">Senden</button>",
-      "css": ".ds-btn-submit { background: #111111; color: #ffffff; border: none; border-radius: 4px; padding: 12px 36px; font-family: 'Nunito Sans', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; } .ds-btn-submit:hover { background: #0077b6; } .ds-btn-submit:active { background: #005f95; } .ds-btn-submit:focus-visible { outline: 2px solid #00aaff; outline-offset: 3px; }"
+      "css": ".ds-btn-submit { background: #111111; color: #ffffff; border: none; border-radius: 4px; padding: 12px 36px; font-family: 'Geist Mono', monospace; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; } .ds-btn-submit:hover { background: #0077b6; } .ds-btn-submit:active { background: #005f95; } .ds-btn-submit:focus-visible { outline: 2px solid #00aaff; outline-offset: 3px; }"
     },
     {
       "name": "Form Field",
@@ -107,7 +107,7 @@
       "refersTo": "card-form",
       "description": "Borderless input living inside a Surface card; the card is the input affordance. Focus lifts a Signal Blue ring on the card.",
       "html": "<div class=\"ds-field\"><label class=\"ds-field-label\">E-Mail</label><input class=\"ds-field-input\" type=\"email\" placeholder=\"\"></div>",
-      "css": ".ds-field { display: flex; flex-direction: column; gap: 8px; background: #0d0d0d; border-radius: 4px; padding: 16px 20px; } .ds-field:focus-within { outline: 1px solid #00aaff; } .ds-field-label { font-family: 'Nunito Sans', sans-serif; font-size: 0.625rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #888888; } .ds-field-input { background: none; border: none; outline: none; color: #ffffff; font-family: 'Nunito Sans', sans-serif; font-size: 0.9375rem; line-height: 1.5; width: 100%; } .ds-field-input::placeholder { color: #888888; }"
+      "css": ".ds-field { display: flex; flex-direction: column; gap: 8px; background: #0d0d0d; border-radius: 4px; padding: 16px 20px; } .ds-field:focus-within { outline: 1px solid #00aaff; } .ds-field-label { font-family: 'Geist Mono', monospace; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #888888; } .ds-field-input { background: none; border: none; outline: none; color: #ffffff; font-family: 'Geist', system-ui, sans-serif; font-size: 1rem; line-height: 1.5; width: 100%; } .ds-field-input::placeholder { color: #888888; }"
     },
     {
       "name": "Bento Image Tile",
@@ -123,23 +123,23 @@
       "refersTo": "tile-bento",
       "description": "Highlight bullets led by a Signal Blue em-dash instead of a disc; the accent does the marking.",
       "html": "<ul class=\"ds-highlight\"><li>Design-DNA aus einem Foto extrahiert</li><li>Direkte Canvas-Bearbeitung mit Undo/Redo</li><li>Druckfertiger PDF-Export</li></ul>",
-      "css": ".ds-highlight { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; } .ds-highlight li { position: relative; padding-left: 14px; font-family: 'Nunito Sans', sans-serif; font-size: 0.8125rem; color: #888888; line-height: 1.75; } .ds-highlight li::before { content: '—'; position: absolute; left: 0; color: #00aaff; }"
+      "css": ".ds-highlight { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; } .ds-highlight li { position: relative; padding-left: 14px; font-family: 'Geist', system-ui, sans-serif; font-size: 0.9375rem; color: #888888; line-height: 1.5; } .ds-highlight li::before { content: '—'; position: absolute; left: 0; color: #00aaff; }"
     }
   ],
   "narrative": {
     "northStar": "The Engineer's Darkroom",
-    "overview": "The page is a pure black field, and light is used the way a darkroom uses it: sparingly, deliberately, to bring one thing into focus at a time. Nothing on screen arrived by accident. Type is set tight and confident, surfaces are nearly black so the work itself is the brightest thing in the room, and a single cool blue marks the few places that genuinely matter. The atmosphere is dark and focused, precise and engineered. It serves a recruiter and a prospective client at once, answering both by showing the work cleanly rather than talking about it. It rejects the generic AI / template SaaS look, corporate-agency boilerplate, the resume data-dump, and loud maximalism.",
+    "overview": "The page is a pure black field, and light is used the way a darkroom uses it: sparingly, deliberately, to bring one thing into focus at a time. Nothing on screen arrived by accident. Type is set in one precise grotesque (Geist), display and body separated by weight, with Geist Mono giving the metadata its spec-sheet voice; surfaces are nearly black so the work itself is the brightest thing in the room, and a single cool blue marks the few places that genuinely matter. The atmosphere is dark and focused, precise and engineered. It serves a recruiter and a prospective client at once, answering both by showing the work cleanly rather than talking about it. It rejects the generic AI / template SaaS look, corporate-agency boilerplate, the resume data-dump, and loud maximalism.",
     "keyCharacteristics": [
       "Pure-black canvas; surfaces only one or two shades up from black.",
       "One cool accent (Signal Blue), used like punctuation, never as wallpaper.",
-      "Serif display (Playfair) for statements, humanist sans (Nunito Sans) for everything functional.",
+      "One grotesque family (Geist) carries the page; display and body split by weight, with Geist Mono for metadata labels.",
       "Flat by default — depth comes from tonal layering, never from shadows.",
       "The work (project imagery) is the loudest thing on any screen."
     ],
     "rules": [
       { "name": "The Single Signal Rule", "body": "Signal Blue appears on no more than ~10% of any screen. It marks what matters and nothing else; the moment a second hue or a large blue fill shows up, the signal becomes noise.", "section": "colors" },
       { "name": "The Muted-Floor Rule", "body": "#444444 on #000000 is ~2.5:1 — below the WCAG AA floor. Muted is permitted only for short, large, or peripheral labels, never for sentences a visitor needs to read. Real content sits at Dim #888888 (~5.9:1) or brighter.", "section": "colors" },
-      { "name": "The Serif-for-Statements Rule", "body": "Playfair is for headings, the hero line, and project names only — never for body copy, labels, or UI text. Headings keep generous line-heights and never tighten letter-spacing past -0.03em.", "section": "typography" },
+      { "name": "The Mono-for-Metadata Rule", "body": "Geist Mono is reserved for small tracked-uppercase labels and the stack line; it never sets a sentence, a heading, or interactive nav. Nav, audience tabs, and the hero CTA are Geist sans. One grotesque (Geist) carries display and body, separated by weight, never by a second face.", "section": "typography" },
       { "name": "The No-Shadow Rule", "body": "Surfaces never lift with a drop shadow or glow. If something needs to feel closer, raise its tone one step (#0d0d0d to #111); never reach for box-shadow.", "section": "elevation" }
     ],
     "dos": [
@@ -147,7 +147,7 @@
       "Do use the deeper blue (#0077b6) for fills that carry white text, like the submit button hover, so the label stays legible.",
       "Do set real body text at Dim (#888888) or brighter on Void; reserve Muted (#444444) for short peripheral labels only.",
       "Do convey depth by stepping tone up (#000 to #0d0d0d to #111), never with shadows.",
-      "Do use Playfair only for headings, the hero line, and project names; Nunito Sans for everything else.",
+      "Do carry the page on Geist alone, separating display from body by weight; reserve Geist Mono for small tracked-uppercase metadata, never for sentences or nav.",
       "Do give every interactive element a visible :focus-visible state and a prefers-reduced-motion: reduce alternative for the bob/scroll animations.",
       "Do show real project imagery in every bento grid. One decisive screenshot beats an empty tile."
     ],

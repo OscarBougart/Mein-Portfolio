@@ -54,6 +54,27 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // =============================================
+  // KONTAKT: SCROLL SO THE FORM (Senden) IS FULLY IN VIEW
+  // The contact section is the last one; native anchor scrolling aligns its
+  // top to the viewport top, which can leave the Senden button below the fold
+  // on shorter screens. Align its bottom edge instead so the whole card shows.
+  // =============================================
+  const kontaktLink = document.querySelector('.nav-link[data-section="kontakt"]');
+  const kontaktSection = document.getElementById('kontakt');
+
+  if (kontaktLink && kontaktSection) {
+    kontaktLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      // Always anchor the section's top to the viewport top: the "Kontakt"
+      // title stays visible no matter the screen height. The CSS keeps the
+      // card compact enough that the Senden button usually shows too — but if
+      // it can't, the title is never sacrificed for it.
+      kontaktSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      history.replaceState(null, '', '#kontakt');
+    });
+  }
+
+  // =============================================
   // AUDIENCE TABS
   // =============================================
   const tabBtns = document.querySelectorAll('.tab-btn');

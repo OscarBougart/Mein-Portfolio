@@ -1,5 +1,6 @@
-/* ── FONT SWAP: change the families here + update the @import URL above to match ── */
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+/* ── FONTS: loaded via <link> in index.html (preconnect + Geist / Geist Mono).
+   To swap families site-wide, edit --font-heading / --font-body / --font-mono below
+   and update the <link> href in index.html to match. ── */
 
 /* =============================================
    RESET & BASE
@@ -8,6 +9,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+/* Media never overflows its container (root-cause guard, not just body clipping) */
+img, video {
+  max-width: 100%;
+  height: auto;
 }
 
 :root {
@@ -24,23 +31,41 @@
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
   --sidebar-width: 10rem;
-  /* ── FONT SWAP: edit these two lines to change fonts site-wide ── */
-  --font-heading: 'Playfair Display', serif; /* big text: titles, h1, project names  */
-  --font-mono: 'Nunito Sans', sans-serif;    /* small text: labels, captions, nav    */
-  --font-body: 'Nunito Sans', sans-serif;    /* body copy: descriptions, paragraphs  */
+  /* ── Type families. Geist (grotesque) carries display + body through weight contrast;
+     Geist Mono gives the small metadata labels their spec-sheet voice. ── */
+  --font-heading: 'Geist', system-ui, -apple-system, 'Segoe UI', sans-serif;   /* display: titles, hero, project names, wordmark */
+  --font-body:    'Geist', system-ui, -apple-system, 'Segoe UI', sans-serif;   /* body copy + interactive UI: nav, tabs, CTA     */
+  --font-mono:    'Geist Mono', ui-monospace, 'Cascadia Code', 'Segoe UI Mono', monospace; /* tracked-uppercase metadata labels  */
+  /* One tracking value for every uppercase mono label. Geist Mono is already wide,
+     so it needs far less added tracking than the old proportional sans did. */
+  --track-label: 0.06em;
+  /* Fluid vertical rhythm: scales with the viewport so there is no per-breakpoint jump */
+  --space-section: clamp(3.5rem, 8vh, 6rem);
+  --space-block: clamp(2.25rem, 5vw, 4rem);
 }
 
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  /* Stop mobile browsers from auto-inflating text on rotation/zoom */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
   background: var(--black);
   color: var(--white);
   font-family: var(--font-body);
+  font-weight: 400;
   line-height: 1.6;
   overflow-x: hidden;
+  /* Light type on a black field reads heavier than it is: smooth it and turn on
+     kerning/optical sizing so Geist stays crisp rather than blocky. */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-optical-sizing: auto;
+  font-kerning: normal;
+  text-rendering: optimizeLegibility;
 }
 
 *::selection {
@@ -57,6 +82,7 @@ body {
   left: 0;
   width: var(--sidebar-width);
   height: 100vh;
+  height: 100svh; /* stable rail: don't animate with mobile browser chrome */
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -72,7 +98,7 @@ body {
   font-size: 1.5rem;
   font-weight: 700;
   line-height: 1;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
   color: var(--white);
   text-decoration: none;
   transition: opacity 0.2s ease;
@@ -106,12 +132,12 @@ body {
 }
 
 .nav-link {
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   font-size: 1rem;
   font-weight: 400;
   color: var(--gray-dim);
   text-decoration: none;
-  letter-spacing: 0.02em;
+  letter-spacing: -0.01em;
   transition: color 0.2s ease;
 }
 
@@ -162,6 +188,7 @@ body {
 .main-content {
   margin-left: var(--sidebar-width);
   min-height: 100vh;
+  min-height: 100dvh;
 }
 
 /* =============================================
@@ -169,7 +196,10 @@ body {
 ============================================= */
 .section {
   min-height: 100vh;
-  padding: 5rem 8% 5rem 6%;
+  min-height: 100svh;
+  padding-block: var(--space-section);
+  /* Cap the content measure on ultra-wide screens; never tighter than 6% on small ones */
+  padding-inline: max(6%, (100% - 80rem) / 2);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -181,9 +211,10 @@ body {
   font-weight: 700;
   letter-spacing: -0.03em;
   color: var(--white);
-  margin-bottom: 4rem;
+  margin-bottom: var(--space-block);
   line-height: 1;
   text-wrap: balance;
+  overflow-wrap: break-word;
 }
 
 /* =============================================
@@ -194,6 +225,9 @@ body {
   justify-content: center;
   overflow: hidden;
   isolation: isolate;
+  /* Hero fills the viewport live as browser chrome shows/hides (overrides .section svh) */
+  min-height: 100vh;
+  min-height: 100dvh;
 }
 
 /* ── Enlarger light: a faint dot grid grazed by a cursor-tracked light pool.
@@ -247,13 +281,13 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   font-size: 1rem;
   font-weight: 500;
   color: var(--gray-dim);
   cursor: pointer;
   transition: color 0.2s ease;
-  letter-spacing: 0.02em;
+  letter-spacing: -0.01em;
 }
 
 .tab-btn:focus-visible {
@@ -287,7 +321,9 @@ body[data-audience="dev"] .aud--dev {
 .contact-intro {
   font-family: var(--font-body);
   font-size: clamp(1rem, 1.6vw, 1.25rem);
-  line-height: 1.5;
+  font-weight: 400;
+  line-height: 1.55;
+  letter-spacing: 0.01em;
   color: var(--white);
   max-width: 42rem;
   text-wrap: balance;
@@ -303,6 +339,7 @@ body[data-audience="dev"] .aud--dev {
 /* Hero statement */
 .hero-statement {
   flex: 1;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -322,30 +359,37 @@ body[data-audience="dev"] .aud--dev {
 .hero-statement h1 {
   font-family: var(--font-heading);
   font-size: clamp(1.75rem, 4vw, 3.5rem);
-  font-weight: 700;
-  line-height: 1.1;
-  letter-spacing: -0.03em;
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
   color: var(--white);
   text-wrap: balance;
+  /* Long German compounds (Full-Stack-Entwickler, App-Entwicklung): hyphenate and
+     allow breaks as a safety net so the headline can't overflow on small phones. */
+  -webkit-hyphens: auto;
+  hyphens: auto;
+  overflow-wrap: break-word;
 }
 
 .hero-cta {
   display: inline-block;
-  margin-top: 2rem;
+  margin-top: 1.25rem;
   align-self: center;
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   font-size: 0.875rem;
   font-weight: 600;
   color: var(--white);
-  text-decoration: none;
-  border-bottom: 1px solid var(--white);
-  padding-bottom: 0.125rem;
-  transition: color 0.2s, border-color 0.2s;
+  /* Underline via text-decoration (not border) so vertical padding can grow the
+     tap target to ~44px without detaching the line from the text. */
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.3em;
+  padding: 0.6875rem 0.5rem;
+  transition: color 0.2s;
 }
 
 .hero-cta:hover {
   color: var(--blue);
-  border-color: var(--blue);
 }
 
 .hero-cta:focus-visible {
@@ -402,7 +446,7 @@ body[data-audience="dev"] .aud--dev {
   font-family: var(--font-mono);
   font-size: 0.75rem;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: var(--track-label);
   text-transform: uppercase;
   color: var(--gray-dim);
   cursor: pointer;
@@ -428,8 +472,9 @@ body[data-audience="dev"] .aud--dev {
   margin-left: auto;
   font-family: var(--font-mono);
   font-size: 0.6875rem;
-  letter-spacing: 0.08em;
+  letter-spacing: var(--track-label);
   text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
   color: var(--gray-dim);
 }
 
@@ -450,7 +495,7 @@ body[data-audience="dev"] .aud--dev {
   grid-template-columns: clamp(16rem, 28vw, 23.75rem) 1fr;
   gap: 4rem;
   align-items: start;
-  padding: 4.5rem 0;
+  padding: var(--space-block) 0;
 }
 
 /* ---- Left: project info ---- */
@@ -458,6 +503,7 @@ body[data-audience="dev"] .aud--dev {
   display: flex;
   flex-direction: column;
   gap: 1.125rem;
+  min-width: 0;
   position: sticky;
   top: 5rem;
 }
@@ -466,35 +512,43 @@ body[data-audience="dev"] .aud--dev {
   font-family: var(--font-mono);
   font-size: 0.6875rem;
   font-weight: 500;
-  letter-spacing: 0.12em;
+  letter-spacing: var(--track-label);
   text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
   color: var(--gray-dim);
 }
 
 .project-name {
   font-family: var(--font-heading);
   font-size: clamp(1.75rem, 3vw, 2.625rem);
-  font-weight: 700;
-  letter-spacing: -0.03em;
+  font-weight: 600;
+  letter-spacing: -0.02em;
   color: var(--white);
   line-height: 1.05;
   text-wrap: balance;
+  overflow-wrap: break-word;
 }
 
 .project-tagline {
   font-family: var(--font-body);
-  font-size: clamp(0.9375rem, 1.4vw, 1.125rem);
-  line-height: 1.45;
+  font-size: clamp(1.0625rem, 1.6vw, 1.25rem);
+  font-weight: 500;
+  line-height: 1.5;
   color: var(--white);
   text-wrap: balance;
+  -webkit-hyphens: auto;
+  hyphens: auto;
 }
 
 .project-desc {
   font-family: var(--font-body);
-  font-size: clamp(0.8125rem, 1.1vw, 0.875rem);
+  font-size: clamp(1rem, 1.1vw, 1.0625rem);
   line-height: 1.75;
+  letter-spacing: 0.01em;
   color: var(--gray-dim);
   text-wrap: pretty;
+  -webkit-hyphens: auto;
+  hyphens: auto;
 }
 
 .project-highlights {
@@ -507,7 +561,8 @@ body[data-audience="dev"] .aud--dev {
 
 .project-highlights li {
   font-family: var(--font-body);
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
+  line-height: 1.5;
   color: var(--gray-dim);
   padding-left: 0.875rem;
   position: relative;
@@ -522,10 +577,10 @@ body[data-audience="dev"] .aud--dev {
 
 .project-stack {
   font-family: var(--font-mono);
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
   font-weight: 600;
   color: var(--gray-dim);
-  letter-spacing: 0.1em;
+  letter-spacing: var(--track-label);
   text-transform: uppercase;
 }
 
@@ -584,15 +639,19 @@ body[data-audience="dev"] .aud--dev {
 
 .about-block {
   font-family: var(--font-body);
-  font-size: clamp(0.875rem, 1.4vw, 1.0625rem);
+  font-size: clamp(1rem, 1.4vw, 1.125rem);
   line-height: 1.8;
+  letter-spacing: 0.01em;
   color: var(--gray-dim);
   text-wrap: pretty;
+  -webkit-hyphens: auto;
+  hyphens: auto;
 }
 
 .about-block--highlight {
   color: var(--white);
-  font-size: clamp(0.9375rem, 1.6vw, 1.1875rem);
+  font-weight: 500;
+  font-size: clamp(1.0625rem, 1.6vw, 1.25rem);
 }
 
 .about-block--left {
@@ -607,7 +666,7 @@ body[data-audience="dev"] .aud--dev {
 /* Skills grid */
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 11rem), 1fr));
   gap: 2.5rem 3rem;
   border-top: 1px solid var(--gray-border);
   padding-top: 3rem;
@@ -615,9 +674,9 @@ body[data-audience="dev"] .aud--dev {
 
 .skill-group-title {
   font-family: var(--font-mono);
-  font-size: 0.625rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: var(--track-label);
   text-transform: uppercase;
   color: var(--blue);
   margin-bottom: 1rem;
@@ -639,7 +698,7 @@ body[data-audience="dev"] .aud--dev {
 
 .skill-name {
   font-family: var(--font-body);
-  font-size: clamp(0.8125rem, 1vw, 0.875rem);
+  font-size: 0.9375rem;
   color: var(--white);
 }
 
@@ -647,7 +706,8 @@ body[data-audience="dev"] .aud--dev {
   font-family: var(--font-mono);
   font-size: 0.75rem;
   font-weight: 500;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
   color: var(--gray-dim);
   white-space: nowrap;
 }
@@ -656,8 +716,17 @@ body[data-audience="dev"] .aud--dev {
    CONTACT SECTION
 ============================================= */
 .contact-section {
-  justify-content: flex-start;
-  padding-top: 6.25rem;
+  justify-content: center;
+  /* Tighter vertical rhythm than other sections so the whole card —
+     heading, intro and the Senden button — fits within one viewport,
+     landing the form fully in view when "Kontakt" is clicked. */
+  padding-top: clamp(3.5rem, 6vh, 6.25rem);
+  padding-bottom: clamp(3.5rem, 6vh, 5rem);
+}
+
+/* Trim the heading gap here so the layout below clears the fold. */
+.contact-section .section-title {
+  margin-bottom: clamp(1.5rem, 3vh, 2.5rem);
 }
 
 .contact-layout {
@@ -677,6 +746,9 @@ body[data-audience="dev"] .aud--dev {
 .contact-photo-wrap {
   width: 100%;
   aspect-ratio: 3 / 4;
+  /* Cap by viewport height so a short screen shrinks the photo instead
+     of pushing the form's Senden button below the fold. */
+  max-height: 40vh;
   overflow: hidden;
   border-radius: 0.25rem;
   background: var(--surface);
@@ -739,10 +811,10 @@ body[data-audience="dev"] .aud--dev {
   gap: 0.875rem;
 }
 
-/* Two-column row of cards */
+/* Two-column row of cards; collapses to one column when space is tight (no breakpoint needed) */
 .form-row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
   gap: 0.875rem;
 }
 
@@ -768,9 +840,9 @@ body[data-audience="dev"] .aud--dev {
 
 .form-card-label {
   font-family: var(--font-mono);
-  font-size: 0.625rem;
+  font-size: 0.6875rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: var(--track-label);
   text-transform: uppercase;
   color: var(--gray-dim);
 }
@@ -788,7 +860,7 @@ body[data-audience="dev"] .aud--dev {
   outline: none;
   color: var(--white);
   font-family: var(--font-body);
-  font-size: clamp(0.8125rem, 1.1vw, 0.9375rem);
+  font-size: clamp(1rem, 1.1vw, 1.0625rem);
   line-height: 1.5;
   resize: none;
   width: 100%;
@@ -819,7 +891,8 @@ body[data-audience="dev"] .aud--dev {
 
 #status-message {
   font-family: var(--font-mono);
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
+  letter-spacing: 0.01em;
   color: var(--gray-dim);
   flex: 1;
 }
@@ -841,8 +914,8 @@ body[data-audience="dev"] .aud--dev {
   justify-content: center;
   font-family: var(--font-mono);
   font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
+  font-weight: 600;
+  letter-spacing: var(--track-label);
   text-transform: uppercase;
   cursor: pointer;
   transition: background 0.2s, transform 0.12s var(--ease-out-quart);
@@ -879,7 +952,8 @@ body[data-audience="dev"] .aud--dev {
   font-family: var(--font-mono);
   font-size: 0.6875rem;
   font-weight: 400;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
   color: var(--gray-dim);
 }
 
@@ -895,6 +969,8 @@ body[data-audience="dev"] .aud--dev {
   flex-direction: column;
   align-items: center;
   gap: 0.25rem;
+  /* Padding gives the arrow a comfortable tap target (the label only shows on hover) */
+  padding: 0.5rem 0.75rem;
 }
 
 @keyframes bob-up {
@@ -909,7 +985,7 @@ body[data-audience="dev"] .aud--dev {
 .footer-top-label {
   display: block;
   font-size: 0.625rem;
-  letter-spacing: 0.1em;
+  letter-spacing: var(--track-label);
   text-transform: uppercase;
   opacity: 0;
   transform: translateY(-0.25rem);
@@ -989,8 +1065,15 @@ body[data-audience="dev"] .aud--dev {
   }
 
   .section {
-    padding: 3.75rem 6%;
+    /* plain 6% inline (no ultra-wide cap needed here); block padding stays fluid via the token */
+    padding-inline: 6%;
     min-height: auto;
+  }
+
+  /* Decided: the phone hero fills the first screen (overrides .section min-height:auto) */
+  .hero {
+    min-height: 100vh;
+    min-height: 100dvh;
   }
 
   .project-item {
@@ -1035,16 +1118,18 @@ body[data-audience="dev"] .aud--dev {
     aspect-ratio: 1 / 1;
   }
 
-  .form-row {
-    grid-template-columns: 1fr;
-  }
-
+  /* Stack the footer so the long credit line never collides with the centered
+     back-to-top control (it is absolutely positioned on desktop). */
   .site-footer {
-    padding: 1.25rem 6%;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.5rem 6%;
   }
 
   .footer-right {
-    right: 6%;
+    position: static;
+    right: auto;
+    text-align: center;
   }
 
   .audience-tabs {
@@ -1076,6 +1161,25 @@ body[data-audience="dev"] .aud--dev {
   .bento-tall {
     grid-column: span 1;
     grid-row: span 1;
+  }
+}
+
+/* =============================================
+   SHORT / LANDSCAPE VIEWPORTS
+   A landscape phone is wide but very short; a full-height hero would clip
+   its content. Let the hero size to its content instead.
+============================================= */
+@media (max-height: 32rem) {
+  .hero {
+    min-height: auto;
+  }
+}
+
+/* On touch devices there is no hover, so reveal the back-to-top label by default */
+@media (hover: none) {
+  .footer-top-label {
+    opacity: 1;
+    transform: none;
   }
 }
 
@@ -1176,3 +1280,72 @@ body[data-audience="dev"] .aud--dev {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* =============================================
+   PRINT — recruiters print portfolios. Flip to an ink-friendly light
+   theme, drop the chrome/animations and the empty contact form, and lay
+   it out in a single readable column. Verify in a real print preview.
+============================================= */
+@media print {
+  /* Flip the palette by redefining the tokens everything already references */
+  :root {
+    --black: #ffffff;
+    --white: #111111;
+    --gray-dim: #333333;
+    --gray-muted: #666666;
+    --gray-border: #cccccc;
+    --surface: #f4f4f4;
+    --surface-raised: #ececec;
+    --blue: #00509e;
+    --blue-deep: #00509e;
+  }
+
+  html { font-size: 11pt; }
+
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+    box-shadow: none !important;
+  }
+
+  /* Drop interactive chrome, decoration and the (empty) contact form */
+  .sidebar, .hamburger, .audience-tabs, .project-filters,
+  .scroll-indicator-wrap, .footer-top, .contact-form {
+    display: none !important;
+  }
+  .hero::before, .hero::after { display: none !important; }
+
+  .main-content { margin-left: 0 !important; }
+
+  .section {
+    min-height: 0 !important;
+    padding: 0 0 1.25rem !important;
+    display: block !important;
+    break-inside: avoid;
+  }
+  .hero { min-height: 0 !important; }
+  .hero-statement, .scroll-indicator-wrap { transform: none !important; }
+
+  /* Compact the display type so it doesn't dominate the page */
+  .section-title { font-size: 2rem !important; margin-bottom: 1rem !important; }
+  .hero-statement h1 { font-size: 1.4rem !important; }
+  .project-name { font-size: 1.25rem !important; }
+
+  .project-item {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+    padding: 0 0 1rem !important;
+    break-inside: avoid;
+  }
+  .project-info { position: static !important; }
+
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    grid-template-rows: auto !important;
+  }
+  .bento-wide, .bento-tall { grid-column: auto !important; grid-row: auto !important; }
+  .bento-cell { aspect-ratio: 4 / 3; border: 1px solid var(--gray-border); break-inside: avoid; }
+
+  a { color: var(--blue) !important; text-decoration: underline; }
+}
+

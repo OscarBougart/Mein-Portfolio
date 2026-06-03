@@ -13,35 +13,35 @@ colors:
   dim: "#888888"
 typography:
   display:
-    fontFamily: "Playfair Display, serif"
+    fontFamily: "Geist, sans-serif"
     fontSize: "clamp(3rem, 7vw, 6rem)"
     fontWeight: 700
     lineHeight: 1
     letterSpacing: "-0.03em"
   headline:
-    fontFamily: "Playfair Display, serif"
+    fontFamily: "Geist, sans-serif"
     fontSize: "clamp(1.75rem, 4vw, 3.5rem)"
-    fontWeight: 700
-    lineHeight: 1.1
-    letterSpacing: "-0.03em"
+    fontWeight: 600
+    lineHeight: 1.12
+    letterSpacing: "-0.02em"
   title:
-    fontFamily: "Playfair Display, serif"
+    fontFamily: "Geist, sans-serif"
     fontSize: "clamp(1.75rem, 3vw, 2.625rem)"
-    fontWeight: 700
+    fontWeight: 600
     lineHeight: 1.05
-    letterSpacing: "-0.03em"
+    letterSpacing: "-0.02em"
   body:
-    fontFamily: "Nunito Sans, sans-serif"
-    fontSize: "clamp(0.875rem, 1.4vw, 1.0625rem)"
+    fontFamily: "Geist, sans-serif"
+    fontSize: "clamp(1rem, 1.4vw, 1.125rem)"
     fontWeight: 400
     lineHeight: 1.8
-    letterSpacing: "normal"
+    letterSpacing: "0.01em"
   label:
-    fontFamily: "Nunito Sans, sans-serif"
+    fontFamily: "Geist Mono, monospace"
     fontSize: "0.6875rem"
     fontWeight: 600
     lineHeight: 1.4
-    letterSpacing: "0.12em"
+    letterSpacing: "0.06em"
 rounded:
   sm: "4px"
   lg: "20px"
@@ -50,6 +50,8 @@ spacing:
   block: "32px"
   region: "64px"
   section: "80px"
+  space-block-fluid: "clamp(2.25rem, 5vw, 4rem)"
+  space-section-fluid: "clamp(3.5rem, 8vh, 6rem)"
 components:
   nav-link:
     textColor: "{colors.dim}"
@@ -93,7 +95,7 @@ It explicitly rejects the generic AI / template SaaS look (gradient blobs, ident
 **Key Characteristics:**
 - Pure-black canvas; surfaces only one or two shades up from black.
 - One cool accent (Signal Blue), used like punctuation, never as wallpaper.
-- Serif display (Playfair) for statements, humanist sans (Nunito Sans) for everything functional.
+- One grotesque family (Geist) carries the page; display and body are separated by weight, not by a second face. Geist Mono gives the metadata its spec-sheet voice.
 - Flat by default — depth comes from tonal layering, never from shadows.
 - The work (project imagery) is the loudest thing on any screen.
 
@@ -121,21 +123,25 @@ A monochrome black-to-white spine with a single cool-blue accent: the palette is
 
 ## 3. Typography
 
-**Display Font:** Playfair Display (with `serif` fallback)
-**Body Font:** Nunito Sans (with `sans-serif` fallback)
-**Label Font:** Nunito Sans (same family, used in a small tracked-uppercase role)
+**Display Font:** Geist (grotesque; `system-ui` fallback)
+**Body Font:** Geist (same family, lighter weights)
+**Label Font:** Geist Mono (tracked-uppercase metadata role)
 
-**Character:** A high-contrast Didone serif for statements paired with a soft humanist sans for everything that has to be read or scanned. The contrast axis (serif display + sans body) does the heavy lifting; the sans handles both body copy and labels through weight and tracking, not a third typeface.
+**Character:** A single precise grotesque carries the whole page; the contrast comes from weight and size, not from a second face. This is the engineered-precision lane (Linear / Vercel) the brand asks for: machined, calm, made-by-someone-who-sweats-alignment. Geist Mono is the page's instrument panel, confined to small metadata so it reads as precision, never as developer costume.
 
 ### Hierarchy
-- **Display** (Playfair, 700, `clamp(3rem, 7vw, 6rem)`, line-height 1, `-0.03em`): Section titles (`über mich.`, `arbeit.`, `kontakt.`). The loudest type on the page.
-- **Headline** (Playfair, 700, `clamp(1.75rem, 4vw, 3.5rem)`, line-height 1.1, `-0.03em`): The hero statement — the first sentence a visitor reads.
-- **Title** (Playfair, 700, `clamp(1.75rem, 3vw, 2.625rem)`, line-height 1.05, `-0.03em`): Project names.
-- **Body** (Nunito Sans, 400, `clamp(0.875rem, 1.4vw, 1.0625rem)`, line-height 1.8): About paragraphs and project descriptions. Keep measure at 65–75ch; the about grid already caps width.
-- **Label** (Nunito Sans, 600, `0.6875rem`, `0.12em`, uppercase): Eyebrow metadata — project labels, "Project Overview", skill-group titles (in Signal Blue), form-card labels, the stack line.
+- **Display** (Geist, 700, `clamp(3rem, 7vw, 6rem)`, line-height 1, `-0.03em`): Section titles (`über mich.`, `arbeit.`, `kontakt.`) and the `Oscar.` wordmark. The loudest type on the page.
+- **Headline** (Geist, 600, `clamp(1.75rem, 4vw, 3.5rem)`, line-height 1.12, `-0.02em`): The hero statement — the first sentence a visitor reads. 600 keeps a multi-line sentence elegant where 700 would shout.
+- **Title** (Geist, 600, `clamp(1.75rem, 3vw, 2.625rem)`, line-height 1.05, `-0.02em`): Project names.
+- **Body** (Geist, 400, `clamp(1rem, 1.4vw, 1.125rem)`, line-height 1.8, `+0.01em`): About paragraphs and project descriptions. Floor is `1rem` (16px); the `+0.01em` tracking and generous leading compensate for light type on black. Measure stays 45–75ch; the about grid and the narrow info column cap width.
+- **Label** (Geist Mono, 500–600, `0.6875rem`–`0.75rem`, `var(--track-label)` = `0.06em`, uppercase): Spec-sheet metadata — project labels, the stack line, skill-group titles (in Signal Blue), form-card labels, filter chips, the submit button, the footer credit.
 
 ### Named Rules
-**The Serif-for-Statements Rule.** Playfair is for headings, the hero line, and project names only — never for body copy, labels, or UI text. Set on a black field, light serif type reads lighter, so headings keep their generous line-heights (≥1.05) and never tighten letter-spacing past `-0.03em`.
+**The Mono-for-Metadata Rule.** Geist Mono is reserved for small tracked-uppercase labels and the stack line. It never sets a sentence, a heading, or interactive navigation; nav, audience tabs, and the hero CTA are Geist sans so they stay legible and out of costume. Mono on metadata reads as a precision instrument; mono everywhere reads as a developer cliché.
+
+**The One-Tracking Rule.** Every uppercase mono label uses a single token, `--track-label` (`0.06em`). Geist Mono is already wide, so it needs far less added tracking than a proportional sans; one value keeps the labels a consistent system rather than a per-element guess.
+
+**The Body-Floor Rule.** No sentence a visitor reads sits below `1rem` (16px). Terse supporting items (highlight bullets, skill names) may sit at `0.9375rem` (15px); never smaller. Light-on-dark body gets generous line-height and a touch of tracking, not a smaller size.
 
 ## 4. Elevation
 
@@ -150,7 +156,7 @@ The component feel is **tactile and confident**: surfaces are clean and squared,
 
 ### Buttons
 - **Shape:** Squared with a hairline radius (`4px`). No pills, no heavy rounding.
-- **Hero CTA** (`Lebenslauf herunterladen` / `GitHub ansehen`): Text-only, Ink, with a 1px underline. A confident link, not a box. **Hover/Focus:** text and border commit to Signal Blue (0.2s).
+- **Hero CTA** (`Lebenslauf herunterladen` / `GitHub ansehen`): Text-only, Ink, with a 1px underline (`text-decoration`, with vertical padding so the standalone control keeps a ~44px tap target). A confident link, not a box. **Hover/Focus:** text and underline commit to Signal Blue (0.2s).
 - **Submit button** (`Senden`): Surface Raised (`#111`) fill, Ink text, uppercase Label type, `12px 36px` padding, `4px` radius. **Hover:** fills with Signal Blue Deep (`#0077b6`), which keeps the white label legible (~4.9:1). The one place a solid blue fill is allowed, because it's the page's primary action.
 
 ### Cards / Containers
@@ -180,7 +186,7 @@ List items led by a Signal Blue em-dash (`—`) instead of a bullet. The accent 
 - **Do** keep Signal Blue (`#00aaff`) to ~10% of any screen (labels, link hover, the em-dash bullets, one button fill). Its scarcity is the point.
 - **Do** set real body text at Dim (`#888888`) or brighter on Void; reserve Muted (`#444444`) for short peripheral labels only.
 - **Do** convey depth by stepping tone up (`#000` → `#0d0d0d` → `#111`), never with shadows.
-- **Do** use Playfair only for headings, the hero line, and project names; Nunito Sans for everything else.
+- **Do** carry the page on Geist alone, separating display from body by weight; reserve Geist Mono for small tracked-uppercase metadata, never for sentences or nav.
 - **Do** give every interactive element (tabs, nav, hamburger, inputs, submit) a visible `:focus-visible` state and a `prefers-reduced-motion: reduce` alternative for the bob/scroll animations.
 - **Do** show real project imagery in every bento grid. One decisive screenshot beats an empty tile.
 

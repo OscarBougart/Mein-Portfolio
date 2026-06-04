@@ -293,7 +293,10 @@ body {
   gap: 0;
   position: absolute;
   top: 2rem;
-  left: calc(var(--sidebar-width) * -1);
+  /* Span the content column (right of the sidebar) and center within it, so the
+     tabs sit directly above the centered hero statement rather than over the
+     full viewport. */
+  left: 0;
   right: 0;
   justify-content: center;
   z-index: 2;
@@ -373,7 +376,6 @@ body[data-audience="dev"] .aud--dev {
   text-align: center;
   max-width: 56.25rem;
   margin: 3.75rem auto 0;
-  transform: translateX(calc(var(--sidebar-width) / -2));
   position: relative;
   z-index: 1;
 }
@@ -427,7 +429,6 @@ body[data-audience="dev"] .aud--dev {
 .scroll-indicator-wrap {
   align-self: center;
   margin-top: 2.5rem;
-  transform: translateX(calc(var(--sidebar-width) / -2));
   position: relative;
   z-index: 1;
 }

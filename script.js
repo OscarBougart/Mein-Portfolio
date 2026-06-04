@@ -20,7 +20,123 @@ document.addEventListener('DOMContentLoaded', () => {
         link.removeAttribute('aria-current');
       }
     });
+    moveDot(id);
   };
+
+  // =============================================
+  // FLYING DOT
+  // The logo's blue period glides down the sidebar to the active nav link, and
+  // home to the logo when the Intro section is active. The dot is a single
+  // reused element; we animate its transform so it physically travels.
+  // Desktop/tablet only — on the mobile top bar there's no vertical rail to fly.
+  // =============================================
+  const sidebar = document.querySelector('.sidebar');
+  const flyingDot = document.querySelector('.flying-dot');
+  const logo = document.querySelector('.sidebar-logo');
+  const desktopRail = window.matchMedia('(min-width: 901px)');
+  const motionReduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  let currentSectionId = 'startseite';
+
+  // Anchor at the top: the last visible letter of "Oscar" (the "r"), not the
+  // whole wordmark box — the hidden "." placeholder still occupies width, which
+  // would otherwise push the period too far right. The "r" is the char right
+  // before .logo-dot, i.e. the second-to-last logo char.
+  const logoLetter = document.querySelector('.sidebar-logo .logo-char:nth-last-child(2)');
+  const anchorFor = (id) => {
+    if (id === 'startseite' || !id) return logoLetter || logo;
+    const link = document.querySelector(`.nav-link[data-section="${id}"]`);
+    return link || logo;
+  };
+
+  // Measure the actual rendered glyph bounds of an element's text, not its box.
+  // The nav links are full-width flex items, so their box right-edge is the
+  // column edge (identical for every link) — measuring the text instead lets the
+  // dot land at the true end of each word, however short. Falls back to the
+  // element box if there's no text node.
+  const textRect = (el) => {
+    const node = el.firstChild;
+    if (node && node.nodeType === Node.TEXT_NODE) {
+      const range = document.createRange();
+      range.selectNodeContents(node);
+      const r = range.getBoundingClientRect();
+      if (r.width || r.height) return r;
+    }
+    return el.getBoundingClientRect();
+  };
+
+  // Place the dot like a period: tucked just past the last letter and sitting
+  // low on the text baseline (not centred on the line), so it reads as
+  // punctuation. Coordinates are relative to the sidebar (the dot's offset
+  // parent), so we subtract the sidebar's own box.
+  const positionDot = (target, animate) => {
+    if (!sidebar || !flyingDot || !target) return;
+    const railBox = sidebar.getBoundingClientRect();
+    const box = textRect(target);
+    const dotSize = flyingDot.offsetWidth;
+    const gap = dotSize * 0.28; // a period nearly touches the last letter
+
+    const x = box.right - railBox.left + gap;
+    // Sit the dot on the text baseline: align its bottom with the glyph bottom.
+    // The text rect bottom is the descender line; nudge up a hair so the square
+    // rests on the baseline like a period rather than dropping below it.
+    const y = box.bottom - railBox.top - dotSize - box.height * 0.2;
+
+    if (!animate) {
+      // Snap without the glide (initial placement or reduced-motion).
+      const prev = flyingDot.style.transition;
+      flyingDot.style.transition = 'none';
+      flyingDot.style.transform = `translate(${x}px, ${y}px)`;
+      // Force a reflow so the no-transition snap is committed before we restore.
+      void flyingDot.offsetWidth;
+      flyingDot.style.transition = prev;
+      return;
+    }
+    flyingDot.style.transform = `translate(${x}px, ${y}px)`;
+  };
+
+  const moveDot = (id) => {
+    if (id) currentSectionId = id;
+    if (!flyingDot || !desktopRail.matches) return;
+    positionDot(anchorFor(currentSectionId), !motionReduced.matches);
+  };
+
+  // Enable the flier only on the desktop/tablet rail. When off, the static
+  // .logo-dot shows instead (see .flying-dot-active in CSS).
+  const syncDotMode = () => {
+    if (!flyingDot) return;
+    if (desktopRail.matches) {
+      document.documentElement.classList.add('flying-dot-active');
+      // No animation on (re)entry — snap straight to the current target.
+      positionDot(anchorFor(currentSectionId), false);
+    } else {
+      document.documentElement.classList.remove('flying-dot-active');
+    }
+  };
+
+  syncDotMode();
+
+  // First placement happens at DOMContentLoaded, before the Geist web font has
+  // loaded — so the dot is measured against the fallback font's "Oscar" width
+  // and ends up offset once the real font swaps in (most visible on a hard
+  // reload). Re-snap after the next paint and again once fonts are ready, so the
+  // resting dot lands exactly at the end of "Oscar" from the very first view.
+  const resnap = () => { if (flyingDot && desktopRail.matches) positionDot(anchorFor(currentSectionId), false); };
+  requestAnimationFrame(resnap);
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(resnap);
+  }
+
+  // Recompute on resize (rAF-throttled) so the dot stays glued through layout
+  // changes, and flips behaviour when crossing the 900px breakpoint.
+  let dotRaf = null;
+  window.addEventListener('resize', () => {
+    if (dotRaf) return;
+    dotRaf = requestAnimationFrame(() => {
+      dotRaf = null;
+      syncDotMode();
+    });
+  }, { passive: true });
 
   const sectionObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {

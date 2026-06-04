@@ -123,6 +123,32 @@ body {
   display: inline-block;
 }
 
+/* =============================================
+   FLYING DOT
+   The logo's blue period detaches and glides down the sidebar to land at the
+   end of the active nav link, then back home to the logo. Desktop/tablet only
+   (the rail is vertical there); on mobile the static .logo-dot takes over.
+   The element is reused — its transform is animated, so it physically travels.
+============================================= */
+.flying-dot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0.30rem;
+  height: 0.30rem;
+  background: var(--blue);
+  pointer-events: none;
+  z-index: 101; /* above the rail, below nothing it needs to interact with */
+  will-change: transform;
+  transition: transform 0.55s var(--ease-out-quart);
+}
+
+/* JS drives the flying dot on desktop; hide the static glyph so the wordmark
+   reads "Oscar." with the real (animated) dot. Width stays reserved as anchor. */
+.flying-dot-active .logo-dot {
+  visibility: hidden;
+}
+
 /* Nav links */
 .sidebar-nav {
   display: flex;
@@ -1018,6 +1044,16 @@ body[data-audience="dev"] .aud--dev {
 
   .sidebar-logo {
     margin-bottom: 0;
+  }
+
+  /* The horizontal top bar has no vertical rail to fly down: keep the static
+     period and never show the flier, regardless of the .flying-dot-active flag. */
+  .flying-dot {
+    display: none;
+  }
+
+  .flying-dot-active .logo-dot {
+    visibility: visible;
   }
 
   .sidebar-nav {

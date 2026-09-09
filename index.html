@@ -152,40 +152,11 @@
         <button class="filter-chip" type="button" data-filter="mobile" aria-pressed="false">Mobile</button>
         <button class="filter-chip" type="button" data-filter="full-stack" aria-pressed="false">Full Stack</button>
         <button class="filter-chip" type="button" data-filter="webdesign" aria-pressed="false">Webdesign</button>
-        <p class="filter-count" aria-live="polite">6 Projekte</p>
+        <button class="filter-chip" type="button" data-filter="tool" aria-pressed="false">Tool</button>
+        <p class="filter-count" aria-live="polite">10 Projekte</p>
       </div>
 
       <div class="project-list">
-
-        <!-- Project: Menu Maker -->
-        <article class="project-item" data-category="web-app">
-          <div class="project-info">
-            <p class="project-label">Web App · 2025</p>
-            <h3 class="project-name">Menu Maker</h3>
-            <p class="project-tagline">Cocktailkarten aus einem Foto: Claude liest die Design-DNA, die App baut druckfertige Menüs.</p>
-            <p class="project-desc">
-              Ein lokales Design-Studio für Barkeeper und Gastronomen, gebaut um das Problem zu lösen, dass eine Cocktailkarte, die wirklich nach der eigenen Bar aussieht, normalerweise einen Designer, mehrere Runden und viel Zeit kostet. The Menu Maker macht den Weg von „Karte, die ich bewundere" zu „druckfertige eigene Karte" so kurz wie möglich.
-            </p>
-            <p class="project-desc">
-              Man lädt ein Foto einer Menükarte hoch, die einem gefällt, und Claude liest die Design-Regeln daraus aus: Farbpalette, Typografie, Layout-Prinzipien und sogar den Tonfall der Texte. Mehrere Referenzen verschmelzen zu einem „House Brain", einer Master-Stilbibliothek, die den eigenen Hausstil über alle Karten hinweg konsistent hält. Daraus komponiert die App fertige Menüs, die sich frei auf der Leinwand bearbeiten, verschieben und als PDF exportieren lassen.
-            </p>
-            <ul class="project-highlights">
-              <li>Design-DNA aus einem Foto extrahiert (Palette, Typografie, Layout, Voice) via Claude Vision</li>
-              <li>„House Brain": mehrere Referenzen werden zu einer konsistenten Master-Stilbibliothek zusammengeführt</li>
-              <li>Direkte Canvas-Bearbeitung: Ziehen, Skalieren, Ausrichten, Undo/Redo, Copy/Paste</li>
-              <li>Druckfertiger Export nach A5/A6 & Booklet als PDF (html2canvas + jsPDF)</li>
-              <li>Lokale Persistenz mit localStorage, keine Konten, keine Cloud</li>
-            </ul>
-            <span class="project-stack">React · Vite · Anthropic Claude API · html2canvas · jsPDF</span>
-          </div>
-          <div class="bento-grid">
-            <div class="bento-cell bento-wide"><img loading="lazy" decoding="async" src="assets/Menumakerex1.png" alt="Menu Maker Übersicht"></div>
-            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/menumakerex2.png" alt="Menu Maker Design-DNA"></div>
-            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/menumakerex3.png" alt="Menu Maker House Brain"></div>
-            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/menumakerex4.png" alt="Menu Maker Canvas-Editor"></div>
-            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/menumakerex5.png" alt="Menu Maker PDF-Export"></div>
-          </div>
-        </article>
 
         <!-- Project 1: Dram -->
         <article class="project-item" data-category="mobile">
@@ -216,6 +187,39 @@
             <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/Dram6.jpeg" alt="Dram Mobile"></div>
             <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/Dram7.jpeg" alt="Dram Screen 7"></div>
             <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/Dram8.jpeg" alt="Dram Screen 8"></div>
+          </div>
+        </article>
+
+        <!-- Project: Menu Maker -->
+        <article class="project-item" data-category="web-app">
+          <div class="project-info">
+            <p class="project-label">Web App · 2025</p>
+            <h3 class="project-name">Menu Maker</h3>
+            <p class="project-tagline">Cocktailkarten aus einem Foto: Claude liest die Design-DNA, die App baut druckfertige Menüs.</p>
+            <p class="project-desc">
+              Ein lokales Design-Studio für Barkeeper und Gastronomen, gebaut um das Problem zu lösen, dass eine Cocktailkarte, die wirklich nach der eigenen Bar aussieht, normalerweise einen Designer, mehrere Runden und viel Zeit kostet. The Menu Maker macht den Weg von „Karte, die ich bewundere" zu „druckfertige eigene Karte" so kurz wie möglich.
+            </p>
+            <p class="project-desc">
+              Man lädt ein Foto einer Menükarte hoch, die einem gefällt, und Claude liest die Design-Regeln daraus aus: Farbpalette, Typografie, Layout-Prinzipien und sogar den Tonfall der Texte. Mehrere Referenzen verschmelzen zu einem „House Brain", einer Master-Stilbibliothek, die den eigenen Hausstil über alle Karten hinweg konsistent hält. Daraus komponiert die App fertige Menüs, die sich frei auf der Leinwand bearbeiten, verschieben und als PDF exportieren lassen.
+            </p>
+            <ul class="project-highlights">
+              <li>Design-DNA aus einem Foto extrahiert (Palette, Typografie, Layout, Voice) via Claude Vision</li>
+              <li>„House Brain": mehrere Referenzen werden zu einer konsistenten Master-Stilbibliothek zusammengeführt</li>
+              <li>Direkte Canvas-Bearbeitung: Ziehen, Skalieren, Ausrichten, Undo/Redo, Copy/Paste</li>
+              <li>Druckfertiger Export nach A5/A6 & Booklet als PDF (html2canvas + jsPDF)</li>
+              <li>Lokale Persistenz mit localStorage, keine Konten, keine Cloud</li>
+            </ul>
+            <span class="project-stack">React · Vite · Anthropic Claude API · html2canvas · jsPDF</span>
+            <div class="project-links">
+              <a class="project-link" href="https://menu-maker-bay.vercel.app/" target="_blank" rel="noopener">Live ansehen <span aria-hidden="true">&#8599;</span></a>
+            </div>
+          </div>
+          <div class="bento-grid">
+            <div class="bento-cell bento-wide"><img loading="lazy" decoding="async" src="assets/Menumakerex1.png" alt="Menu Maker Übersicht"></div>
+            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/menumakerex2.png" alt="Menu Maker Design-DNA"></div>
+            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/menumakerex3.png" alt="Menu Maker House Brain"></div>
+            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/menumakerex4.png" alt="Menu Maker Canvas-Editor"></div>
+            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/menumakerex5.png" alt="Menu Maker PDF-Export"></div>
           </div>
         </article>
 
@@ -250,6 +254,82 @@
             <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/Prafix5.jpeg" alt="PräFix Profil"></div>
             <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/Prafix6.jpeg" alt="PräFix Wörterbuch"></div>
             <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/Prafix7.jpeg" alt="PräFix Lernen"></div>
+          </div>
+        </article>
+
+        <!-- Project 8: PourSmith -->
+        <article class="project-item" data-category="web-app">
+          <div class="project-info">
+            <p class="project-label">Web App · 2026</p>
+            <h3 class="project-name">PourSmith</h3>
+            <p class="project-tagline">Jeder Cocktail auf den Cent genau: Wareneinsatz, Marge und Preisempfehlung in Echtzeit.</p>
+            <p class="project-desc">
+              Eine Pour-Cost- und Margen-Engine für Bars, gebaut um das Problem zu lösen, dass die meisten Barkarten aus dem Bauch heraus bepreist werden. Wer die Zahlen doch rechnet, tut es in einer Excel-Tabelle, die niemand pflegt: Der Lieferant erhöht den Ginpreis, die Kalkulation veraltet still, und am Monatsende fehlt die Marge — ohne dass jemand sagen kann, welcher Drink sie gefressen hat. PourSmith macht diese Rechnung zur Nebensache und die Antwort sichtbar.
+            </p>
+            <p class="project-desc">
+              Man legt seine Einkaufspreise an — Flaschengröße, Bruttopreis, Mehrwertsteuersatz, Schwund — und die App leitet den Netto-Stückpreis daraus ab. Hausgemachte Preps wie Sirupe, Cordials und Infusionen bekommen ihre eigene Ausbeute und dürfen ineinander verschachtelt werden; die Kosten fließen rekursiv durch, inklusive Zyklusschutz. Daraus ergeben sich pro Rezept Wareneinsatz, Kostenquote, Nettomarge und ein Preisvorschlag, der die Zielmarge trifft — live beim Tippen. Über dem gesamten Rezeptbuch liegt ein Ampel-Meter, das die Schwachstellen einer Karte zeigt, bevor man die Detailtabelle überhaupt öffnet. Fertige Karten lassen sich als druckfertige Gästekarte oder als interne Kostenübersicht ausgeben.
+            </p>
+            <ul class="project-highlights">
+              <li>Kalkulation auf Zutatenebene: Gebindegröße, deutsche MwSt. (19 / 7 / 0 %) und Schwund fließen in den Netto-Stückpreis</li>
+              <li>Verschachtelte Preps mit eigener Ausbeute — rekursive Kostenauflösung mit Zyklusschutz</li>
+              <li>Live-Marge pro Rezept: Kostenquote, Nettomarge, Preisempfehlung zur Zielmarge</li>
+              <li>Ampel-Übersicht (rot / gelb / grün) über das ganze Rezeptbuch</li>
+              <li>Menüs mit Export als Gästekarte, interner Margenübersicht und CSV</li>
+              <li>Zweisprachig DE / EN über eine i18n-Lookup-Schicht, mit locale-korrektem EUR- und Prozentformat</li>
+              <li>Reibungslose Demo: anonymer Login, jeder Besucher bekommt seine eigene, frei editierbare Bar</li>
+              <li>Rechenkern als reine, getestete Module (92 Unit-Tests) — eine Quelle der Wahrheit für Tabellen, Export und Druckansicht</li>
+            </ul>
+            <span class="project-stack">React 19 · TypeScript (strict) · Vite · Tailwind CSS 4 · Supabase (Postgres + Row Level Security) · Vitest · Playwright · Vercel</span>
+            <div class="project-links">
+              <a class="project-link" href="https://poursmith.vercel.app/" target="_blank" rel="noopener">Live testen <span aria-hidden="true">&#8599;</span></a>
+            </div>
+          </div>
+          <div class="bento-grid">
+            <div class="bento-cell bento-wide"><img loading="lazy" decoding="async" src="assets/poursmith1.png" alt="PourSmith Übersicht"></div>
+            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/poursmith2.png" alt="PourSmith Zutatenkalkulation"></div>
+            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/poursmith22.png" alt="PourSmith Preps"></div>
+            <div class="bento-cell bento-tall"><img loading="lazy" decoding="async" src="assets/poursmith3.png" alt="PourSmith Rezept mit Live-Marge"></div>
+            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/poursmith4.png" alt="PourSmith Ampel-Übersicht"></div>
+            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/poursmith5.png" alt="PourSmith Menü-Export"></div>
+          </div>
+        </article>
+        <!-- Project: Blatt -->
+        <article class="project-item" data-category="web-app">
+          <div class="project-info">
+            <p class="project-label">Progressive Web App · 2026</p>
+            <h3 class="project-name">Blatt</h3>
+            <p class="project-tagline">Deutsch lesen, ohne ins Englische abzurutschen.</p>
+            <p class="project-desc">
+              Eine lokal-first Lese-App für fortgeschrittene Deutschlernende, gebaut um ein Problem zu lösen, das zweisprachige Texte selbst erzeugen: Steht die Übersetzung daneben, liest das Auge sie mit. Blatt trennt die beiden Sprachen strikt — Deutsch ist der Normalzustand, Englisch kostet eine bewusste Geste. Beide sind nie gleichzeitig auf dem Bildschirm.
+            </p>
+            <p class="project-desc">
+              Absatzweise wird geblättert statt verglichen. Angetippte Wörter landen in einem Karteikartenstapel, der nach SM-2 wiederholt und im Cloze-Verfahren abgefragt wird. Lemmatisiert wird einmal beim Import, nicht beim Tippen — das Lesen bleibt ein Nachschlagen im Speicher, kein Rechenvorgang. Eine einzige ehrliche Statistik: die Flip-Rate. Keine Serien, keine Abzeichen, keine Punkte.
+            </p>
+            <ul class="project-highlights">
+              <li>Strikte Sprachtrennung als Leitprinzip der gesamten UI</li>
+              <li>Lemmatisierung zur Importzeit, nicht zur Laufzeit</li>
+              <li>SM-2-Wiederholungsalgorithmus mit Cloze-Karten</li>
+              <li>Vollständig offline über Service Worker, kein Backend</li>
+              <li>Reine, getestete Funktionen für Lemmatizer, Aligner und Scheduler</li>
+              <li>Zwei Farbebenen — Tinte und Graphit — statt Interface-Dekor</li>
+            </ul>
+            <span class="project-stack">React · TypeScript · Vite · Dexie (IndexedDB) · Tailwind · PWA</span>
+            <div class="project-links">
+              <a class="project-link" href="https://blatt-mu.vercel.app/" target="_blank" rel="noopener">Live testen <span aria-hidden="true">&#8599;</span></a>
+            </div>
+          </div>
+          <div class="bento-grid">
+            <div class="bento-cell bento-wide"><img loading="lazy" decoding="async" src="assets/blatt1.jpeg" alt="Blatt Leseansicht"></div>
+            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/blatt2.jpeg" alt="Blatt Absatzwechsel"></div>
+            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/blatt3.jpeg" alt="Blatt englische Seite"></div>
+            <div class="bento-cell bento-tall"><img loading="lazy" decoding="async" src="assets/blatt4.jpeg" alt="Blatt Wort antippen"></div>
+            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/blatt5.jpeg" alt="Blatt Karteikartenstapel"></div>
+            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/blatt6.jpeg" alt="Blatt Cloze-Abfrage"></div>
+            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/blatt7.jpeg" alt="Blatt Wiederholung"></div>
+            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/blatt8.jpeg" alt="Blatt Import"></div>
+            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/blatt9.jpeg" alt="Blatt Bibliothek"></div>
+            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/blatt10.jpeg" alt="Blatt Flip-Rate"></div>
+            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/blatt11.jpeg" alt="Blatt Offline-Ansicht"></div>
           </div>
         </article>
 
@@ -339,6 +419,55 @@
             <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/feast6.jpg" alt="Feast & Fizz Mobile"></div>
           </div>
         </article>
+
+        <!-- Project 6: HD-2D World Builder -->
+        <article class="project-item" data-category="tool">
+          <div class="project-info">
+            <p class="project-label">Unity Editor Tool · 2025</p>
+            <h3 class="project-name">HD-2D World Builder</h3>
+            <p class="project-tagline">Pixel-Art auf 3D-Geometrie: Male Texturen direkt auf ProBuilder-Wände, und das Tool baut daraus lebendige HD-2D-Welten im Stil von Octopath Traveler.</p>
+            <p class="project-desc">
+              Eine Unity-6-Editor-Erweiterung für Entwickler, gebaut um das Problem zu lösen, dass eine glaubwürdige HD-2D-Welt — Pixel-Optik trifft echte 3D-Tiefe — normalerweise stundenlanges manuelles Texturieren, UV-Fummelei und mühsame Kollisionsvermeidung kostet. Der World Builder macht den Weg von „leere Szene" zu „begehbares Diorama" so kurz wie möglich.
+            </p>
+            <p class="project-desc">
+              Man malt Pixel-Art im Painter-Fenster direkt auf einzelne Faces der 3D-Geometrie, und das Tool bäckt daraus saubere, pixelscharfe Texturen — Grid-genau ausgerichtet, unabhängig von der Face-Größe dank dichtebasiertem Pixel-Mapping. Straßen entstehen aus Splines, Gebäude samt smarter Dächer prozedural, und ein gemeinsamer räumlicher Belegungs-Index verhindert, dass sich jemals zwei Objekte überlappen. Kameras analysieren die Komposition und Tiefenschärfe automatisch mit.
+            </p>
+            <ul class="project-highlights">
+              <li>Pixel-Art wird via Face-Painter direkt auf 3D-ProBuilder-Geometrie gemalt und pixelscharf gebacken (dichtebasiertes Pixel-Mapping, bis 128×128)</li>
+              <li>Gemeinsamer Spatial Index als „law": jeder Generator prüft Belegung vor dem Platzieren — keine Überlappungen, je</li>
+              <li>Prozedurale Gebäude mit smarten Dächern (Cathedral, Thatched, Mansard, Japanese) und Spline-basierte Straßen mit Dekorations-Regeln</li>
+              <li>Style-Presets für konsistenten Look; handbemalte Faces werden nie von Style-Swaps überschrieben</li>
+              <li>HD-2D-Kamera mit Tiefenschärfe-Presets, Kompositions- und Occlusion-Analyse</li>
+              <li>Volle Undo-Unterstützung und Szenen-Rebuild über den Belegungs-Index</li>
+            </ul>
+            <span class="project-stack">Unity 6 · C# · ProBuilder · Unity Splines · URP · Cinemachine</span>
+          </div>
+        </article>
+
+        <!-- Project 7: Narrator -->
+        <article class="project-item" data-category="mobile">
+          <div class="project-info">
+            <p class="project-label">Mobile App · 2026</p>
+            <h3 class="project-name">Narrator</h3>
+            <p class="project-tagline">Aus einem Handy-Clip wird eine Naturdoku: Claude schreibt das Skript, eine Stimme spricht es über dein Video.</p>
+            <p class="project-desc">
+              Ein Studio in der Hosentasche, gebaut um alltägliche Handyaufnahmen in Doku-Szenen im Stil von David Attenborough zu verwandeln. Narrator macht den Weg von „banaler Clip meiner Katze" zu „epische Doku-Szene mit ehrfürchtigem Erzähler" so kurz wie möglich — ohne Schnittprogramm, ohne Skript, ohne dass man je ein Wort selbst tippt.
+            </p>
+            <p class="project-desc">
+              Man nimmt einen kurzen Clip auf (oder wählt ein Foto), und die App extrahiert Frames, die Claude Vision analysiert: Was passiert im Bild, welche Kreatur, welches Verhalten, welche Dramatik? Daraus schreibt Claude ein Erzähl-Skript im typischen Doku-Duktus — gespannt, poetisch, mit diesem trockenen britischen Understatement. Eine Text-to-Speech-Stimme spricht es ein, und die App spielt Video und Narration synchron übereinander ab. Am Ende teilt man das Ergebnis direkt aus der App.
+            </p>
+            <ul class="project-highlights">
+              <li>Frame-Extraktion aus Video und Foto via expo-video-thumbnails (kein On-Device-FFmpeg)</li>
+              <li>Doku-Skript aus den Frames generiert über Claude Vision, mit eigenem Narration-Prompt</li>
+              <li>Synchrone Wiedergabe von Clip + Narration auf dem Result-Screen (expo-video + expo-audio)</li>
+              <li>Voice hinter einer austauschbaren Voice-Schnittstelle: expo-speech oder ElevenLabs ohne Umbau der Aufrufer</li>
+              <li>Composer-Abstraktion (LocalComposer + geplanter serverloser RemoteComposer) für baked-in Narration als teilbares MP4</li>
+              <li>API-Key nie im Client — die Narration läuft über einen schlanken Proxy</li>
+            </ul>
+            <span class="project-stack">Expo (Dev Client) · React Native · TypeScript · expo-router · Claude API (Vision) · expo-speech / ElevenLabs</span>
+          </div>
+        </article>
+
 
       </div>
     </section>

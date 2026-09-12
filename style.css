@@ -1349,6 +1349,134 @@ body[data-audience="dev"] .aud--dev {
    Honour the user's OS-level "reduce motion" setting:
    stop the idle bob animations and disable smooth scroll.
 ============================================= */
+/* =============================================
+   LIGHTBOX — Screenshots gross ansehen
+   Im Bento-Grid sind die Bilder beschnitten (object-fit: cover in Zellen mit
+   fester Hoehe). Hier passiert das Gegenteil: nur max-width/max-height
+   begrenzen, sonst nichts. Ein hochkanter Handy-Screenshot stoesst an die
+   Hoehe und wird schmal-hoch, ein breiter Web-Screenshot an die Breite und
+   wird breit-flach — das Seitenverhaeltnis kommt aus der Datei selbst.
+============================================= */
+.bento-cell {
+  cursor: pointer;
+}
+
+.bento-cell:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200; /* ueber Sidebar (100) und Hamburger (101) */
+  display: grid;
+  grid-template-rows: 1fr auto;
+  place-items: center;
+  gap: 1rem;
+  padding: clamp(1rem, 4vw, 3rem);
+  /* Fast deckend plus Blur: bei reinem Alpha schimmerte der helle Hero-Text
+     noch durch und stritt mit dem Screenshot. */
+  /* Voll deckend, kein Fade: eine Overlay-Opacity unter 1 laesst den hellen
+     Hero-Text durchschimmern und macht den Screenshot flau. */
+  background: var(--black);
+}
+
+.lightbox[hidden] {
+  display: none;
+}
+
+.lightbox-stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(0.5rem, 2vw, 1.5rem);
+  width: 100%;
+  min-height: 0; /* damit die Grid-Zeile das Bild wirklich schrumpfen laesst */
+}
+
+.lightbox-img {
+  max-width: min(92vw, 78rem);
+  max-height: 82vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 0.75rem;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.6);
+  background: var(--surface);
+}
+
+/* Bedienelemente: Trefferflaeche mindestens 3rem, damit sie auch mit dem
+   Daumen sicher zu treffen sind. */
+.lightbox-nav,
+.lightbox-close {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--white);
+  cursor: pointer;
+  transition: color 0.2s var(--ease-out-quart), background-color 0.2s var(--ease-out-quart);
+}
+
+.lightbox-nav svg,
+.lightbox-close svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.lightbox-nav:hover,
+.lightbox-close:hover,
+.lightbox-nav:focus-visible,
+.lightbox-close:focus-visible {
+  color: var(--blue);
+  background-color: var(--surface-raised);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: clamp(0.5rem, 2vw, 1.25rem);
+  right: clamp(0.5rem, 2vw, 1.25rem);
+}
+
+.lightbox-counter {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  letter-spacing: var(--track-label);
+  color: var(--gray-dim);
+}
+
+/* Schmale Screens: die Pfeile wuerden ueber dem Bild liegen und den
+   Screenshot verdecken — also darunter in eine eigene Reihe umbrechen. */
+@media (max-width: 480px) {
+  .lightbox-stage {
+    flex-wrap: wrap;
+  }
+
+  .lightbox-img {
+    order: -1;
+    max-width: 100%;
+    max-height: 70vh;
+  }
+
+  .lightbox-stage .lightbox-prev {
+    margin-left: auto;
+  }
+
+  .lightbox-stage .lightbox-next {
+    margin-right: auto;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

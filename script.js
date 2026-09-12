@@ -347,5 +347,134 @@ document.addEventListener('DOMContentLoaded', () => {
     raf = requestAnimationFrame(frame);
   }
 
+  // =============================================
+  // LIGHTBOX — Screenshots gross ansehen
+  // Ein Overlay fuer die ganze Seite. Geoeffnet wird immer die Bildliste
+  // *eines* Projekts (ein .bento-grid), damit Handy- und Web-App-Screenshots
+  // nicht durcheinanderlaufen. Die Pfeile laufen im Kreis.
+  // =============================================
+  const lightbox = document.querySelector('#lightbox');
+  const bentoGrids = document.querySelectorAll('.bento-grid');
+
+  if (lightbox && bentoGrids.length) {
+    const lbImg = lightbox.querySelector('.lightbox-img');
+    const lbPrev = lightbox.querySelector('.lightbox-prev');
+    const lbNext = lightbox.querySelector('.lightbox-next');
+    const lbClose = lightbox.querySelector('.lightbox-close');
+    const lbCounter = lightbox.querySelector('.lightbox-counter');
+
+    let images = [];        // Bilder des gerade geoeffneten Projekts
+    let index = 0;
+    let lastFocused = null; // Zelle, von der aus geoeffnet wurde
+
+    const show = (i) => {
+      index = (i + images.length) % images.length; // Umlauf in beide Richtungen
+      const src = images[index];
+      lbImg.src = src.getAttribute('src');
+      lbImg.alt = src.getAttribute('alt') || '';
+      lbCounter.textContent = images.length > 1 ? `${index + 1} / ${images.length}` : '';
+
+      // Nachbarn vorladen: die Bilder im Grid sind lazy, ohne das haette der
+      // naechste Klick eine sichtbare Ladepause.
+      [index - 1, index + 1].forEach((n) => {
+        const neighbour = images[(n + images.length) % images.length];
+        if (neighbour && neighbour !== src) new Image().src = neighbour.getAttribute('src');
+      });
+    };
+
+    const open = (grid, cell) => {
+      images = Array.from(grid.querySelectorAll('img'));
+      if (!images.length) return;
+
+      const start = images.findIndex((img) => cell.contains(img));
+      lastFocused = cell;
+
+      const single = images.length < 2;
+      lbPrev.hidden = single;
+      lbNext.hidden = single;
+
+      show(start < 0 ? 0 : start);
+
+      // Scrollbarbreite ausgleichen, sonst springt das Layout beim Sperren.
+      const scrollbar = window.innerWidth - document.documentElement.clientWidth;
+      if (scrollbar > 0) document.body.style.paddingRight = `${scrollbar}px`;
+      document.body.style.overflow = 'hidden';
+
+      lightbox.hidden = false;
+      lightbox.setAttribute('aria-hidden', 'false');
+      lbClose.focus();
+    };
+
+    const close = () => {
+      lightbox.hidden = true;
+      lightbox.setAttribute('aria-hidden', 'true');
+      lbImg.removeAttribute('src');
+      document.body.style.overflow = '';
+      document.body.style.paddingRight = '';
+      if (lastFocused) lastFocused.focus();
+      lastFocused = null;
+    };
+
+    bentoGrids.forEach((grid) => {
+      grid.querySelectorAll('.bento-cell').forEach((cell) => {
+        cell.tabIndex = 0;
+        cell.setAttribute('role', 'button');
+      });
+
+      // Delegation: ein Listener pro Projekt statt einem pro Bild.
+      grid.addEventListener('click', (e) => {
+        const cell = e.target.closest('.bento-cell');
+        if (cell && grid.contains(cell)) open(grid, cell);
+      });
+
+      grid.addEventListener('keydown', (e) => {
+        if (e.key !== 'Enter' && e.key !== ' ') return;
+        const cell = e.target.closest('.bento-cell');
+        if (!cell || !grid.contains(cell)) return;
+        e.preventDefault(); // Space wuerde sonst die Seite scrollen
+        open(grid, cell);
+      });
+    });
+
+    lbPrev.addEventListener('click', () => show(index - 1));
+    lbNext.addEventListener('click', () => show(index + 1));
+    lbClose.addEventListener('click', close);
+
+    // Klick auf den Hintergrund (nicht auf Bild oder Buttons) schliesst.
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox || e.target.classList.contains('lightbox-stage')) close();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (lightbox.hidden) return;
+      if (e.key === 'Escape') close();
+      else if (e.key === 'ArrowLeft') show(index - 1);
+      else if (e.key === 'ArrowRight') show(index + 1);
+      else if (e.key === 'Tab') {
+        // Fokus im Overlay halten
+        const stops = [lbClose, lbPrev, lbNext].filter((el) => !el.hidden);
+        const first = stops[0];
+        const last = stops[stops.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    });
+
+    // Wischen auf Touch: horizontale Geste ueber ~3rem blaettert.
+    let swipeX = null;
+    lightbox.addEventListener('pointerdown', (e) => { swipeX = e.clientX; });
+    lightbox.addEventListener('pointerup', (e) => {
+      if (swipeX === null) return;
+      const dx = e.clientX - swipeX;
+      swipeX = null;
+      if (Math.abs(dx) > 48) show(dx < 0 ? index + 1 : index - 1);
+    });
+  }
+
 
 });

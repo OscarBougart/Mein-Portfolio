@@ -5,9 +5,25 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Oscar Bougart · Portfolio</title>
+  <title>Oscar Bougart · Full-Stack-Entwickler</title>
+  <meta name="description" content="Full-Stack-Entwickler mit zehn Jahren Gastronomie im Rücken. Web- und Mobile-Produkte, die echte Probleme lösen — von der Kalkulation hinter der Bar bis zur Lese-App.">
+  <link rel="canonical" href="https://oscarbougart.github.io/Mein-Portfolio/">
+
+  <!-- Open Graph / Twitter: der Link landet in Bewerbungen, LinkedIn und Mails.
+       og:image braucht eine absolute URL, relative Pfade ignorieren die Crawler. -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://oscarbougart.github.io/Mein-Portfolio/">
+  <meta property="og:title" content="Oscar Bougart · Full-Stack-Entwickler">
+  <meta property="og:description" content="Web- und Mobile-Produkte, die echte Probleme lösen. Zehn Jahre hinter der Bar, heute Full-Stack-Entwickler.">
+  <meta property="og:image" content="https://oscarbougart.github.io/Mein-Portfolio/assets/poursmith1.png">
+  <meta property="og:locale" content="de_DE">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Oscar Bougart · Full-Stack-Entwickler">
+  <meta name="twitter:description" content="Web- und Mobile-Produkte, die echte Probleme lösen. Zehn Jahre hinter der Bar, heute Full-Stack-Entwickler.">
+  <meta name="twitter:image" content="https://oscarbougart.github.io/Mein-Portfolio/assets/poursmith1.png">
+
   <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="Images/Inspiration/Carbonelk.logosvg.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/Carbonelk.logosvg.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -46,15 +62,15 @@
 
       <!-- Tab content panels -->
       <div class="hero-statement" data-audience-panel="recruiter">
-        <h1>Full-Stack-Entwickler mit Erfahrung in Web- & App-Entwicklung, bereit etwas Bleibendes zu schaffen.</h1>
+        <h1>Zehn Jahre hinter der Bar, heute Full-Stack-Entwickler. Ich baue die Software, die mir damals gefehlt hat.</h1>
         <a href="assets/Oscar-Bougart-Lebenslauf.pdf" target="_blank" rel="noopener" class="hero-cta">Lebenslauf herunterladen</a>
       </div>
 
       <div class="hero-statement hidden" data-audience-panel="dev">
         <h1>
-          Von der ersten Idee bis zum fertigen Produkt – ich bin dabei. Echte Projekte, echtes Wachstum.
+          Websites, Web-Apps und mobile Apps. Besonders gern für Gastronomie und kleine Betriebe, die Branche kenne ich von innen.
         </h1>
-        <a href="https://github.com/OscarBougart" target="_blank" rel="noopener" class="hero-cta">GitHub ansehen</a>
+        <a href="#projekte" class="hero-cta">Arbeit ansehen</a>
       </div>
 
       <!-- Scroll indicator -->
@@ -158,7 +174,201 @@
 
       <div class="project-list">
 
-        <!-- Project 1: Dram -->
+        <!-- Project: PourSmith -->
+        <article class="project-item" data-category="web-app">
+          <div class="project-info">
+            <p class="project-label">Web App · 2026</p>
+            <h3 class="project-name">PourSmith</h3>
+            <p class="project-tagline">Jeder Cocktail auf den Cent genau: Wareneinsatz, Marge und Preisempfehlung in Echtzeit.</p>
+            <p class="project-desc">
+              Die meisten Barkarten werden aus dem Bauch heraus bepreist. Wer doch rechnet, tut es in einer Excel-Tabelle, die niemand pflegt: Der Ginpreis steigt, die Kalkulation veraltet still, und am Monatsende fehlt die Marge.
+            </p>
+            <p class="project-desc">
+              PourSmith rechnet mit: Einkaufspreise mit Gebindegröße, Mehrwertsteuer und Schwund ergeben den Netto-Stückpreis. Hausgemachte Sirupe und Cordials dürfen ineinander verschachtelt sein, die Kosten fließen rekursiv durch. Pro Rezept stehen Kostenquote, Nettomarge und ein Preisvorschlag live beim Tippen; fertige Karten gehen als Gästekarte oder interne Kostenübersicht raus.
+            </p>
+            <ul class="project-highlights">
+              <li>Netto-Stückpreis aus Gebindegröße, deutscher MwSt. und Schwund</li>
+              <li>Verschachtelte Preps mit eigener Ausbeute, rekursiv aufgelöst, mit Zyklusschutz</li>
+              <li>Ampel-Übersicht in Rot, Gelb und Grün über das ganze Rezeptbuch</li>
+              <li>Zweisprachig DE / EN mit locale-korrektem EUR- und Prozentformat</li>
+              <li>Rechenkern als reine Module, abgesichert durch 92 Unit-Tests</li>
+            </ul>
+            <span class="project-stack">React 19 · TypeScript (strict) · Vite · Tailwind CSS 4 · Supabase (Postgres + Row Level Security) · Vitest · Playwright · Vercel</span>
+            <div class="project-links">
+              <a class="project-link" href="https://poursmith.vercel.app/" target="_blank" rel="noopener">Live testen <span aria-hidden="true">&#8599;</span></a>
+              <a class="project-link project-link--ghost" href="https://github.com/OscarBougart/poursmith" target="_blank" rel="noopener" aria-label="PourSmith auf GitHub">GitHub <span aria-hidden="true">&#8599;</span></a>
+            </div>
+          </div>
+          <div class="bento-grid">
+            <div class="bento-cell bento-wide"><img loading="lazy" decoding="async" src="assets/poursmith1.png" alt="PourSmith Übersicht"></div>
+            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/poursmith2.png" alt="PourSmith Zutatenkalkulation"></div>
+            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/poursmith22.png" alt="PourSmith Preps"></div>
+            <div class="bento-cell bento-tall"><img loading="lazy" decoding="async" src="assets/poursmith3.png" alt="PourSmith Rezept mit Live-Marge"></div>
+            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/poursmith4.png" alt="PourSmith Ampel-Übersicht"></div>
+            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/poursmith5.png" alt="PourSmith Menü-Export"></div>
+          </div>
+        </article>
+
+        <!-- Project: Blatt -->
+        <article class="project-item" data-category="web-app">
+          <div class="project-info">
+            <p class="project-label">Progressive Web App · 2026</p>
+            <h3 class="project-name">Blatt</h3>
+            <p class="project-tagline">Deutsch lesen, ohne ins Englische abzurutschen.</p>
+            <p class="project-desc">
+              Eine lokal-first Lese-App für fortgeschrittene Deutschlernende. Zweisprachige Texte erzeugen ihr eigenes Problem: Steht die Übersetzung daneben, liest das Auge sie mit. Blatt trennt die Sprachen strikt — Deutsch ist der Normalzustand, Englisch kostet eine bewusste Geste. Beide sind nie gleichzeitig auf dem Bildschirm.
+            </p>
+            <p class="project-desc">
+              Absatzweise wird geblättert statt verglichen. Angetippte Wörter landen in einem Karteikartenstapel, der nach SM-2 wiederholt und im Cloze-Verfahren abgefragt wird. Eine einzige ehrliche Statistik: die Flip-Rate. Keine Serien, keine Abzeichen, keine Punkte.
+            </p>
+            <ul class="project-highlights">
+              <li>Strikte Sprachtrennung als Leitprinzip der gesamten UI</li>
+              <li>Lemmatisierung zur Importzeit, nicht zur Laufzeit</li>
+              <li>SM-2-Wiederholungsalgorithmus mit Cloze-Karten</li>
+              <li>Vollständig offline über Service Worker, kein Backend</li>
+              <li>Zwei Farbebenen, Tinte und Graphit, statt Interface-Dekor</li>
+            </ul>
+            <span class="project-stack">React · TypeScript · Vite · Dexie (IndexedDB) · Tailwind · PWA</span>
+            <div class="project-links">
+              <a class="project-link" href="https://blatt-mu.vercel.app/" target="_blank" rel="noopener">Live testen <span aria-hidden="true">&#8599;</span></a>
+              <a class="project-link project-link--ghost" href="https://github.com/OscarBougart/blatt" target="_blank" rel="noopener" aria-label="Blatt auf GitHub">GitHub <span aria-hidden="true">&#8599;</span></a>
+            </div>
+          </div>
+          <div class="bento-grid">
+            <div class="bento-cell bento-wide"><img loading="lazy" decoding="async" src="assets/blatt1.jpeg" alt="Blatt Leseansicht"></div>
+            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/blatt2.jpeg" alt="Blatt Absatzwechsel"></div>
+            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/blatt3.jpeg" alt="Blatt englische Seite"></div>
+            <div class="bento-cell bento-tall"><img loading="lazy" decoding="async" src="assets/blatt4.jpeg" alt="Blatt Wort antippen"></div>
+            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/blatt5.jpeg" alt="Blatt Karteikartenstapel"></div>
+            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/blatt6.jpeg" alt="Blatt Cloze-Abfrage"></div>
+            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/blatt7.jpeg" alt="Blatt Wiederholung"></div>
+            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/blatt8.jpeg" alt="Blatt Import"></div>
+            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/blatt9.jpeg" alt="Blatt Bibliothek"></div>
+            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/blatt10.jpeg" alt="Blatt Flip-Rate"></div>
+            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/blatt11.jpeg" alt="Blatt Offline-Ansicht"></div>
+          </div>
+        </article>
+
+        <!-- Project: Menu Maker -->
+        <article class="project-item" data-category="web-app">
+          <div class="project-info">
+            <p class="project-label">Web App · 2025</p>
+            <h3 class="project-name">Menu Maker</h3>
+            <p class="project-tagline">Claude liest die Design-DNA eines Fotos, die App baut die Karte.</p>
+            <p class="project-desc">
+              Eine Cocktailkarte, die wirklich nach der eigenen Bar aussieht, kostet normalerweise einen Designer, mehrere Runden und viel Zeit. The Menu Maker ist ein lokales Design-Studio für Barkeeper und verkürzt das auf einen Nachmittag.
+            </p>
+            <p class="project-desc">
+              Man lädt das Foto einer Karte hoch, die einem gefällt, und Claude liest die Regeln daraus aus: Farbpalette, Typografie, Layout, sogar den Tonfall. Mehrere Referenzen verschmelzen zu einem „House Brain“, das den Hausstil über alle Karten hinweg konsistent hält. Daraus komponiert die App fertige Menüs zum Bearbeiten und Drucken.
+            </p>
+            <ul class="project-highlights">
+              <li>Palette, Typografie, Layout und Voice aus einem Foto gelesen</li>
+              <li>„House Brain“ führt mehrere Referenzen zu einem Hausstil zusammen</li>
+              <li>Direkte Canvas-Bearbeitung mit Ziehen, Skalieren, Ausrichten und Undo/Redo</li>
+              <li>Druckfertiger PDF-Export nach A5, A6 und Booklet</li>
+              <li>Alles lokal im Browser, keine Konten, keine Cloud</li>
+            </ul>
+            <span class="project-stack">React · Vite · Anthropic Claude API · html2canvas · jsPDF</span>
+            <div class="project-links">
+              <a class="project-link" href="https://menu-maker-bay.vercel.app/" target="_blank" rel="noopener">Live ansehen <span aria-hidden="true">&#8599;</span></a>
+              <a class="project-link project-link--ghost" href="https://github.com/OscarBougart/menu-maker" target="_blank" rel="noopener" aria-label="Menu Maker auf GitHub">GitHub <span aria-hidden="true">&#8599;</span></a>
+            </div>
+          </div>
+          <div class="bento-grid">
+            <div class="bento-cell bento-wide"><img loading="lazy" decoding="async" src="assets/Menumakerex1.png" alt="Menu Maker Übersicht"></div>
+            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/menumakerex2.png" alt="Menu Maker Design-DNA"></div>
+            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/menumakerex3.png" alt="Menu Maker House Brain"></div>
+            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/menumakerex4.png" alt="Menu Maker Canvas-Editor"></div>
+            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/menumakerex5.png" alt="Menu Maker PDF-Export"></div>
+          </div>
+        </article>
+
+        <!-- Project: Narrator -->
+        <article class="project-item project-item--solo" data-category="mobile">
+          <div class="project-info">
+            <p class="project-label">Mobile App · 2026</p>
+            <h3 class="project-name">Narrator</h3>
+            <p class="project-tagline">Aus einem Handy-Clip wird eine Naturdoku, mit Skript und Erzählerstimme.</p>
+            <p class="project-desc">
+              Ein Studio in der Hosentasche: Narrator verwandelt alltägliche Handyaufnahmen in Doku-Szenen im Stil von David Attenborough. Vom banalen Clip der eigenen Katze zur epischen Szene mit ehrfürchtigem Erzähler — ohne Schnittprogramm, ohne Skript, ohne ein einziges selbst getipptes Wort.
+            </p>
+            <p class="project-desc">
+              Man nimmt einen kurzen Clip auf, die App extrahiert Frames, und Claude Vision liest heraus, was darin passiert: welche Kreatur, welches Verhalten, welche Dramatik. Daraus entsteht ein Skript im typischen Doku-Duktus, eine Stimme spricht es ein, und Video und Narration laufen synchron übereinander.
+            </p>
+            <ul class="project-highlights">
+              <li>Frame-Extraktion aus Video und Foto, ohne On-Device-FFmpeg</li>
+              <li>Doku-Skript aus den Frames über Claude Vision, eigener Narration-Prompt</li>
+              <li>Clip und Narration synchron auf dem Result-Screen</li>
+              <li>Austauschbare Voice-Schnittstelle für expo-speech oder ElevenLabs</li>
+              <li>API-Key nie im Client, die Narration läuft über einen Proxy</li>
+            </ul>
+            <span class="project-stack">Expo (Dev Client) · React Native · TypeScript · expo-router · Claude API (Vision) · expo-speech / ElevenLabs</span>
+            <div class="project-links">
+              <a class="project-link project-link--ghost" href="https://github.com/OscarBougart/narrator" target="_blank" rel="noopener" aria-label="Narrator auf GitHub">GitHub <span aria-hidden="true">&#8599;</span></a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project: PräFix -->
+        <article class="project-item" data-category="mobile">
+          <div class="project-info">
+            <p class="project-label">Mobile App · 2025</p>
+            <h3 class="project-name">PräFix</h3>
+            <p class="project-tagline">Trennbare Verben spielerisch üben, von A1 bis B2.</p>
+            <p class="project-desc">
+              Eine mobile Lern-App für Deutsch als Fremdsprache, gebaut für eines der kniffligsten Themen der deutschen Grammatik: trennbare Verben. Präfix macht Vorsilben zur Gewohnheit, statt sie auswendig lernen zu lassen.
+            </p>
+            <p class="project-desc">
+              Spieler ergänzen die fehlende Vorsilbe in echten Sätzen und arbeiten sich durch vier Schwierigkeitsstufen, von einfachen A1-Verben bis hin zu komplexen B2-Strukturen mit Nebensätzen. Jedes Verb gilt als gemeistert, sobald es dreimal korrekt beantwortet wurde.
+            </p>
+            <ul class="project-highlights">
+              <li>Vier CEFR-Stufen von A1 bis B2, sequentiell freigeschaltet</li>
+              <li>Drei-Sterne-Bewertung und Fortschrittsanzeige pro Level</li>
+              <li>Favoriten-Modus und Fehler-Üben-Modus</li>
+              <li>Täglicher Streak-Tracker und Profilscreen</li>
+              <li>Lernbereich mit Regelerklärungen und integriertem Wörterbuch</li>
+            </ul>
+            <span class="project-stack">Expo · React Native · TypeScript · Tailwind</span>
+            <div class="project-links">
+              <a class="project-link project-link--ghost" href="https://github.com/OscarBougart/prafix-app" target="_blank" rel="noopener" aria-label="PräFix auf GitHub">GitHub <span aria-hidden="true">&#8599;</span></a>
+            </div>
+          </div>
+          <div class="bento-grid">
+            <div class="bento-cell bento-wide"><img loading="lazy" decoding="async" src="assets/Prafix.jpeg" alt="PräFix Übersicht"></div>
+            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/Prafix1.jpeg" alt="PräFix Detail"></div>
+            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/Prafix2.jpeg" alt="PräFix Feature"></div>
+            <div class="bento-cell bento-tall"><img loading="lazy" decoding="async" src="assets/Prafix3.jpeg" alt="PräFix Stufen"></div>
+            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/Prafix4.jpeg" alt="PräFix Streak"></div>
+            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/Prafix5.jpeg" alt="PräFix Profil"></div>
+            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/Prafix6.jpeg" alt="PräFix Wörterbuch"></div>
+            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/Prafix7.jpeg" alt="PräFix Lernen"></div>
+          </div>
+        </article>
+
+        <!-- Project: HD-2D World Builder -->
+        <article class="project-item project-item--solo" data-category="tool">
+          <div class="project-info">
+            <p class="project-label">Unity Editor Tool · 2025</p>
+            <h3 class="project-name">HD-2D World Builder</h3>
+            <p class="project-tagline">Pixel-Art direkt auf 3D-Wände malen und daraus HD-2D-Welten bauen.</p>
+            <p class="project-desc">
+              Eine glaubwürdige HD-2D-Welt — Pixel-Optik auf echter 3D-Tiefe, wie in Octopath Traveler — kostet normalerweise stundenlanges manuelles Texturieren, UV-Fummelei und mühsame Kollisionsvermeidung. Diese Unity-6-Editor-Erweiterung bringt einen von der leeren Szene zum begehbaren Diorama.
+            </p>
+            <p class="project-desc">
+              Man malt Pixel-Art im Painter-Fenster direkt auf einzelne Faces der Geometrie, das Tool bäckt daraus pixelscharfe Texturen, grid-genau ausgerichtet unabhängig von der Face-Größe. Straßen entstehen aus Splines, Gebäude prozedural, und ein gemeinsamer Belegungs-Index verhindert, dass sich zwei Objekte je überlappen.
+            </p>
+            <ul class="project-highlights">
+              <li>Face-Painter malt Pixel-Art direkt auf ProBuilder-Geometrie, bis 128×128</li>
+              <li>Jeder Generator prüft den gemeinsamen Spatial Index vor dem Platzieren</li>
+              <li>Prozedurale Gebäude mit smarten Dächern und Spline-basierte Straßen</li>
+              <li>Style-Presets, die handbemalte Faces nie überschreiben</li>
+              <li>HD-2D-Kamera mit Tiefenschärfe-Presets und Kompositionsanalyse</li>
+            </ul>
+            <span class="project-stack">Unity 6 · C# · ProBuilder · Unity Splines · URP · Cinemachine</span>
+          </div>
+        </article>
+
+        <!-- Project: Dram -->
         <article class="project-item" data-category="mobile">
           <div class="project-info">
             <p class="project-label">Mobile App · 2025</p>
@@ -190,174 +400,39 @@
           </div>
         </article>
 
-        <!-- Project: Menu Maker -->
-        <article class="project-item" data-category="web-app">
+        <!-- Project: Feast & Fizz -->
+        <article class="project-item" data-category="full-stack">
           <div class="project-info">
-            <p class="project-label">Web App · 2025</p>
-            <h3 class="project-name">Menu Maker</h3>
-            <p class="project-tagline">Claude liest die Design-DNA eines Fotos, die App baut die Karte.</p>
+            <p class="project-label">Full Stack · 2024</p>
+            <h3 class="project-name">Feast &amp; Fizz</h3>
+            <p class="project-tagline">Full-Stack-Rezeptsuche mit Django-Backend und Echtzeit-Filter.</p>
             <p class="project-desc">
-              Eine Cocktailkarte, die wirklich nach der eigenen Bar aussieht, kostet normalerweise einen Designer, mehrere Runden und viel Zeit. The Menu Maker ist ein lokales Design-Studio für Barkeeper und verkürzt das auf einen Nachmittag.
+              Eine vollständige Full-Stack-App für Cocktail- und Speiserezepte. Nutzer können nach Namen oder Zutaten suchen und erhalten sofort passende Ergebnisse, gespeist aus einer externen Rezept-API und einem eigenen Django-Backend.
             </p>
             <p class="project-desc">
-              Man lädt das Foto einer Karte hoch, die einem gefällt, und Claude liest die Regeln daraus aus: Farbpalette, Typografie, Layout, sogar den Tonfall. Mehrere Referenzen verschmelzen zu einem „House Brain“, das den Hausstil über alle Karten hinweg konsistent hält. Daraus komponiert die App fertige Menüs zum Bearbeiten und Drucken.
+              Besonderes Augenmerk lag auf der Performance: Suchresultate werden gecacht, Anfragen debounced und die UI reagiert in Echtzeit, ohne merkliche Ladezeiten.
             </p>
             <ul class="project-highlights">
-              <li>Palette, Typografie, Layout und Voice aus einem Foto gelesen</li>
-              <li>„House Brain“ führt mehrere Referenzen zu einem Hausstil zusammen</li>
-              <li>Direkte Canvas-Bearbeitung mit Ziehen, Skalieren, Ausrichten und Undo/Redo</li>
-              <li>Druckfertiger PDF-Export nach A5, A6 und Booklet</li>
-              <li>Alles lokal im Browser, keine Konten, keine Cloud</li>
+              <li>Django REST Framework Backend</li>
+              <li>Externe API-Integration</li>
+              <li>Debounced Echtzeit-Suche</li>
             </ul>
-            <span class="project-stack">React · Vite · Anthropic Claude API · html2canvas · jsPDF</span>
+            <span class="project-stack">React · Django · Tailwind · Vite · API</span>
             <div class="project-links">
-              <a class="project-link" href="https://menu-maker-bay.vercel.app/" target="_blank" rel="noopener">Live ansehen <span aria-hidden="true">&#8599;</span></a>
+              <a class="project-link project-link--ghost" href="https://github.com/OscarBougart/feast-and-fizz" target="_blank" rel="noopener" aria-label="Feast &amp; Fizz auf GitHub">GitHub <span aria-hidden="true">&#8599;</span></a>
             </div>
           </div>
           <div class="bento-grid">
-            <div class="bento-cell bento-wide"><img loading="lazy" decoding="async" src="assets/Menumakerex1.png" alt="Menu Maker Übersicht"></div>
-            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/menumakerex2.png" alt="Menu Maker Design-DNA"></div>
-            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/menumakerex3.png" alt="Menu Maker House Brain"></div>
-            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/menumakerex4.png" alt="Menu Maker Canvas-Editor"></div>
-            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/menumakerex5.png" alt="Menu Maker PDF-Export"></div>
+            <div class="bento-cell bento-wide"><img loading="lazy" decoding="async" src="assets/feast3.jpg" alt="Feast & Fizz Übersicht"></div>
+            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/feast2.jpg" alt="Feast & Fizz Detail"></div>
+            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/feast.jpg" alt="Feast & Fizz Rezept"></div>
+            <div class="bento-cell bento-tall"><img loading="lazy" decoding="async" src="assets/feast4.jpg" alt="Feast & Fizz Feature"></div>
+            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/feast5.jpg" alt="Feast & Fizz UI"></div>
+            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/feast6.jpg" alt="Feast & Fizz Mobile"></div>
           </div>
         </article>
 
-        <!-- Project 2: PräFix -->
-        <article class="project-item" data-category="mobile">
-          <div class="project-info">
-            <p class="project-label">Mobile App · 2025</p>
-            <h3 class="project-name">PräFix</h3>
-            <p class="project-tagline">Trennbare Verben spielerisch üben, von A1 bis B2.</p>
-            <p class="project-desc">
-              Eine mobile Lern-App für Deutsch als Fremdsprache, gebaut für eines der kniffligsten Themen der deutschen Grammatik: trennbare Verben. Präfix macht Vorsilben zur Gewohnheit, statt sie auswendig lernen zu lassen.
-            </p>
-            <p class="project-desc">
-              Spieler ergänzen die fehlende Vorsilbe in echten Sätzen und arbeiten sich durch vier Schwierigkeitsstufen, von einfachen A1-Verben bis hin zu komplexen B2-Strukturen mit Nebensätzen. Jedes Verb gilt als gemeistert, sobald es dreimal korrekt beantwortet wurde.
-            </p>
-            <ul class="project-highlights">
-              <li>Vier CEFR-Stufen von A1 bis B2, sequentiell freigeschaltet</li>
-              <li>Drei-Sterne-Bewertung und Fortschrittsanzeige pro Level</li>
-              <li>Favoriten-Modus und Fehler-Üben-Modus</li>
-              <li>Täglicher Streak-Tracker und Profilscreen</li>
-              <li>Lernbereich mit Regelerklärungen und integriertem Wörterbuch</li>
-            </ul>
-            <span class="project-stack">Expo · React Native · TypeScript · Tailwind</span>
-          </div>
-          <div class="bento-grid">
-            <div class="bento-cell bento-wide"><img loading="lazy" decoding="async" src="assets/Prafix.jpeg" alt="PräFix Übersicht"></div>
-            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/Prafix1.jpeg" alt="PräFix Detail"></div>
-            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/Prafix2.jpeg" alt="PräFix Feature"></div>
-            <div class="bento-cell bento-tall"><img loading="lazy" decoding="async" src="assets/Prafix3.jpeg" alt="PräFix Stufen"></div>
-            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/Prafix4.jpeg" alt="PräFix Streak"></div>
-            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/Prafix5.jpeg" alt="PräFix Profil"></div>
-            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/Prafix6.jpeg" alt="PräFix Wörterbuch"></div>
-            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/Prafix7.jpeg" alt="PräFix Lernen"></div>
-          </div>
-        </article>
-
-        <!-- Project 8: PourSmith -->
-        <article class="project-item" data-category="web-app">
-          <div class="project-info">
-            <p class="project-label">Web App · 2026</p>
-            <h3 class="project-name">PourSmith</h3>
-            <p class="project-tagline">Jeder Cocktail auf den Cent genau: Wareneinsatz, Marge und Preisempfehlung in Echtzeit.</p>
-            <p class="project-desc">
-              Die meisten Barkarten werden aus dem Bauch heraus bepreist. Wer doch rechnet, tut es in einer Excel-Tabelle, die niemand pflegt: Der Ginpreis steigt, die Kalkulation veraltet still, und am Monatsende fehlt die Marge.
-            </p>
-            <p class="project-desc">
-              PourSmith rechnet mit: Einkaufspreise mit Gebindegröße, Mehrwertsteuer und Schwund ergeben den Netto-Stückpreis. Hausgemachte Sirupe und Cordials dürfen ineinander verschachtelt sein, die Kosten fließen rekursiv durch. Pro Rezept stehen Kostenquote, Nettomarge und ein Preisvorschlag live beim Tippen; fertige Karten gehen als Gästekarte oder interne Kostenübersicht raus.
-            </p>
-            <ul class="project-highlights">
-              <li>Netto-Stückpreis aus Gebindegröße, deutscher MwSt. und Schwund</li>
-              <li>Verschachtelte Preps mit eigener Ausbeute, rekursiv aufgelöst, mit Zyklusschutz</li>
-              <li>Ampel-Übersicht in Rot, Gelb und Grün über das ganze Rezeptbuch</li>
-              <li>Zweisprachig DE / EN mit locale-korrektem EUR- und Prozentformat</li>
-              <li>Rechenkern als reine Module, abgesichert durch 92 Unit-Tests</li>
-            </ul>
-            <span class="project-stack">React 19 · TypeScript (strict) · Vite · Tailwind CSS 4 · Supabase (Postgres + Row Level Security) · Vitest · Playwright · Vercel</span>
-            <div class="project-links">
-              <a class="project-link" href="https://poursmith.vercel.app/" target="_blank" rel="noopener">Live testen <span aria-hidden="true">&#8599;</span></a>
-            </div>
-          </div>
-          <div class="bento-grid">
-            <div class="bento-cell bento-wide"><img loading="lazy" decoding="async" src="assets/poursmith1.png" alt="PourSmith Übersicht"></div>
-            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/poursmith2.png" alt="PourSmith Zutatenkalkulation"></div>
-            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/poursmith22.png" alt="PourSmith Preps"></div>
-            <div class="bento-cell bento-tall"><img loading="lazy" decoding="async" src="assets/poursmith3.png" alt="PourSmith Rezept mit Live-Marge"></div>
-            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/poursmith4.png" alt="PourSmith Ampel-Übersicht"></div>
-            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/poursmith5.png" alt="PourSmith Menü-Export"></div>
-          </div>
-        </article>
-        <!-- Project: Blatt -->
-        <article class="project-item" data-category="web-app">
-          <div class="project-info">
-            <p class="project-label">Progressive Web App · 2026</p>
-            <h3 class="project-name">Blatt</h3>
-            <p class="project-tagline">Deutsch lesen, ohne ins Englische abzurutschen.</p>
-            <p class="project-desc">
-              Eine lokal-first Lese-App für fortgeschrittene Deutschlernende. Zweisprachige Texte erzeugen ihr eigenes Problem: Steht die Übersetzung daneben, liest das Auge sie mit. Blatt trennt die Sprachen strikt — Deutsch ist der Normalzustand, Englisch kostet eine bewusste Geste. Beide sind nie gleichzeitig auf dem Bildschirm.
-            </p>
-            <p class="project-desc">
-              Absatzweise wird geblättert statt verglichen. Angetippte Wörter landen in einem Karteikartenstapel, der nach SM-2 wiederholt und im Cloze-Verfahren abgefragt wird. Eine einzige ehrliche Statistik: die Flip-Rate. Keine Serien, keine Abzeichen, keine Punkte.
-            </p>
-            <ul class="project-highlights">
-              <li>Strikte Sprachtrennung als Leitprinzip der gesamten UI</li>
-              <li>Lemmatisierung zur Importzeit, nicht zur Laufzeit</li>
-              <li>SM-2-Wiederholungsalgorithmus mit Cloze-Karten</li>
-              <li>Vollständig offline über Service Worker, kein Backend</li>
-              <li>Zwei Farbebenen, Tinte und Graphit, statt Interface-Dekor</li>
-            </ul>
-            <span class="project-stack">React · TypeScript · Vite · Dexie (IndexedDB) · Tailwind · PWA</span>
-            <div class="project-links">
-              <a class="project-link" href="https://blatt-mu.vercel.app/" target="_blank" rel="noopener">Live testen <span aria-hidden="true">&#8599;</span></a>
-            </div>
-          </div>
-          <div class="bento-grid">
-            <div class="bento-cell bento-wide"><img loading="lazy" decoding="async" src="assets/blatt1.jpeg" alt="Blatt Leseansicht"></div>
-            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/blatt2.jpeg" alt="Blatt Absatzwechsel"></div>
-            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/blatt3.jpeg" alt="Blatt englische Seite"></div>
-            <div class="bento-cell bento-tall"><img loading="lazy" decoding="async" src="assets/blatt4.jpeg" alt="Blatt Wort antippen"></div>
-            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/blatt5.jpeg" alt="Blatt Karteikartenstapel"></div>
-            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/blatt6.jpeg" alt="Blatt Cloze-Abfrage"></div>
-            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/blatt7.jpeg" alt="Blatt Wiederholung"></div>
-            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/blatt8.jpeg" alt="Blatt Import"></div>
-            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/blatt9.jpeg" alt="Blatt Bibliothek"></div>
-            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/blatt10.jpeg" alt="Blatt Flip-Rate"></div>
-            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/blatt11.jpeg" alt="Blatt Offline-Ansicht"></div>
-          </div>
-        </article>
-
-        <!-- Project 3: Starlit -->
-        <article class="project-item" data-category="webdesign">
-          <div class="project-info">
-            <p class="project-label">Webdesign · 2024</p>
-            <h3 class="project-name">Starlit</h3>
-            <p class="project-tagline">Minimalistisches Website-Konzept für ein AI-Produkt, klar und dezent futuristisch.</p>
-            <p class="project-desc">
-              Ein modernes, minimalistisches Website-Konzept für eine AI-Produktidee. Die Seite überzeugt durch klare Struktur, intuitive Navigation und einen dezent futuristischen Look, inspiriert von modernem SaaS-Design und nutzerzentrierter Ästhetik.
-            </p>
-            <p class="project-desc">
-              Ziel war es, komplexe technische Funktionen so zu präsentieren, dass sie sofort verständlich und ansprechend wirken, ohne die Eleganz des Designs zu opfern.
-            </p>
-            <ul class="project-highlights">
-              <li>Responsive Single-Page Layout</li>
-              <li>Animierte Hero-Sektion</li>
-              <li>Komponentenbasierte Architektur</li>
-            </ul>
-            <span class="project-stack">React · CSS · HTML · JavaScript</span>
-          </div>
-          <div class="bento-grid">
-            <div class="bento-cell bento-wide"><img loading="lazy" decoding="async" src="assets/starlit1.png" alt="Starlit Übersicht"></div>
-            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/starlit2.png" alt="Starlit Detail"></div>
-            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/starlit3.png" alt="Starlit Feature"></div>
-            <div class="bento-cell bento-tall"><img loading="lazy" decoding="async" src="assets/starlit4.png" alt="Starlit Sektion"></div>
-            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/starlit5.png" alt="Starlit UI"></div>
-            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/starlit6.png" alt="Starlit Mobile"></div>
-          </div>
-        </article>
-
-        <!-- Project 2: SpiritStack -->
+        <!-- Project: The SpiritStack -->
         <article class="project-item" data-category="web-app">
           <div class="project-info">
             <p class="project-label">Web App · 2024</p>
@@ -386,81 +461,34 @@
           </div>
         </article>
 
-        <!-- Project 3: Feast & Fizz -->
-        <article class="project-item" data-category="full-stack">
+        <!-- Project: Starlit -->
+        <article class="project-item" data-category="webdesign">
           <div class="project-info">
-            <p class="project-label">Full Stack · 2024</p>
-            <h3 class="project-name">Feast &amp; Fizz</h3>
-            <p class="project-tagline">Full-Stack-Rezeptsuche mit Django-Backend und Echtzeit-Filter.</p>
+            <p class="project-label">Webdesign · 2024</p>
+            <h3 class="project-name">Starlit</h3>
+            <p class="project-tagline">Minimalistisches Website-Konzept für ein AI-Produkt, klar und dezent futuristisch.</p>
             <p class="project-desc">
-              Eine vollständige Full-Stack-App für Cocktail- und Speiserezepte. Nutzer können nach Namen oder Zutaten suchen und erhalten sofort passende Ergebnisse, gespeist aus einer externen Rezept-API und einem eigenen Django-Backend.
+              Ein modernes, minimalistisches Website-Konzept für eine AI-Produktidee. Die Seite überzeugt durch klare Struktur, intuitive Navigation und einen dezent futuristischen Look, inspiriert von modernem SaaS-Design und nutzerzentrierter Ästhetik.
             </p>
             <p class="project-desc">
-              Besonderes Augenmerk lag auf der Performance: Suchresultate werden gecacht, Anfragen debounced und die UI reagiert in Echtzeit, ohne merkliche Ladezeiten.
+              Ziel war es, komplexe technische Funktionen so zu präsentieren, dass sie sofort verständlich und ansprechend wirken, ohne die Eleganz des Designs zu opfern.
             </p>
             <ul class="project-highlights">
-              <li>Django REST Framework Backend</li>
-              <li>Externe API-Integration</li>
-              <li>Debounced Echtzeit-Suche</li>
+              <li>Responsive Single-Page Layout</li>
+              <li>Animierte Hero-Sektion</li>
+              <li>Komponentenbasierte Architektur</li>
             </ul>
-            <span class="project-stack">React · Django · Tailwind · Vite · API</span>
+            <span class="project-stack">React · CSS · HTML · JavaScript</span>
           </div>
           <div class="bento-grid">
-            <div class="bento-cell bento-wide"><img loading="lazy" decoding="async" src="assets/feast3.jpg" alt="Feast & Fizz Übersicht"></div>
-            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/feast2.jpg" alt="Feast & Fizz Detail"></div>
-            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/feast.jpg" alt="Feast & Fizz Rezept"></div>
-            <div class="bento-cell bento-tall"><img loading="lazy" decoding="async" src="assets/feast4.jpg" alt="Feast & Fizz Feature"></div>
-            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/feast5.jpg" alt="Feast & Fizz UI"></div>
-            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/feast6.jpg" alt="Feast & Fizz Mobile"></div>
+            <div class="bento-cell bento-wide"><img loading="lazy" decoding="async" src="assets/starlit1.png" alt="Starlit Übersicht"></div>
+            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/starlit2.png" alt="Starlit Detail"></div>
+            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/starlit3.png" alt="Starlit Feature"></div>
+            <div class="bento-cell bento-tall"><img loading="lazy" decoding="async" src="assets/starlit4.png" alt="Starlit Sektion"></div>
+            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/starlit5.png" alt="Starlit UI"></div>
+            <div class="bento-cell"><img loading="lazy" decoding="async" src="assets/starlit6.png" alt="Starlit Mobile"></div>
           </div>
         </article>
-
-        <!-- Project 6: HD-2D World Builder -->
-        <article class="project-item" data-category="tool">
-          <div class="project-info">
-            <p class="project-label">Unity Editor Tool · 2025</p>
-            <h3 class="project-name">HD-2D World Builder</h3>
-            <p class="project-tagline">Pixel-Art direkt auf 3D-Wände malen und daraus HD-2D-Welten bauen.</p>
-            <p class="project-desc">
-              Eine glaubwürdige HD-2D-Welt — Pixel-Optik auf echter 3D-Tiefe, wie in Octopath Traveler — kostet normalerweise stundenlanges manuelles Texturieren, UV-Fummelei und mühsame Kollisionsvermeidung. Diese Unity-6-Editor-Erweiterung bringt einen von der leeren Szene zum begehbaren Diorama.
-            </p>
-            <p class="project-desc">
-              Man malt Pixel-Art im Painter-Fenster direkt auf einzelne Faces der Geometrie, das Tool bäckt daraus pixelscharfe Texturen, grid-genau ausgerichtet unabhängig von der Face-Größe. Straßen entstehen aus Splines, Gebäude prozedural, und ein gemeinsamer Belegungs-Index verhindert, dass sich zwei Objekte je überlappen.
-            </p>
-            <ul class="project-highlights">
-              <li>Face-Painter malt Pixel-Art direkt auf ProBuilder-Geometrie, bis 128×128</li>
-              <li>Jeder Generator prüft den gemeinsamen Spatial Index vor dem Platzieren</li>
-              <li>Prozedurale Gebäude mit smarten Dächern und Spline-basierte Straßen</li>
-              <li>Style-Presets, die handbemalte Faces nie überschreiben</li>
-              <li>HD-2D-Kamera mit Tiefenschärfe-Presets und Kompositionsanalyse</li>
-            </ul>
-            <span class="project-stack">Unity 6 · C# · ProBuilder · Unity Splines · URP · Cinemachine</span>
-          </div>
-        </article>
-
-        <!-- Project 7: Narrator -->
-        <article class="project-item" data-category="mobile">
-          <div class="project-info">
-            <p class="project-label">Mobile App · 2026</p>
-            <h3 class="project-name">Narrator</h3>
-            <p class="project-tagline">Aus einem Handy-Clip wird eine Naturdoku, mit Skript und Erzählerstimme.</p>
-            <p class="project-desc">
-              Ein Studio in der Hosentasche: Narrator verwandelt alltägliche Handyaufnahmen in Doku-Szenen im Stil von David Attenborough. Vom banalen Clip der eigenen Katze zur epischen Szene mit ehrfürchtigem Erzähler — ohne Schnittprogramm, ohne Skript, ohne ein einziges selbst getipptes Wort.
-            </p>
-            <p class="project-desc">
-              Man nimmt einen kurzen Clip auf, die App extrahiert Frames, und Claude Vision liest heraus, was darin passiert: welche Kreatur, welches Verhalten, welche Dramatik. Daraus entsteht ein Skript im typischen Doku-Duktus, eine Stimme spricht es ein, und Video und Narration laufen synchron übereinander.
-            </p>
-            <ul class="project-highlights">
-              <li>Frame-Extraktion aus Video und Foto, ohne On-Device-FFmpeg</li>
-              <li>Doku-Skript aus den Frames über Claude Vision, eigener Narration-Prompt</li>
-              <li>Clip und Narration synchron auf dem Result-Screen</li>
-              <li>Austauschbare Voice-Schnittstelle für expo-speech oder ElevenLabs</li>
-              <li>API-Key nie im Client, die Narration läuft über einen Proxy</li>
-            </ul>
-            <span class="project-stack">Expo (Dev Client) · React Native · TypeScript · expo-router · Claude API (Vision) · expo-speech / ElevenLabs</span>
-          </div>
-        </article>
-
 
       </div>
     </section>
@@ -471,6 +499,9 @@
 
       <p class="contact-intro aud aud--recruiter">Auf der Suche nach Verstärkung fürs Team? <a href="assets/Oscar-Bougart-Lebenslauf.pdf" target="_blank" rel="noopener">Lade meinen Lebenslauf herunter</a> oder schreib mir direkt.</p>
       <p class="contact-intro aud aud--dev">Ein Projekt im Kopf? Erzähl mir davon, und ich melde mich.</p>
+
+      <!-- Verfuegbarkeit: nur in der Recruiter-Ansicht, Umschaltung siehe .aud in style.css -->
+      <p class="contact-availability aud aud--recruiter">STADT · ANSTELLUNGSART</p>
 
       <div class="contact-layout">
 
@@ -494,6 +525,9 @@
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
             </a>
           </div>
+
+          <!-- Direkte Adresse: viele schreiben lieber selbst, als ein Formular auszufuellen -->
+          <a class="contact-mail" href="mailto:oscar.bougart.dev@gmail.com">oscar.bougart.dev@gmail.com</a>
         </div>
 
         <!-- Right: contact form cards -->

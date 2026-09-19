@@ -415,7 +415,29 @@ document.addEventListener('DOMContentLoaded', () => {
       lastFocused = null;
     };
 
+    // Auf dem Telefon zeigt das Grid nur die ersten drei Bilder (siehe
+    // .bento-cell:nth-child(n+4) in style.css). Dieser Button oeffnet die
+    // Lightbox beim vierten — sie blaettert weiterhin durch alle, weil die
+    // ausgeblendeten Zellen im DOM bleiben. Erzeugt statt im Markup gepflegt,
+    // damit die Anzahl bei jedem Bildwechsel automatisch stimmt.
+    const VISIBLE_ON_PHONE = 3;
+
+    const addMoreButton = (grid) => {
+      const cells = grid.querySelectorAll('.bento-cell');
+      if (cells.length <= VISIBLE_ON_PHONE) return;
+
+      const hidden = cells.length - VISIBLE_ON_PHONE;
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'bento-more';
+      btn.textContent = `+${hidden} ${hidden === 1 ? 'weiteres Bild' : 'weitere Bilder'}`;
+      btn.addEventListener('click', () => open(grid, cells[VISIBLE_ON_PHONE]));
+      grid.insertAdjacentElement('afterend', btn);
+    };
+
     bentoGrids.forEach((grid) => {
+      addMoreButton(grid);
+
       grid.querySelectorAll('.bento-cell').forEach((cell) => {
         cell.tabIndex = 0;
         cell.setAttribute('role', 'button');

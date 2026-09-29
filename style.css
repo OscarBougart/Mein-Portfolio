@@ -184,6 +184,24 @@ body {
 }
 
 /* Hamburger (mobile only) */
+/* Mobile Kopfleiste: haelt Abschnittsname und Hamburger rechtsbuendig
+   zusammen. Auf dem Desktop traegt die vertikale Sidebar die Navigation,
+   hier ist nur der Button selbst ausgeblendet. */
+.mobile-bar {
+  display: none;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.current-section {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--gray-dim);
+  white-space: nowrap;
+}
+
 .hamburger {
   display: none;
   flex-direction: column;
@@ -210,6 +228,20 @@ body {
   background: var(--white);
   border-radius: 0.125rem;
   transition: 0.3s;
+}
+
+/* Geoeffnet: oberer und unterer Balken kreuzen sich, der mittlere blendet aus.
+   transform-origin center, damit das X mittig sitzt statt zu verrutschen. */
+.hamburger[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(0.4375rem) rotate(45deg);
+}
+
+.hamburger[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-0.4375rem) rotate(-45deg);
 }
 
 /* =============================================
@@ -707,33 +739,18 @@ body[data-audience="dev"] .aud--dev {
   grid-row: span 2;
 }
 
-/* „+N weitere Bilder": nur auf dem Telefon sichtbar, wo das Grid gekuerzt wird.
-   Optik bewusst identisch zum Ghost-Button, damit keine zweite Buttonsprache entsteht. */
-.bento-more {
+/* Zaehler unter dem Karussell. Gleiche Sprache wie der Lightbox-Zaehler,
+   damit „3 / 8" auf der Seite und im Overlay dasselbe bedeutet. */
+.bento-counter {
   display: none;
-  align-items: center;
-  gap: 0.375rem;
-  margin-top: 1rem;
-  min-height: 3rem;
-  padding: 0.5rem 1.125rem;
-  background: none;
-  border: 1px solid var(--border-interactive);
-  border-radius: 2rem;
+  margin-top: 0.75rem;
   font-family: var(--font-mono);
-  font-size: 0.75rem;
-  font-weight: 600;
+  font-size: 0.6875rem;
+  font-variant-numeric: tabular-nums;
   letter-spacing: var(--track-label);
-  text-transform: uppercase;
   color: var(--gray-dim);
-  cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.bento-more:hover,
-.bento-more:focus-visible {
-  background-color: var(--gray-dim);
-  color: var(--black);
-}
 
 /* =============================================
    ABOUT SECTION
@@ -1154,14 +1171,22 @@ body[data-audience="dev"] .aud--dev {
     height: auto;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
-    gap: 2rem;
-    padding: 1rem 1.5rem;
+    /* .sidebar-logo ist absolut positioniert und damit kein Flex-Kind — die
+       Leiste ist das einzige im Fluss, flex-end schiebt sie nach rechts.
+       (space-between haette hier nichts bewirkt.) */
+    justify-content: flex-end;
+    gap: 1rem;
+    /* gleiche 6% wie die Sektionen, damit der Button mit dem Inhalt fluchtet */
+    padding: 1rem 6%;
     background: var(--black);
   }
 
   .sidebar-logo {
     margin-bottom: 0;
+    /* mit der Sektions-Einrueckung buendig, statt bei den 1.75rem der Schiene */
+    left: 6%;
+    top: 50%;
+    transform: translateY(-50%);
   }
 
   /* The horizontal top bar has no vertical rail to fly down: keep the static
@@ -1209,8 +1234,14 @@ body[data-audience="dev"] .aud--dev {
     border-bottom: none;
   }
 
+  .mobile-bar {
+    display: flex;
+  }
+
   .hamburger {
     display: flex;
+    /* Rest der vertikalen Desktop-Schiene */
+    margin-top: 0;
   }
 
   .main-content {
@@ -1305,34 +1336,57 @@ body[data-audience="dev"] .aud--dev {
     font-size: clamp(1.75rem, 8vw, 2.5rem);
   }
 
-  /* Show the work full-width: cramped 2-col thumbnails make project
-     screenshots illegible on a phone. One column, one screenshot at a time. */
+  /* Auf dem Telefon wird aus dem Bento ein Karussell: ein Screenshot zur Zeit,
+     seitlich wischbar. Untereinander gestapelt waere ein Projekt sonst acht
+     Bildschirme lang, und in feste Zeilen gepresst wurden Hochkant-Aufnahmen
+     zu Querstreifen beschnitten. */
   .bento-grid {
-    grid-template-columns: 1fr;
-    /* Feste Zeilenhoehe aufheben: sie presste jedes Bild ab dem zweiten in
-       144px und schnitt Hochkant-Screenshots zu einem Querstreifen. */
-    grid-auto-rows: auto;
+    display: flex;
+    gap: 0.75rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    /* verhindert, dass ein Wisch ueber das Ende die Browser-Zurueck-Geste ausloest */
+    overscroll-behavior-x: contain;
+    /* randlos scrollen, aber buendig zum Text beginnen */
+    margin-inline: -6%;
+    padding-inline: 6%;
+    scroll-padding-inline: 6%;
+    scrollbar-width: none;
   }
 
-  .bento-wide,
-  .bento-tall {
-    grid-column: span 1;
-    grid-row: span 1;
-  }
-
-  /* Bilder im echten Seitenverhaeltnis, kein Beschnitt mehr */
-  .bento-cell img {
-    height: auto;
-  }
-
-  /* Nur die ersten drei zeigen — der Rest ist ueber die Lightbox erreichbar.
-     display:none laesst sie im DOM, damit die Lightbox weiter alle durchblaettert. */
-  .bento-cell:nth-child(n+4) {
+  .bento-grid::-webkit-scrollbar {
     display: none;
   }
 
-  .bento-more {
-    display: inline-flex;
+  .bento-cell {
+    scroll-snap-align: start;
+    flex: 0 0 auto;
+    /* --shot-ratio setzt script.js aus dem ersten Bild des Projekts.
+       Hochkant wird von der Hoehe begrenzt, quer von der Breite — eine Regel
+       fuer beide Familien, ohne Klassen pro Projekt. */
+    aspect-ratio: var(--shot-ratio, 0.5625);
+    height: min(62vh, 88vw / var(--shot-ratio, 0.5625));
+    width: auto;
+  }
+
+  /* Die Bento-Spannweiten gelten nur fuer das Raster, nicht fuer die Reihe */
+  .bento-wide,
+  .bento-tall {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .bento-counter {
+    display: block;
+  }
+}
+
+/* Kurze Displays (iPhone SE & Co.): 62vh laesst die Hochkant-Karte auf
+   knapp 200px Breite schrumpfen. Mehr Hoehe zugestehen — der Anschnitt
+   des naechsten Bildes bleibt erhalten, weil 88vw weiter deckelt. */
+@media (max-width: 480px) and (max-height: 700px) {
+  .bento-cell {
+    height: min(74vh, 88vw / var(--shot-ratio, 0.5625));
   }
 }
 

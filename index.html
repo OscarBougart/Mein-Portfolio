@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Oscar Bougart · Full-Stack-Entwickler</title>
-  <meta name="description" content="Full-Stack-Entwickler mit zehn Jahren Gastronomie im Rücken. Web- und Mobile-Produkte, die echte Probleme lösen — von der Kalkulation hinter der Bar bis zur Lese-App.">
+  <meta name="description" content="Full-Stack-Entwickler mit zehn Jahren Gastronomie im Rücken. Web- und Mobile-Produkte, die echte Probleme lösen — von der Kalkulation hinter der Bar bis zur Lese-App. Mit wachsendem Interesse an Systemintegration und IT-Infrastruktur.">
   <link rel="canonical" href="https://oscarbougart.github.io/Mein-Portfolio/">
 
   <!-- Open Graph / Twitter: der Link landet in Bewerbungen, LinkedIn und Mails.
@@ -42,10 +42,15 @@
     </nav>
     <!-- The blue period that glides from the logo to the active nav link (desktop only) -->
     <span class="flying-dot" aria-hidden="true"></span>
-    <!-- Mobile hamburger -->
-    <button class="hamburger" id="hamburger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="sidebar-nav">
-      <span></span><span></span><span></span>
-    </button>
+    <!-- Mobile hamburger. Der Abschnittsname davor wird von der vorhandenen
+         Scroll-Spy-Logik gefuellt (activateLink in script.js) und macht aus dem
+         Button zugleich eine Standortanzeige. -->
+    <div class="mobile-bar">
+      <span class="current-section" aria-hidden="true"></span>
+      <button class="hamburger" id="hamburger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="sidebar-nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </aside>
 
   <!-- ===== MAIN CONTENT ===== -->
@@ -63,7 +68,7 @@
       <!-- Tab content panels -->
       <div class="hero-statement" data-audience-panel="recruiter">
         <h1>Zehn Jahre hinter der Bar, heute Full-Stack-Entwickler. Ich baue die Software, die mir damals gefehlt hat.</h1>
-        <a href="assets/Oscar-Bougart-Lebenslauf.pdf" target="_blank" rel="noopener" class="hero-cta">Lebenslauf herunterladen</a>
+        <a href="assets/Oscar%20Bougart%20Lebenslauf%20verbessert.pdf" target="_blank" rel="noopener" class="hero-cta">Lebenslauf herunterladen</a>
       </div>
 
       <div class="hero-statement hidden" data-audience-panel="dev">
@@ -90,6 +95,7 @@
           Ich gehe an Entwicklung genauso heran wie an alles andere: mit Liebe zum Detail und dem Antrieb, es richtig zu machen. Ich baue Web- und Mobile-Erlebnisse, die sich intuitiv anfühlen, sauber aussehen und echte Probleme lösen. Technisch und kreativ zu gleichen Teilen.        </p>
         <p class="about-block about-block--left">
           Vor dem Code habe ich über ein Jahrzehnt in der Gastronomie verbracht: Bars geleitet, Teams geführt und mich um das Gasterlebnis gekümmert. Dieser Hintergrund hat mir etwas gegeben, das die meisten Entwickler nicht haben: Ich weiß, wie man unter Druck arbeitet, klar kommuniziert und den Nutzer an erste Stelle setzt.
+          Und ich war meistens derjenige, der mitten im Service das Kassensystem wieder hochgefahren, den Bondrucker zurück ins Netz geholt und das Kartenterminal zum Laufen gebracht hat. Dort hat mein Interesse an dem angefangen, was unter der Software liegt: Systeme, Netzwerke und Hardware, die einfach funktionieren müssen.
         </p>
 
         <p class="about-block about-block--right about-block--highlight">
@@ -124,10 +130,14 @@
         </div>
 
         <div class="skill-group">
-          <h3 class="skill-group-title">Tools</h3>
+          <h3 class="skill-group-title">Systeme &amp; Tools</h3>
           <ul class="skill-list">
-            <li><span class="skill-name">Git · GitHub</span><span class="skill-level"></span></li>
+            <li><span class="skill-name">Linux · Bash</span><span class="skill-level"></span></li>
+            <li><span class="skill-name">Server · SSH</span><span class="skill-level"></span></li>
+            <li><span class="skill-name">Windows · PowerShell</span><span class="skill-level"></span></li>
+            <li><span class="skill-name">Hardware &amp; Support</span><span class="skill-level"></span></li>
             <li><span class="skill-name">Docker</span><span class="skill-level"></span></li>
+            <li><span class="skill-name">Git · GitHub</span><span class="skill-level"></span></li>
             <li><span class="skill-name">Deployment</span><span class="skill-level"></span></li>
           </ul>
         </div>
@@ -190,7 +200,7 @@
               <li>Netto-Stückpreis aus Gebindegröße, deutscher MwSt. und Schwund</li>
               <li>Verschachtelte Preps mit eigener Ausbeute, rekursiv aufgelöst, mit Zyklusschutz</li>
               <li>Ampel-Übersicht in Rot, Gelb und Grün über das ganze Rezeptbuch</li>
-              <li>Zweisprachig DE / EN mit locale-korrektem EUR- und Prozentformat</li>
+              <li>Zugriffsschutz auf Datenbankebene über Postgres Row Level Security</li>
               <li>Rechenkern als reine Module, abgesichert durch 92 Unit-Tests</li>
             </ul>
             <span class="project-stack">React 19 · TypeScript (strict) · Vite · Tailwind CSS 4 · Supabase (Postgres + Row Level Security) · Vitest · Playwright · Vercel</span>
@@ -225,7 +235,7 @@
               <li>Strikte Sprachtrennung als Leitprinzip der gesamten UI</li>
               <li>Lemmatisierung zur Importzeit, nicht zur Laufzeit</li>
               <li>SM-2-Wiederholungsalgorithmus mit Cloze-Karten</li>
-              <li>Vollständig offline über Service Worker, kein Backend</li>
+              <li>Läuft ohne Netz weiter: Service Worker statt Server, keine Ausfallstelle</li>
               <li>Zwei Farbebenen, Tinte und Graphit, statt Interface-Dekor</li>
             </ul>
             <span class="project-stack">React · TypeScript · Vite · Dexie (IndexedDB) · Tailwind · PWA</span>
@@ -299,8 +309,8 @@
               <li>Frame-Extraktion aus Video und Foto, ohne On-Device-FFmpeg</li>
               <li>Doku-Skript aus den Frames über Claude Vision, eigener Narration-Prompt</li>
               <li>Clip und Narration synchron auf dem Result-Screen</li>
+              <li>API-Key nie im Client, die Narration läuft über einen eigenen Proxy</li>
               <li>Austauschbare Voice-Schnittstelle für expo-speech oder ElevenLabs</li>
-              <li>API-Key nie im Client, die Narration läuft über einen Proxy</li>
             </ul>
             <span class="project-stack">Expo (Dev Client) · React Native · TypeScript · expo-router · Claude API (Vision) · expo-speech / ElevenLabs</span>
             <div class="project-links">
@@ -415,7 +425,7 @@
             <ul class="project-highlights">
               <li>Django REST Framework Backend</li>
               <li>Externe API-Integration</li>
-              <li>Debounced Echtzeit-Suche</li>
+              <li>Debounced Echtzeit-Suche mit Caching, weniger Last auf der externen API</li>
             </ul>
             <span class="project-stack">React · Django · Tailwind · Vite · API</span>
             <div class="project-links">
@@ -497,11 +507,11 @@
     <section class="section contact-section" id="kontakt">
       <h2 class="section-title">kontakt.</h2>
 
-      <p class="contact-intro aud aud--recruiter">Auf der Suche nach Verstärkung fürs Team? <a href="assets/Oscar-Bougart-Lebenslauf.pdf" target="_blank" rel="noopener">Lade meinen Lebenslauf herunter</a> oder schreib mir direkt.</p>
+      <p class="contact-intro aud aud--recruiter">Auf der Suche nach Verstärkung fürs Team? <a href="assets/Oscar%20Bougart%20Lebenslauf%20verbessert.pdf" target="_blank" rel="noopener">Lade meinen Lebenslauf herunter</a> oder schreib mir direkt.</p>
       <p class="contact-intro aud aud--dev">Ein Projekt im Kopf? Erzähl mir davon, und ich melde mich.</p>
 
       <!-- Verfuegbarkeit: nur in der Recruiter-Ansicht, Umschaltung siehe .aud in style.css -->
-      <p class="contact-availability aud aud--recruiter">STADT · ANSTELLUNGSART</p>
+      <p class="contact-availability aud aud--recruiter">Offen für eine Ausbildung · Fachinformatiker für Systemintegration</p>
 
       <div class="contact-layout">
 

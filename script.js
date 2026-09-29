@@ -9,6 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // =============================================
   const navLinks = document.querySelectorAll('.nav-link');
   const sections = document.querySelectorAll('.section[id]');
+  // Zeigt auf dem Telefon neben dem Hamburger, wo man gerade ist.
+  const currentSectionLabel = document.querySelector('.current-section');
 
   const activateLink = (id) => {
     navLinks.forEach(link => {
@@ -16,6 +18,9 @@ document.addEventListener('DOMContentLoaded', () => {
       link.classList.toggle('active', isActive);
       if (isActive) {
         link.setAttribute('aria-current', 'true');
+        // Beschriftung aus dem Navigationslink selbst, damit es nur eine
+        // Quelle fuer die Abschnittsnamen gibt.
+        if (currentSectionLabel) currentSectionLabel.textContent = link.textContent;
       } else {
         link.removeAttribute('aria-current');
       }
@@ -155,17 +160,34 @@ document.addEventListener('DOMContentLoaded', () => {
   const sidebarNav = document.querySelector('.sidebar-nav');
 
   if (hamburger && sidebarNav) {
-    hamburger.addEventListener('click', () => {
-      const isOpen = sidebarNav.classList.toggle('open');
-      hamburger.setAttribute('aria-expanded', String(isOpen));
+    const setMenu = (open) => {
+      sidebarNav.classList.toggle('open', open);
+      hamburger.setAttribute('aria-expanded', String(open));
+      // Die Beschriftung muss den naechsten Zustand ansagen, nicht den jetzigen.
+      hamburger.setAttribute('aria-label', open ? 'Menü schließen' : 'Menü öffnen');
+    };
+
+    hamburger.addEventListener('click', (e) => {
+      e.stopPropagation(); // sonst schliesst der Dokument-Listener sofort wieder
+      setMenu(!sidebarNav.classList.contains('open'));
     });
 
     // Close on nav link click
     sidebarNav.querySelectorAll('.nav-link').forEach(link => {
-      link.addEventListener('click', () => {
-        sidebarNav.classList.remove('open');
-        hamburger.setAttribute('aria-expanded', 'false');
-      });
+      link.addEventListener('click', () => setMenu(false));
+    });
+
+    // Tippen ausserhalb schliesst — ein offenes Menue ueber dem Inhalt zu
+    // lassen, weil man den Button verfehlt hat, ist die haeufigste Sackgasse.
+    document.addEventListener('click', (e) => {
+      if (!sidebarNav.classList.contains('open')) return;
+      if (!sidebarNav.contains(e.target)) setMenu(false);
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape' || !sidebarNav.classList.contains('open')) return;
+      setMenu(false);
+      hamburger.focus();
     });
   }
 
@@ -415,28 +437,54 @@ document.addEventListener('DOMContentLoaded', () => {
       lastFocused = null;
     };
 
-    // Auf dem Telefon zeigt das Grid nur die ersten drei Bilder (siehe
-    // .bento-cell:nth-child(n+4) in style.css). Dieser Button oeffnet die
-    // Lightbox beim vierten — sie blaettert weiterhin durch alle, weil die
-    // ausgeblendeten Zellen im DOM bleiben. Erzeugt statt im Markup gepflegt,
-    // damit die Anzahl bei jedem Bildwechsel automatisch stimmt.
-    const VISIBLE_ON_PHONE = 3;
-
-    const addMoreButton = (grid) => {
+    // Auf dem Telefon ist das Grid ein wischbares Karussell (siehe die
+    // 480px-Query in style.css). Zwei Dinge braucht es dafuer aus dem JS:
+    // das Seitenverhaeltnis der Screenshots, das je Projekt anders ist, und
+    // einen Zaehler, damit sichtbar ist, wie viele Bilder noch kommen.
+    const setupCarousel = (grid) => {
       const cells = grid.querySelectorAll('.bento-cell');
-      if (cells.length <= VISIBLE_ON_PHONE) return;
+      if (!cells.length) return;
 
-      const hidden = cells.length - VISIBLE_ON_PHONE;
-      const btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'bento-more';
-      btn.textContent = `+${hidden} ${hidden === 1 ? 'weiteres Bild' : 'weitere Bilder'}`;
-      btn.addEventListener('click', () => open(grid, cells[VISIBLE_ON_PHONE]));
-      grid.insertAdjacentElement('afterend', btn);
+      // Neutral formuliert: dasselbe Markup ist auf dem Desktop ein Raster
+      // und auf dem Telefon ein Karussell.
+      grid.setAttribute('role', 'group');
+      grid.setAttribute('aria-label', `${cells.length} Screenshots`);
+
+      // Verhaeltnis aus dem ersten Bild ableiten statt pro Projekt zu pflegen:
+      // innerhalb eines Projekts sind alle Aufnahmen gleich formatig.
+      const first = grid.querySelector('img');
+      const applyRatio = () => {
+        if (!first.naturalWidth) return;
+        grid.style.setProperty('--shot-ratio', first.naturalWidth / first.naturalHeight);
+      };
+      if (first.complete) applyRatio();
+      else first.addEventListener('load', applyRatio, { once: true });
+
+      if (cells.length < 2) return;
+
+      const counter = document.createElement('p');
+      counter.className = 'bento-counter';
+      counter.setAttribute('aria-hidden', 'true'); // die Zellen sind einzeln erreichbar
+      grid.insertAdjacentElement('afterend', counter);
+
+      // Sichtbaren Index aus der Scrollposition ableiten — ohne Listener pro Zelle.
+      let ticking = false;
+      const update = () => {
+        ticking = false;
+        const step = grid.scrollWidth / cells.length;
+        const i = Math.min(cells.length, Math.round(grid.scrollLeft / step) + 1);
+        counter.textContent = `${i} / ${cells.length}`;
+      };
+      grid.addEventListener('scroll', () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(update);
+      }, { passive: true });
+      update();
     };
 
     bentoGrids.forEach((grid) => {
-      addMoreButton(grid);
+      setupCarousel(grid);
 
       grid.querySelectorAll('.bento-cell').forEach((cell) => {
         cell.tabIndex = 0;
